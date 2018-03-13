@@ -4,6 +4,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import promise from 'redux-promise';
 import thunk from 'redux-thunk';
+import EctPreviewCont from '../containers/ectPreview';
 
 class EctPreview extends Component {
     constructor(props) {
@@ -11,10 +12,8 @@ class EctPreview extends Component {
     }
     render() {
         return ( 
-            <div>
-                Live preview goes here 1.2.3
-            </div>
-        )
+                    <EctPreviewCont />
+                )
     }
 }
 export default EctPreview;

@@ -3,7 +3,8 @@ export default function () {
         {
             id: 1,
             date: '12/12/2099',
-            time: '00:00:00'
+            time: '00:00:00',
+            timezone:''
         },
     ]
 }
