@@ -14,8 +14,14 @@ import {
 class EctPreviewCont extends Component {
     constructor(props) {
         super(props);
+        this.state ={
+            timeout:[],
+            test:0
+        }
+        this.dinamicComponent = this.dinamicComponent.bind(this);
     };
     dinamicComponent() {
+        
         const compnts = {
             HorizontalBasic: HorizontalBasic
         };
