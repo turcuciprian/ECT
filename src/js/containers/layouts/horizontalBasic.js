@@ -25,9 +25,25 @@ class HorizontalBasicCont extends Component {
     };
     const tempDate = dateMath.returnRemainingDateTime(endDateTimeObj); 
     const remainingTime = 'aaa';
+    var finalResult = [];
+    var isLast = true;
+    for (var key in tempDate) {
+        if (key != 'Styles') {
+          if (isLast) {
+            if (tempDate[key] != 0) {
+              isLast = false;
+            } else {
+              continue;
+            }
+          }
+          var tempItem = (<span key={key} className="spanDiv"> { tempDate[key] } &nbsp; </span>);
+                finalResult.push(tempItem);
+              }
+            }
+           
 
       return ( 
-                <div>{tempDate.Years} Years {tempDate.Months} Months {tempDate.Weeks} Weeks {tempDate.Days} Days {tempDate.Hours}:{tempDate.Minutes}:{tempDate.Seconds}</div>
+                <div>{finalResult}</div>
             );
           }
         }
