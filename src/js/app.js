@@ -2,6 +2,7 @@
 
 import 'react';
 import 'react-dom';
+import 'react-redux';
 
 import  'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -17,4 +18,4 @@ import '../../node_modules/axios/dist/axios.min';
 //include custom dependencies
 import '../../index.html';
 import "../scss/main.scss";
-import "./customDependencies.js";
+import "./main.js";

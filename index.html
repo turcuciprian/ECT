@@ -8,9 +8,34 @@
     <div id="ect_root">
     </div>
     <script type="text/javascript">
-        var ectWPPath = "http://localhost/wordpress/wp-json";
-        var ectScriptBase = "http://localhost:3000";
-        var ectKs = "fee6029ca4b45e897b51291840e54e95";
+        var devMode = true;
+    var isOnlyPreview = false;
+    var ectWPPath = "http://localhost/wordpress/wp-json";
+    var ectKs =  "fee6029ca4b45e897b51291840e54e95";
+    var ectProperties = [{
+      'ect_root': {
+        timeout: [],
+        endDate: '2029/2/16',
+        timezoneOffset: '+7200000',
+        endHour: '00',
+        endMinute: '00',
+        pFormat: 'D then H:M:S',
+        fontSize: 172,
+        fontSizeTxt: 32,
+        color: 'green',
+        colorTxt: '#F00',
+        isBold: false,
+        isBoldTxt: false,
+        yearsTxt: 'Years',
+        monthsTxt: 'Months',
+        weeksTxt: 'Weeks',
+        daysTxt: 'Days',
+        hoursTxt: 'Hours',
+        minutesTxt: 'Minutes',
+        secondsTxt: 'Seconds',
+        customEndedTxt: 'Timer Ended'
+      }
+    }];
     </script>
     <script src='dist/bundle.js'>
     </script>
