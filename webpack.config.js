@@ -6,7 +6,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 module.exports = {
   context: path.resolve(__dirname, 'src'),
   entry: {
-    app: ['./app.js']
+    app: ['./js/app.js']
   },
   watch: true,
   output: {
@@ -14,11 +14,6 @@ module.exports = {
     filename: 'bundle.js'
   },
   plugins: [
-  new webpack.optimize.CommonsChunkPlugin({
-    name: 'commons',
-    filename: 'commons.js',
-    minChunks: 2,
-  }),
     new BrowserSyncPlugin({
       host: 'localhost',
       port: 3000,
