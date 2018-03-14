@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux';
-import layoutOrig from './original/layout';
-import dateTimeOrig from './original/dateTime';
+import layouts from './original/layout';
+import dateTime from './original/dateTime';
 import layoutSel from './modifiers/layout';
 import dateTimeSel from './modifiers/dateTime';
 
@@ -10,10 +10,10 @@ import dateTimeSel from './modifiers/dateTime';
  * */
 
 const allReducers = combineReducers({
-    dateTimeOrig: dateTimeOrig,
-    layoutOrig: layoutOrig,
+    dateTime: dateTime,
+    layouts: layouts,
+    dateTimeSel: dateTimeSel,
     layoutSel: layoutSel,
-    dateTimeSel: dateTimeSel
 });
 
 export default allReducers;

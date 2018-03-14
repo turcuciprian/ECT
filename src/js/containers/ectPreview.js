@@ -25,7 +25,10 @@ class EctPreviewCont extends Component {
         const compnts = {
             HorizontalBasic: HorizontalBasic
         };
-        var DynamicComponentName = compnts[this.props.layoutSel.type];
+        var DynamicComponentName = compnts['HorizontalBasic'];
+        if(this.props.layoutSel){
+            DynamicComponentName = compnts[this.props.layoutSel.type];
+        }
 
         return (
             <div>
@@ -34,16 +37,20 @@ class EctPreviewCont extends Component {
         );
     }
     render() {
-        var endDateTimeObj = {
-            endDate: moment(this.props.dateTimeSel.date),
-            endHour: 23,
-            endMinute: 56,
-            timezoneOffset: -(new Date().getTimezoneOffset() * 60000)
-        };
+    var endDateTimeObj = {};
+    //if state exists
+    if(this.props.dateTimeSel){
+    endDateTimeObj = {
+                endDate: moment(this.props.dateTimeSel.date),
+                endHour: 23,
+                endMinute: 56,
+                timezoneOffset: -(new Date().getTimezoneOffset() * 60000)
+            };
         const tempDate = dateMath.returnRemainingDateTime(endDateTimeObj); 
+    }
         return (
             <div>
-            {this.dinamicComponent()}
+                {this.dinamicComponent()}
             </div>
         );
     }
@@ -51,8 +58,8 @@ class EctPreviewCont extends Component {
 
 function mapStateToProps(state) {
     return {
-        dateTimeSel: state.dateTimeOrig[0],
-        layoutSel: state.layoutOrig[0]
+        dateTimeSel: state.dateTimeSel,
+        layoutSel: state.layoutSel
 
     };
 }

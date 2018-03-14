@@ -90586,9 +90586,13 @@ var _reducers = __webpack_require__(736);
 
 var _reducers2 = _interopRequireDefault(_reducers);
 
-var _ectPreview = __webpack_require__(741);
+var _ectPreview = __webpack_require__(742);
 
 var _ectPreview2 = _interopRequireDefault(_ectPreview);
+
+var _datePicker = __webpack_require__(747);
+
+var _datePicker2 = _interopRequireDefault(_datePicker);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -90610,7 +90614,7 @@ var MainComponent = function (_Component) {
     _createClass(MainComponent, [{
         key: "render",
         value: function render() {
-            return _react2.default.createElement(_reactRedux.Provider, { store: store }, _react2.default.createElement(_ectPreview2.default, null));
+            return _react2.default.createElement(_reactRedux.Provider, { store: store }, _react2.default.createElement("div", null, _react2.default.createElement(_ectPreview2.default, null), _react2.default.createElement(_datePicker2.default, null)));
         }
     }]);
 
@@ -92076,10 +92080,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * */
 
 var allReducers = (0, _redux.combineReducers)({
-    dateTimeOrig: _dateTime2.default,
-    layoutOrig: _layout2.default,
-    layoutSel: _layout4.default,
-    dateTimeSel: _dateTime4.default
+    dateTime: _dateTime2.default,
+    layouts: _layout2.default,
+    dateTimeSel: _dateTime4.default,
+    layoutSel: _layout4.default
 });
 
 exports.default = allReducers;
@@ -92117,8 +92121,21 @@ exports.default = function () {
     return [{
         id: 1,
         date: '12/12/2099',
-        time: '00:00:00',
-        timezone: ''
+        time: '00:00',
+        timezone: '',
+        numbersText: {
+            Years: 'Years',
+            Months: 'Months',
+            Weeks: 'Weeks',
+            Days: 'Days',
+            Hours: 'Hours',
+            Minutes: 'Minutes',
+            Seconds: 'Seconds'
+        },
+        numbersSize: 42,
+        numbersTxtSize: 21,
+        numbersColor: 'red',
+        numbersTxtColor: 'green'
     }];
 };
 
@@ -92161,80 +92178,15 @@ exports.default = function () {
     var action = arguments[1];
 
     switch (action.type) {
-        case 'SELECTED_DATE_TIME':
-            return action.data;
+        case 'DATE_SELECTED':
+            return action.payload;
             break;
     }
     return state;
 };
 
 /***/ }),
-/* 741 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = __webpack_require__(13);
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-var _redux = __webpack_require__(67);
-
-var _reactRedux = __webpack_require__(52);
-
-var _reduxPromise = __webpack_require__(354);
-
-var _reduxPromise2 = _interopRequireDefault(_reduxPromise);
-
-var _reduxThunk = __webpack_require__(356);
-
-var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
-
-var _ectPreview = __webpack_require__(742);
-
-var _ectPreview2 = _interopRequireDefault(_ectPreview);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var EctPreview = function (_Component) {
-    _inherits(EctPreview, _Component);
-
-    function EctPreview(props) {
-        _classCallCheck(this, EctPreview);
-
-        return _possibleConstructorReturn(this, (EctPreview.__proto__ || Object.getPrototypeOf(EctPreview)).call(this, props));
-    }
-
-    _createClass(EctPreview, [{
-        key: "render",
-        value: function render() {
-            return _react2.default.createElement(_ectPreview2.default, null);
-        }
-    }]);
-
-    return EctPreview;
-}(_react.Component);
-
-exports.default = EctPreview;
-
-/***/ }),
+/* 741 */,
 /* 742 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -92300,20 +92252,27 @@ var EctPreviewCont = function (_Component) {
             var compnts = {
                 HorizontalBasic: _all.HorizontalBasic
             };
-            var DynamicComponentName = compnts[this.props.layoutSel.type];
+            var DynamicComponentName = compnts['HorizontalBasic'];
+            if (this.props.layoutSel) {
+                DynamicComponentName = compnts[this.props.layoutSel.type];
+            }
 
             return _react2.default.createElement('div', null, _react2.default.createElement(DynamicComponentName, { className: 'floatingPreview' }));
         }
     }, {
         key: 'render',
         value: function render() {
-            var endDateTimeObj = {
-                endDate: (0, _moment2.default)(this.props.dateTimeSel.date),
-                endHour: 23,
-                endMinute: 56,
-                timezoneOffset: -(new Date().getTimezoneOffset() * 60000)
-            };
-            var tempDate = _dateMath2.default.returnRemainingDateTime(endDateTimeObj);
+            var endDateTimeObj = {};
+            //if state exists
+            if (this.props.dateTimeSel) {
+                endDateTimeObj = {
+                    endDate: (0, _moment2.default)(this.props.dateTimeSel.date),
+                    endHour: 23,
+                    endMinute: 56,
+                    timezoneOffset: -(new Date().getTimezoneOffset() * 60000)
+                };
+                var tempDate = _dateMath2.default.returnRemainingDateTime(endDateTimeObj);
+            }
             return _react2.default.createElement('div', null, this.dinamicComponent());
         }
     }]);
@@ -92323,8 +92282,8 @@ var EctPreviewCont = function (_Component) {
 
 function mapStateToProps(state) {
     return {
-        dateTimeSel: state.dateTimeOrig[0],
-        layoutSel: state.layoutOrig[0]
+        dateTimeSel: state.dateTimeSel,
+        layoutSel: state.layoutSel
 
     };
 }
@@ -92409,7 +92368,7 @@ exports.default = HorizontalBasic;
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -92437,70 +92396,286 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var HorizontalBasicCont = function (_Component) {
-  _inherits(HorizontalBasicCont, _Component);
+    _inherits(HorizontalBasicCont, _Component);
 
-  function HorizontalBasicCont(props) {
-    _classCallCheck(this, HorizontalBasicCont);
+    function HorizontalBasicCont(props) {
+        _classCallCheck(this, HorizontalBasicCont);
 
-    var _this = _possibleConstructorReturn(this, (HorizontalBasicCont.__proto__ || Object.getPrototypeOf(HorizontalBasicCont)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (HorizontalBasicCont.__proto__ || Object.getPrototypeOf(HorizontalBasicCont)).call(this, props));
 
-    _this.state = {
-      timeout: []
-    };
-    return _this;
-  }
-
-  _createClass(HorizontalBasicCont, [{
-    key: 'render',
-    value: function render() {
-      var _this2 = this;
-
-      var tempTimeout = this.state.timeout;
-      tempTimeout.push(setTimeout(function () {
-        _this2.setState({
-          timeout: []
-        });
-      }, 1000));
-      var endDateTimeObj = {
-        endDate: (0, _moment2.default)(this.props.dateTimeSel.date),
-        endHour: 23,
-        endMinute: 56,
-        timezoneOffset: -(new Date().getTimezoneOffset() * 60000)
-      };
-      var tempDate = _dateMath2.default.returnRemainingDateTime(endDateTimeObj);
-      var remainingTime = 'aaa';
-      var finalResult = [];
-      var isLast = true;
-      for (var key in tempDate) {
-        if (key != 'Styles') {
-          if (isLast) {
-            if (tempDate[key] != 0) {
-              isLast = false;
-            } else {
-              continue;
-            }
-          }
-          var tempItem = _react2.default.createElement('span', { key: key, className: 'spanDiv' }, ' ', tempDate[key], ' \xA0 ');
-          finalResult.push(tempItem);
-        }
-      }
-
-      return _react2.default.createElement('div', null, finalResult);
+        _this.state = {
+            timeout: []
+        };
+        return _this;
     }
-  }]);
 
-  return HorizontalBasicCont;
+    _createClass(HorizontalBasicCont, [{
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            if (this.props.dateTimeSel) {
+                var tempTimeout = this.state.timeout;
+                tempTimeout.push(setTimeout(function () {
+                    _this2.setState({
+                        timeout: []
+                    });
+                }, 1000));
+                var dateTimeTxt = this.props.dateTimeSel.numbersText;
+                var endDateTimeObj = {
+                    endDate: (0, _moment2.default)(this.props.dateTimeSel.date),
+                    endHour: 23,
+                    endMinute: 56,
+                    timezoneOffset: -(new Date().getTimezoneOffset() * 60000)
+                };
+                // Date time left
+                var tempDate = _dateMath2.default.returnRemainingDateTime(endDateTimeObj);
+                // Numbers variables
+                var numbersSize = this.props.dateTimeSel.numbersSize; // font size
+                var numbersColor = this.props.dateTimeSel.numbersColor; // color
+                // Numbers  TEXT variables
+                var numbersTxtSize = this.props.dateTimeSel.numbersTxtSize; // font size
+                var numbersTxtColor = this.props.dateTimeSel.numbersTxtColor; // color
+
+                //STYLE for numbers
+                var numbersStyle = {
+                    fontSize: numbersSize,
+                    color: numbersColor
+                };
+                //STYLE for numbers Text
+                var numbersTxtStyle = {
+                    fontSize: numbersTxtSize,
+                    color: numbersTxtColor
+                };
+
+                var finalResult = [];
+                var isLast = true;
+                for (var key in tempDate) {
+                    if (key != 'Styles') {
+                        if (isLast) {
+                            if (tempDate[key] != 0) {
+                                isLast = false;
+                            } else {
+                                continue;
+                            }
+                        }
+                        var tempItem = _react2.default.createElement('span', { key: key, className: 'spanDiv' }, _react2.default.createElement('span', { style: numbersStyle }, tempDate[key]), _react2.default.createElement('span', { style: numbersTxtStyle }, dateTimeTxt[key]), '\xA0');
+                        finalResult.push(tempItem);
+                    }
+                }
+            } else {
+                var finalResult = 'Timer Ended';
+            }
+
+            return _react2.default.createElement('div', null, finalResult);
+        }
+    }]);
+
+    return HorizontalBasicCont;
 }(_react.Component);
 
 function mapStateToProps(state) {
-  return {
-    dateTimeSel: state.dateTimeOrig[0],
-    layoutSel: state.layoutOrig[0]
+    return {
+        dateTime: state.dateTime,
+        dateTimeSel: state.dateTimeSel,
+        layouts: state.layouts,
+        layoutSel: state.layoutSel
 
-  };
+    };
 }
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(HorizontalBasicCont);
+
+/***/ }),
+/* 746 */,
+/* 747 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(52);
+
+var _redux = __webpack_require__(67);
+
+var _dateMath = __webpack_require__(358);
+
+var _dateMath2 = _interopRequireDefault(_dateMath);
+
+var _moment = __webpack_require__(2);
+
+var _moment2 = _interopRequireDefault(_moment);
+
+var _reactDatepicker = __webpack_require__(395);
+
+var _reactDatepicker2 = _interopRequireDefault(_reactDatepicker);
+
+var _actions = __webpack_require__(748);
+
+var _all = __webpack_require__(743);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+// import all layouts
+
+
+/*
+ * We need "if(!this.props.user)" because we set state to null by default
+ * */
+var DatePickerCont = function (_Component) {
+    _inherits(DatePickerCont, _Component);
+
+    function DatePickerCont(props) {
+        _classCallCheck(this, DatePickerCont);
+
+        var _this = _possibleConstructorReturn(this, (DatePickerCont.__proto__ || Object.getPrototypeOf(DatePickerCont)).call(this, props));
+
+        _this.state = {
+            timeout: [],
+            test: 0
+        };
+        _this.dinamicComponent = _this.dinamicComponent.bind(_this);
+        _this.handleChange = _this.handleChange.bind(_this);
+        return _this;
+    }
+
+    _createClass(DatePickerCont, [{
+        key: 'dinamicComponent',
+        value: function dinamicComponent() {
+            var _React$createElement2;
+
+            var compnts = {
+                HorizontalBasic: _all.HorizontalBasic
+            };
+            var DynamicComponentName = compnts['HorizontalBasic'];
+            if (this.props.layoutSel) {
+                var _React$createElement;
+
+                _react2.default.createElement('div', null, _react2.default.createElement(_reactDatepicker2.default, (_React$createElement = {
+                    placeholderText: 'Select a date',
+                    dateFormat: 'YYYY/MM/DD',
+                    selected: this.props.dateTimeSel.date,
+                    onChange: this.handleChange,
+                    showTimeSelect: true
+                }, _defineProperty(_React$createElement, 'dateFormat', 'LLL'), _defineProperty(_React$createElement, 'className', 'datePickerStyle'), _defineProperty(_React$createElement, 'timeCaption', 'time'), _defineProperty(_React$createElement, 'timeIntervals', 15), _defineProperty(_React$createElement, 'timeFormat', 'HH:mm'), _defineProperty(_React$createElement, 'minTime', this.selectMinTime(this.props.dateTimeSel.date)), _defineProperty(_React$createElement, 'maxTime', (0, _moment2.default)().hours(23).minutes(59)), _defineProperty(_React$createElement, 'minDate', (0, _moment2.default)()), _defineProperty(_React$createElement, 'maxDate', (0, _moment2.default)().add(1000, "years")), _React$createElement)));
+            }
+
+            return _react2.default.createElement('div', null, _react2.default.createElement(_reactDatepicker2.default, (_React$createElement2 = {
+                placeholderText: 'Select a date',
+                dateFormat: 'YYYY/MM/DD',
+                onChange: this.handleChange,
+                showTimeSelect: true
+            }, _defineProperty(_React$createElement2, 'dateFormat', 'LLL'), _defineProperty(_React$createElement2, 'className', 'datePickerStyle'), _defineProperty(_React$createElement2, 'timeCaption', 'time'), _defineProperty(_React$createElement2, 'timeIntervals', 15), _defineProperty(_React$createElement2, 'timeFormat', 'HH:mm'), _defineProperty(_React$createElement2, 'minDate', (0, _moment2.default)()), _defineProperty(_React$createElement2, 'maxDate', (0, _moment2.default)().add(1000, "years")), _React$createElement2)));
+        }
+    }, {
+        key: 'handleChange',
+        value: function handleChange(date) {
+            var newDate;
+            if (date.month() + 1 < 10) {
+                newDate = '0' + (date.month() + 1) + '/' + date.date() + '/' + date.year();
+            } else {
+                newDate = date.month() + 1 + '/' + date.date() + '/' + date.year();
+            }
+            var newHour = date.hour();
+            var newMinute = date.minute();
+
+            var newDateTimeObj = {
+                date: newDate,
+                time: '00:00',
+                timezone: '',
+                numbersText: {
+                    Years: 'Years',
+                    Months: 'Months',
+                    Weeks: 'Weeks',
+                    Days: 'Days',
+                    Hours: 'Hours',
+                    Minutes: 'Minutes',
+                    Seconds: 'Seconds'
+                },
+                numbersSize: 42,
+                numbersTxtSize: 21,
+                numbersColor: 'red',
+                numbersTxtColor: 'green'
+            };
+            this.props.selectDateFunc(newDateTimeObj);
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var endDateTimeObj = {};
+            //if state exists
+            if (this.props.dateTimeSel) {
+                endDateTimeObj = {
+                    endDate: (0, _moment2.default)(this.props.dateTimeSel.date),
+                    endHour: 23,
+                    endMinute: 56,
+                    timezoneOffset: -(new Date().getTimezoneOffset() * 60000)
+                };
+                var tempDate = _dateMath2.default.returnRemainingDateTime(endDateTimeObj);
+                console.log(tempDate, 'tempDate');
+            }
+            return _react2.default.createElement('div', null, this.dinamicComponent());
+        }
+    }]);
+
+    return DatePickerCont;
+}(_react.Component);
+
+function mapStateToProps(state) {
+    return {
+        dateTimeSel: state.dateTimeSel,
+        layoutSel: state.layoutSel
+
+    };
+}
+function matchDispatchToProps(dispatch) {
+    return (0, _redux.bindActionCreators)({ selectDateFunc: _actions.selectDate }, dispatch);
+}
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, matchDispatchToProps)(DatePickerCont);
+
+/***/ }),
+/* 748 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var selectDate = exports.selectDate = function selectDate(date) {
+    console.log(date, 'x');
+    return {
+        type: 'DATE_SELECTED',
+        payload: date
+    };
+};
+
+var selectLayout = exports.selectLayout = function selectLayout(layout) {
+    return {
+        type: 'LAYOUT_SELECTED',
+        payload: layout
+    };
+};
 
 /***/ })
 /******/ ]);

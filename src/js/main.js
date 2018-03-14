@@ -6,7 +6,8 @@ import promise from 'redux-promise';
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 import allReducers from './reducers';
-import EctPreview from './components/ectPreview';
+import EctPreviewCont from './containers/ectPreview';
+import DatePickerCont from './containers/datePicker';
 
 class MainComponent extends Component {
     constructor(props) {
@@ -14,8 +15,11 @@ class MainComponent extends Component {
     }
     render() {
         return ( 
-            <Provider store = {store}>
-                <EctPreview />
+            <Provider store = {store}> 
+                <div>
+                    <EctPreviewCont />
+                    <DatePickerCont />
+                </div>
             </Provider>
         )
     }

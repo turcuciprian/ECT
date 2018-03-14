@@ -1,7 +1,7 @@
 export default function (state = null, action) {
     switch (action.type) {
-        case 'SELECTED_DATE_TIME':
-            return action.data;
+        case 'DATE_SELECTED':
+            return action.payload;
             break;
     }
     return state;
