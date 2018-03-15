@@ -26,32 +26,7 @@ class DatePickerCont extends Component {
         this.handleChange = this.handleChange.bind(this);
     };
     dinamicComponent() {
-        
-        const compnts = {
-            HorizontalBasic: HorizontalBasic
-        };
-        var DynamicComponentName = compnts['HorizontalBasic'];
-        if(this.props.layoutSel){
-            return (
-                <div>
-                    <DatePicker
-                    placeholderText="Select a date"
-                    dateFormat="YYYY/MM/DD"
-                    selected={this.props.dateTimeSel.date}
-                    onChange={this.handleChange}
-                    showTimeSelect
-                    dateFormat="LLL"
-                    className="datePickerStyle"
-                    timeCaption="time"
-                    timeIntervals={15}
-                    timeFormat="HH:mm"
-                    minTime={0}
-                    maxTime={moment().hours(23).minutes(59)}
-                    minDate={moment()}
-                    maxDate={moment().add(1000, "years")} />
-                </div>
-                );
-        }
+
 
         return (
             <div>
@@ -112,8 +87,12 @@ class DatePickerCont extends Component {
       };
     render() {
             return (
-                <div>
-                    {this.dinamicComponent()}
+                <div className="ectDateTimePicker">
+                    <div className="Years">
+                        <span> Years</span>
+                        <select name="ectDTP_Years">
+                        </select>
+                    </div>
                 </div>
             );
     }

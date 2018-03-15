@@ -92557,30 +92557,14 @@ var DatePickerCont = function (_Component) {
     _createClass(DatePickerCont, [{
         key: 'dinamicComponent',
         value: function dinamicComponent() {
-            var _React$createElement2;
+            var _React$createElement;
 
-            var compnts = {
-                HorizontalBasic: _all.HorizontalBasic
-            };
-            var DynamicComponentName = compnts['HorizontalBasic'];
-            if (this.props.layoutSel) {
-                var _React$createElement;
-
-                return _react2.default.createElement('div', null, _react2.default.createElement(_reactDatepicker2.default, (_React$createElement = {
-                    placeholderText: 'Select a date',
-                    dateFormat: 'YYYY/MM/DD',
-                    selected: this.props.dateTimeSel.date,
-                    onChange: this.handleChange,
-                    showTimeSelect: true
-                }, _defineProperty(_React$createElement, 'dateFormat', 'LLL'), _defineProperty(_React$createElement, 'className', 'datePickerStyle'), _defineProperty(_React$createElement, 'timeCaption', 'time'), _defineProperty(_React$createElement, 'timeIntervals', 15), _defineProperty(_React$createElement, 'timeFormat', 'HH:mm'), _defineProperty(_React$createElement, 'minTime', 0), _defineProperty(_React$createElement, 'maxTime', (0, _moment2.default)().hours(23).minutes(59)), _defineProperty(_React$createElement, 'minDate', (0, _moment2.default)()), _defineProperty(_React$createElement, 'maxDate', (0, _moment2.default)().add(1000, "years")), _React$createElement)));
-            }
-
-            return _react2.default.createElement('div', null, _react2.default.createElement(_reactDatepicker2.default, (_React$createElement2 = {
+            return _react2.default.createElement('div', null, _react2.default.createElement(_reactDatepicker2.default, (_React$createElement = {
                 placeholderText: 'Select a date',
                 dateFormat: 'YYYY/MM/DD',
                 onChange: this.handleChange,
                 showTimeSelect: true
-            }, _defineProperty(_React$createElement2, 'dateFormat', 'LLL'), _defineProperty(_React$createElement2, 'className', 'datePickerStyle'), _defineProperty(_React$createElement2, 'timeCaption', 'time'), _defineProperty(_React$createElement2, 'timeIntervals', 15), _defineProperty(_React$createElement2, 'timeFormat', 'HH:mm'), _defineProperty(_React$createElement2, 'minTime', (0, _moment2.default)()), _defineProperty(_React$createElement2, 'maxTime', (0, _moment2.default)().hours(23).minutes(59)), _defineProperty(_React$createElement2, 'minDate', (0, _moment2.default)()), _defineProperty(_React$createElement2, 'maxDate', (0, _moment2.default)().add(1000, "years")), _React$createElement2)));
+            }, _defineProperty(_React$createElement, 'dateFormat', 'LLL'), _defineProperty(_React$createElement, 'className', 'datePickerStyle'), _defineProperty(_React$createElement, 'timeCaption', 'time'), _defineProperty(_React$createElement, 'timeIntervals', 15), _defineProperty(_React$createElement, 'timeFormat', 'HH:mm'), _defineProperty(_React$createElement, 'minTime', (0, _moment2.default)()), _defineProperty(_React$createElement, 'maxTime', (0, _moment2.default)().hours(23).minutes(59)), _defineProperty(_React$createElement, 'minDate', (0, _moment2.default)()), _defineProperty(_React$createElement, 'maxDate', (0, _moment2.default)().add(1000, "years")), _React$createElement)));
         }
     }, {
         key: 'handleChange',
@@ -92622,7 +92606,7 @@ var DatePickerCont = function (_Component) {
     }, {
         key: 'render',
         value: function render() {
-            return _react2.default.createElement('div', null, this.dinamicComponent());
+            return _react2.default.createElement('div', { className: 'ectDateTimePicker' }, _react2.default.createElement('div', { className: 'Years' }, _react2.default.createElement('span', null, ' Years'), _react2.default.createElement('select', { name: 'ectDTP_Years' })));
         }
     }]);
 
