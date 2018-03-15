@@ -32,23 +32,25 @@ class DatePickerCont extends Component {
         };
         var DynamicComponentName = compnts['HorizontalBasic'];
         if(this.props.layoutSel){
-            <div>
-                <DatePicker
-                placeholderText="Select a date"
-                dateFormat="YYYY/MM/DD"
-                selected={this.props.dateTimeSel.date}
-                onChange={this.handleChange}
-                showTimeSelect
-                dateFormat="LLL"
-                className="datePickerStyle"
-                timeCaption="time"
-                timeIntervals={15}
-                timeFormat="HH:mm"
-                minTime={this.selectMinTime(this.props.dateTimeSel.date)}
-                maxTime={moment().hours(23).minutes(59)}
-                minDate={moment()}
-                maxDate={moment().add(1000, "years")} />
-            </div>
+            return (
+                <div>
+                    <DatePicker
+                    placeholderText="Select a date"
+                    dateFormat="YYYY/MM/DD"
+                    selected={this.props.dateTimeSel.date}
+                    onChange={this.handleChange}
+                    showTimeSelect
+                    dateFormat="LLL"
+                    className="datePickerStyle"
+                    timeCaption="time"
+                    timeIntervals={15}
+                    timeFormat="HH:mm"
+                    minTime={0}
+                    maxTime={moment().hours(23).minutes(59)}
+                    minDate={moment()}
+                    maxDate={moment().add(1000, "years")} />
+                </div>
+                );
         }
 
         return (
@@ -63,6 +65,8 @@ class DatePickerCont extends Component {
                 timeCaption="time"
                 timeIntervals={15}
                 timeFormat="HH:mm"
+                minTime={moment()}
+                maxTime={moment().hours(23).minutes(59)}
                 minDate={moment()}
                 maxDate={moment().add(1000, "years")} />
             </div>
@@ -70,20 +74,24 @@ class DatePickerCont extends Component {
     }
     handleChange(date) {
         var newDate;
-        if((date.month()+1)< 10 ){
-          newDate = '0'+(date.month() + 1)+'/'+date.date()+'/'+date.year();
-        }else{
-          newDate = (date.month() + 1)+'/'+date.date()+'/'+date.year();
-          
-        }
-        var newHour = date.hour();
-        var newMinute = date.minute();
-
+        var newHour;
+        var newMinute;
+        
+        
+            if((date.month()+1)< 10 ){
+                newDate = '0'+(date.month() + 1)+'/'+date.date()+'/'+date.year();
+                }else{
+                newDate = (date.month() + 1)+'/'+date.date()+'/'+date.year();
+                }
+           
+            newHour = date.hour();
+            newMinute = date.minute();
+            
         
         const newDateTimeObj = {
                 date: newDate,
-                time: '00:00',
-                timezone: '',
+                time: newHour+':'+newMinute,
+                timezone: -(new Date().getTimezoneOffset() * 60000),
                 numbersText: {
                     Years: 'Years',
                     Months: 'Months',
@@ -98,21 +106,11 @@ class DatePickerCont extends Component {
                 numbersColor: 'red',
                 numbersTxtColor: 'green'
         };
+        
         this.props.selectDateFunc(newDateTimeObj)
+        
       };
     render() {
-        var endDateTimeObj = {};
-        //if state exists
-        if(this.props.dateTimeSel){
-        endDateTimeObj = {
-                    endDate: moment(this.props.dateTimeSel.date),
-                    endHour: 23,
-                    endMinute: 56,
-                    timezoneOffset: -(new Date().getTimezoneOffset() * 60000)
-                };
-            const tempDate = dateMath.returnRemainingDateTime(endDateTimeObj); 
-            console.log(tempDate,'tempDate');
-        }
             return (
                 <div>
                     {this.dinamicComponent()}

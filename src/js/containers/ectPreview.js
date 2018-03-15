@@ -15,8 +15,7 @@ class EctPreviewCont extends Component {
     constructor(props) {
         super(props);
         this.state ={
-            timeout:[],
-            test:0
+            timeout:[]
         }
         this.dinamicComponent = this.dinamicComponent.bind(this);
     };
@@ -42,11 +41,11 @@ class EctPreviewCont extends Component {
     if(this.props.dateTimeSel){
     endDateTimeObj = {
                 endDate: moment(this.props.dateTimeSel.date),
-                endHour: 23,
-                endMinute: 56,
-                timezoneOffset: -(new Date().getTimezoneOffset() * 60000)
+                endHour: this.props.dateTimeSel.time.split(':')[0],
+                endMinute: this.props.dateTimeSel.time.split(':')[1],
+                timezoneOffset: this.props.dateTimeSel.timezone
             };
-        const tempDate = dateMath.returnRemainingDateTime(endDateTimeObj); 
+        const tempDate = dateMath.returnRemainingDateTime(endDateTimeObj);
     }
         return (
             <div>

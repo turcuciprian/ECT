@@ -21,9 +21,9 @@ class HorizontalBasicCont extends Component {
     var dateTimeTxt = this.props.dateTimeSel.numbersText
       var endDateTimeObj = {
         endDate: moment(this.props.dateTimeSel.date),
-        endHour: 23,
-        endMinute: 56,
-        timezoneOffset: -(new Date().getTimezoneOffset() * 60000)
+        endHour: this.props.dateTimeSel.time.split(':')[0],
+        endMinute: this.props.dateTimeSel.time.split(':')[1],
+        timezoneOffset: this.props.dateTimeSel.timezone
     };
     // Date time left
     const tempDate = dateMath.returnRemainingDateTime(endDateTimeObj);
