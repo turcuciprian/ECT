@@ -90534,9 +90534,9 @@ var _ectPreview = __webpack_require__(742);
 
 var _ectPreview2 = _interopRequireDefault(_ectPreview);
 
-var _datePicker = __webpack_require__(745);
+var _dateTimeComp = __webpack_require__(749);
 
-var _datePicker2 = _interopRequireDefault(_datePicker);
+var _dateTimeComp2 = _interopRequireDefault(_dateTimeComp);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -90558,7 +90558,7 @@ var MainComponent = function (_Component) {
     _createClass(MainComponent, [{
         key: "render",
         value: function render() {
-            return _react2.default.createElement(_reactRedux.Provider, { store: store }, _react2.default.createElement("div", null, _react2.default.createElement(_ectPreview2.default, null), _react2.default.createElement(_datePicker2.default, null)));
+            return _react2.default.createElement(_reactRedux.Provider, { store: store }, _react2.default.createElement("div", null, _react2.default.createElement(_ectPreview2.default, null), _react2.default.createElement(_dateTimeComp2.default, null)));
         }
     }]);
 
@@ -92485,170 +92485,146 @@ function mapStateToProps(state) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(HorizontalBasicCont);
 
 /***/ }),
-/* 745 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 745 */,
+/* 746 */,
+/* 747 */,
+/* 748 */,
+/* 749 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__EctDateTime_jsx__ = __webpack_require__(750);
 
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRedux = __webpack_require__(52);
-
-var _redux = __webpack_require__(67);
-
-var _dateMath = __webpack_require__(134);
-
-var _dateMath2 = _interopRequireDefault(_dateMath);
-
-var _moment = __webpack_require__(2);
-
-var _moment2 = _interopRequireDefault(_moment);
-
-var _reactDatepicker = __webpack_require__(150);
-
-var _reactDatepicker2 = _interopRequireDefault(_reactDatepicker);
-
-var _actions = __webpack_require__(746);
-
-var _all = __webpack_require__(358);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-// import all layouts
-
-
-/*
- * We need "if(!this.props.user)" because we set state to null by default
- * */
-var DatePickerCont = function (_Component) {
-    _inherits(DatePickerCont, _Component);
-
-    function DatePickerCont(props) {
-        _classCallCheck(this, DatePickerCont);
-
-        var _this = _possibleConstructorReturn(this, (DatePickerCont.__proto__ || Object.getPrototypeOf(DatePickerCont)).call(this, props));
-
-        _this.state = {
-            timeout: [],
-            test: 0
-        };
-        _this.dinamicComponent = _this.dinamicComponent.bind(_this);
-        _this.handleChange = _this.handleChange.bind(_this);
-        return _this;
+class EctDatePickerCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
+    constructor(props) {
+        super(props);
     }
-
-    _createClass(DatePickerCont, [{
-        key: 'dinamicComponent',
-        value: function dinamicComponent() {
-            var _React$createElement;
-
-            return _react2.default.createElement('div', null, _react2.default.createElement(_reactDatepicker2.default, (_React$createElement = {
-                placeholderText: 'Select a date',
-                dateFormat: 'YYYY/MM/DD',
-                onChange: this.handleChange,
-                showTimeSelect: true
-            }, _defineProperty(_React$createElement, 'dateFormat', 'LLL'), _defineProperty(_React$createElement, 'className', 'datePickerStyle'), _defineProperty(_React$createElement, 'timeCaption', 'time'), _defineProperty(_React$createElement, 'timeIntervals', 15), _defineProperty(_React$createElement, 'timeFormat', 'HH:mm'), _defineProperty(_React$createElement, 'minTime', (0, _moment2.default)()), _defineProperty(_React$createElement, 'maxTime', (0, _moment2.default)().hours(23).minutes(59)), _defineProperty(_React$createElement, 'minDate', (0, _moment2.default)()), _defineProperty(_React$createElement, 'maxDate', (0, _moment2.default)().add(1000, "years")), _React$createElement)));
-        }
-    }, {
-        key: 'handleChange',
-        value: function handleChange(date) {
-            var newDate;
-            var newHour;
-            var newMinute;
-
-            if (date.month() + 1 < 10) {
-                newDate = '0' + (date.month() + 1) + '/' + date.date() + '/' + date.year();
-            } else {
-                newDate = date.month() + 1 + '/' + date.date() + '/' + date.year();
-            }
-
-            newHour = date.hour();
-            newMinute = date.minute();
-
-            var newDateTimeObj = {
-                date: newDate,
-                time: newHour + ':' + newMinute,
-                timezone: -(new Date().getTimezoneOffset() * 60000),
-                numbersText: {
-                    Years: 'Years',
-                    Months: 'Months',
-                    Weeks: 'Weeks',
-                    Days: 'Days',
-                    Hours: 'Hours',
-                    Minutes: 'Minutes',
-                    Seconds: 'Seconds'
-                },
-                numbersSize: 42,
-                numbersTxtSize: 21,
-                numbersColor: 'red',
-                numbersTxtColor: 'green'
-            };
-
-            this.props.selectDateFunc(newDateTimeObj);
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement('div', { className: 'ectDateTimePicker' }, _react2.default.createElement('div', { className: 'Years' }, _react2.default.createElement('span', null, ' Years'), _react2.default.createElement('select', { name: 'ectDTP_Years' })));
-        }
-    }]);
-
-    return DatePickerCont;
-}(_react.Component);
-
-function mapStateToProps(state) {
-    return {
-        dateTimeSel: state.dateTimeSel,
-        layoutSel: state.layoutSel
-
-    };
+    render() {
+        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "div",
+            null,
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__EctDateTime_jsx__["a" /* default */], { type: "year" }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__EctDateTime_jsx__["a" /* default */], { type: "month" }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__EctDateTime_jsx__["a" /* default */], { type: "day" }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__EctDateTime_jsx__["a" /* default */], { type: "hour" }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__EctDateTime_jsx__["a" /* default */], { type: "minute" })
+        );
+    }
 }
-function matchDispatchToProps(dispatch) {
-    return (0, _redux.bindActionCreators)({ selectDateFunc: _actions.selectDate }, dispatch);
-}
-
-exports.default = (0, _reactRedux.connect)(mapStateToProps, matchDispatchToProps)(DatePickerCont);
+/* harmony default export */ __webpack_exports__["default"] = (EctDatePickerCont);
 
 /***/ }),
-/* 746 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 750 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_moment__);
 
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-var selectDate = exports.selectDate = function selectDate(date) {
-    return {
-        type: 'DATE_SELECTED',
-        payload: date
-    };
-};
 
-var selectLayout = exports.selectLayout = function selectLayout(layout) {
-    return {
-        type: 'LAYOUT_SELECTED',
-        payload: layout
-    };
-};
+class EctDateTime extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
+    constructor(props) {
+        super(props);
+    }
+    render() {
+        var options = [];
+        var start;
+        var end;
+        var labelText = 'Default';
+        switch (this.props.type) {
+            case 'year':
+                labelText = 'Year';
+                start = __WEBPACK_IMPORTED_MODULE_1_moment___default()().year();
+                end = __WEBPACK_IMPORTED_MODULE_1_moment___default()().year() + 50;
+                for (var i = start; i <= end; i++) {
+                    options.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "option",
+                        { key: labelText + i, value: i },
+                        i
+                    ));
+                }
+                break;
+            case 'month':
+                labelText = 'Month';
+                const dpMonths = {
+                    1: 'January',
+                    2: 'February',
+                    3: 'March',
+                    4: 'April',
+                    5: 'May',
+                    6: 'June',
+                    7: 'July',
+                    8: 'August',
+                    9: 'September',
+                    10: 'October',
+                    11: 'November',
+                    12: 'December'
+                };
+                for (var i = 1; i <= 11; i++) {
+                    options.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "option",
+                        { key: labelText + i, value: i },
+                        dpMonths[i]
+                    ));
+                }
+                break;
+            case 'day':
+                labelText = 'Day';
+                for (var i = 1; i <= 31; i++) {
+                    options.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "option",
+                        { key: labelText + i, value: i },
+                        i
+                    ));
+                }
+
+                break;
+            case 'hour':
+                labelText = 'Hour';
+                for (var i = 0; i <= 23; i++) {
+                    options.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "option",
+                        { key: labelText + i, value: i },
+                        i
+                    ));
+                }
+                break;
+            case 'minute':
+                labelText = 'Minute';
+                for (var i = 0; i <= 59; i++) {
+                    options.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "option",
+                        { key: labelText + i, value: i },
+                        i
+                    ));
+                }
+                break;
+        }
+
+        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "div",
+            { className: labelText },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "span",
+                null,
+                labelText
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "select",
+                { name: 'ectDTP' + labelText },
+                options
+            )
+        );
+    }
+}
+/* harmony default export */ __webpack_exports__["a"] = (EctDateTime);
 
 /***/ })
 /******/ ]);

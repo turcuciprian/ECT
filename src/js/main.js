@@ -7,7 +7,7 @@ import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 import allReducers from './reducers';
 import EctPreviewCont from './containers/ectPreview';
-import DatePickerCont from './containers/datePicker';
+import EctDatePickerCont from './containers/dateTimeComp.jsx';
 
 class MainComponent extends Component {
     constructor(props) {
@@ -18,7 +18,8 @@ class MainComponent extends Component {
             <Provider store = {store}> 
                 <div>
                     <EctPreviewCont />
-                    <DatePickerCont />
+                    <EctDatePickerCont />
+                    
                 </div>
             </Provider>
         )
