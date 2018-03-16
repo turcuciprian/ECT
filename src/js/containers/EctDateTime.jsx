@@ -69,9 +69,8 @@ class EctDateTime extends Component {
                 }
                 break;
         }
-
         return (
-            <div className={labelText}>
+            <div className={labelText+' cDT'}>
                 <span>
                     {labelText}</span>
                 <select name={'ectDTP' + labelText}>

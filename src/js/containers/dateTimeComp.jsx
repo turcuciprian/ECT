@@ -6,13 +6,15 @@ class EctDatePickerCont extends Component {
     }
     render() {
         return (
-            <div>
+            <div className="ectDateTimePicker">
+                <div>
+                    <span class="title">When Should the timer stop?</span>
+                </div>
                 <EctDateTime type="year"/>
-                <EctDateTime type={"month"} />
-                <EctDateTime type={"day"} />
-                <EctDateTime type={"hour"} />
-                <EctDateTime type={"minute"} />
-                {/* // <EctDateTime start="1" end="31" text={"Day"}/> */}
+                <EctDateTime type={"month"}/>
+                <EctDateTime type={"day"}/>
+                <EctDateTime type={"hour"}/>
+                <EctDateTime type={"minute"}/>
             </div>
         )
     }

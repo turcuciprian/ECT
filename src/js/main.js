@@ -6,7 +6,7 @@ import promise from 'redux-promise';
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 import allReducers from './reducers';
-import EctPreviewCont from './containers/ectPreview';
+import EctPreviewCont from './containers/ectPreview.jsx';
 import EctDatePickerCont from './containers/dateTimeComp.jsx';
 
 class MainComponent extends Component {

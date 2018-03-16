@@ -1,4 +1,53 @@
-.react-datepicker__time-list{
-    padding:0px;
-    margin:0px;
+//variables
+$borderColor: #c1c1c1;
+$backgroundDarkColor:#666666;
+//the main styles
+body {
+    .react-datepicker__time-list {
+        padding: 0px;
+        margin: 0px;
+    }
+    .ectLivePreview {
+        display: inline-block;
+        .preview {
+            display: inline-block;
+            border: 1px solid $borderColor;
+            padding: 10px;
+        }
+    }
+    .ectDateTimePicker {
+        margin-top: 20px;
+        .cDT {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid $borderColor;
+            margin: 10px;
+            margin-left: 0px;
+            float: left;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            span {
+                display: block;
+                text-align: center;
+                margin-bottom:5px;
+                text-transform: uppercase;
+            }
+        }
+        span {
+            &.title {
+                font-size: 18px;
+            }
+        }
+    }
+    span {
+        &.title {
+            background-color: $backgroundDarkColor;
+            color: #FFFFFF;
+            font-size: 22px;
+            line-height: 45px;
+            padding: 10px;
+            text-transform: capitalize;
+        }
+    }
 }
