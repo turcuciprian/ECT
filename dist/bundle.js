@@ -90468,7 +90468,7 @@ exports = module.exports = __webpack_require__(271)(false);
 
 
 // module
-exports.push([module.i, "body .react-datepicker__time-list {\n  padding: 0px;\n  margin: 0px; }\n\nbody .ectLivePreview {\n  display: inline-block; }\n  body .ectLivePreview .preview {\n    display: inline-block;\n    border: 1px solid #c1c1c1;\n    padding: 10px; }\n\nbody .ectDateTimePicker {\n  margin-top: 20px; }\n  body .ectDateTimePicker .cDT {\n    padding: 10px;\n    text-align: center;\n    border: 1px solid #c1c1c1;\n    margin: 10px;\n    margin-left: 0px;\n    float: left;\n    -webkit-border-radius: 10px;\n    -moz-border-radius: 10px;\n    border-radius: 10px; }\n    body .ectDateTimePicker .cDT span {\n      display: block;\n      text-align: center;\n      margin-bottom: 5px;\n      text-transform: uppercase; }\n  body .ectDateTimePicker span.title {\n    font-size: 18px; }\n\nbody span.title {\n  background-color: #666666;\n  color: #FFFFFF;\n  font-size: 22px;\n  line-height: 45px;\n  padding: 10px;\n  text-transform: capitalize; }\n", ""]);
+exports.push([module.i, "body .react-datepicker__time-list {\n  padding: 0px;\n  margin: 0px; }\n\nbody .ectLivePreview {\n  display: inline-block; }\n  body .ectLivePreview .preview {\n    display: inline-block;\n    border: 1px solid #c1c1c1;\n    padding: 10px; }\n\nbody .ectDateTimePicker {\n  margin-top: 20px; }\n  body .ectDateTimePicker .cDT {\n    padding: 10px;\n    text-align: center;\n    border: 1px solid #c1c1c1;\n    margin: 10px;\n    margin-left: 0px;\n    display: inline-block;\n    -webkit-border-radius: 10px;\n    -moz-border-radius: 10px;\n    border-radius: 10px; }\n    body .ectDateTimePicker .cDT span {\n      display: block;\n      text-align: center;\n      margin-bottom: 5px;\n      text-transform: uppercase; }\n  body .ectDateTimePicker span.title {\n    font-size: 14px; }\n\nbody span.title {\n  background-color: #000;\n  color: #FFFFFF;\n  font-size: 18px;\n  line-height: 35px;\n  padding: 5px;\n  font-weight: bold;\n  text-transform: capitalize; }\n", ""]);
 
 // exports
 
@@ -90518,6 +90518,10 @@ var _dateTimeComp = __webpack_require__(745);
 
 var _dateTimeComp2 = _interopRequireDefault(_dateTimeComp);
 
+var _EctLayouts = __webpack_require__(747);
+
+var _EctLayouts2 = _interopRequireDefault(_EctLayouts);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -90538,7 +90542,7 @@ var MainComponent = function (_Component) {
     _createClass(MainComponent, [{
         key: "render",
         value: function render() {
-            return _react2.default.createElement(_reactRedux.Provider, { store: store }, _react2.default.createElement("div", null, _react2.default.createElement(_ectPreview2.default, null), _react2.default.createElement(_dateTimeComp2.default, null)));
+            return _react2.default.createElement(_reactRedux.Provider, { store: store }, _react2.default.createElement("div", null, _react2.default.createElement(_ectPreview2.default, null), _react2.default.createElement(_dateTimeComp2.default, null), _react2.default.createElement(_EctLayouts2.default, null)));
         }
     }]);
 
@@ -92488,6 +92492,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 class EctDatePickerCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     constructor(props) {
         super(props);
+        this.state = {
+            fullDate: {
+                year: 2018,
+                month: 1,
+                day: 1,
+                hour: 12,
+                minute: 12
+            }
+        };
     }
     render() {
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -92498,7 +92511,7 @@ class EctDatePickerCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"]
                 null,
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     "span",
-                    { "class": "title" },
+                    { className: "title" },
                     "When Should the timer stop?"
                 )
             ),
@@ -92619,6 +92632,39 @@ class EctDateTime extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     }
 }
 /* harmony default export */ __webpack_exports__["a"] = (EctDateTime);
+
+/***/ }),
+/* 747 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__EctDateTime_jsx__ = __webpack_require__(746);
+
+
+class EctLayouts extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
+    constructor(props) {
+        super(props);
+    }
+    render() {
+        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "div",
+            { className: "ectLayouts" },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "div",
+                null,
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    "span",
+                    { className: "title" },
+                    "Timer Layouts"
+                )
+            )
+        );
+    }
+}
+/* harmony default export */ __webpack_exports__["default"] = (EctLayouts);
 
 /***/ })
 /******/ ]);

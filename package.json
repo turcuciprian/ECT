@@ -45,7 +45,6 @@
     "react": "^16.2.0",
     "react-animations": "^1.0.0",
     "react-color": "^2.14.0",
-    "react-datepicker": "^1.2.2",
     "react-dom": "^16.2.0",
     "react-tabs": "^2.2.1",
     "react-timezone": "^1.0.5",

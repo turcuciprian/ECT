@@ -1,6 +1,6 @@
 //variables
 $borderColor: #c1c1c1;
-$backgroundDarkColor:#666666;
+$backgroundDarkColor:#000;
 //the main styles
 body {
     .react-datepicker__time-list {
@@ -23,7 +23,7 @@ body {
             border: 1px solid $borderColor;
             margin: 10px;
             margin-left: 0px;
-            float: left;
+            display: inline-block;
             -webkit-border-radius: 10px;
             -moz-border-radius: 10px;
             border-radius: 10px;
@@ -36,7 +36,7 @@ body {
         }
         span {
             &.title {
-                font-size: 18px;
+                font-size: 14px;
             }
         }
     }
@@ -44,9 +44,10 @@ body {
         &.title {
             background-color: $backgroundDarkColor;
             color: #FFFFFF;
-            font-size: 22px;
-            line-height: 45px;
-            padding: 10px;
+            font-size: 18px;
+            line-height: 35px;
+            padding: 5px;
+            font-weight: bold;
             text-transform: capitalize;
         }
     }
