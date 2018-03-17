@@ -14,9 +14,12 @@ class EctDatePickerCont extends Component {
                 minute: moment().minute()
             }
         }
-        this.ectGetFromChildren = this.ectGetFromChildren.bind(this);
+        this.ectGetFromChildren = this
+            .ectGetFromChildren
+            .bind(this);
     }
     ectGetFromChildren(data, type) {
+        data= parseInt(data);
         let tYear = this.state.fullDate.year;
         let tMonth = this.state.fullDate.month;
         let tDay = this.state.fullDate.day;
@@ -39,7 +42,7 @@ class EctDatePickerCont extends Component {
                 tMinute = data;
                 break;
         }
-        this.setState({
+        const newState = {
             fullDate: {
                 year: tYear,
                 month: tMonth,
@@ -47,7 +50,8 @@ class EctDatePickerCont extends Component {
                 hour: tHour,
                 minute: tMinute
             }
-        })
+        }
+        this.setState(newState)
 
     }
     EctDateTimeChildren() {

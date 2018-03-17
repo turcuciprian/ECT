@@ -89,7 +89,7 @@ class EctDateTime extends Component {
                 end = 23; // end max hour
 
                 compValue = moment().hour(); // current hour
-                if (this.props.date.year == moment().year() && this.props.date.month == moment().month() + 1 && this.props.date.hour == moment().hour()) {
+                if (this.props.date.year == moment().year() && this.props.date.month == moment().month() + 1 && this.props.date.day == moment().date()) {
                     start = compValue;
                 }
 
@@ -105,7 +105,7 @@ class EctDateTime extends Component {
                 end = 59; // end max hour
 
                 compValue = moment().minute(); // current hour
-                if (this.props.date.year == moment().year() && this.props.date.month == moment().month() + 1 && this.props.date.hour == moment().hour() && this.props.date.minute == moment().minute()) {
+                if (this.props.date.year == moment().year() && this.props.date.month == moment().month() + 1 && this.props.date.day == moment().date() && this.props.date.hour == moment().hour()) {
                     start = compValue;
                 }
                 labelText = 'Minute';

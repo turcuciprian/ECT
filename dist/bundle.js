@@ -92508,6 +92508,7 @@ class EctDatePickerCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"]
         this.ectGetFromChildren = this.ectGetFromChildren.bind(this);
     }
     ectGetFromChildren(data, type) {
+        data = parseInt(data);
         let tYear = this.state.fullDate.year;
         let tMonth = this.state.fullDate.month;
         let tDay = this.state.fullDate.day;
@@ -92530,7 +92531,7 @@ class EctDatePickerCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"]
                 tMinute = data;
                 break;
         }
-        this.setState({
+        const newState = {
             fullDate: {
                 year: tYear,
                 month: tMonth,
@@ -92538,7 +92539,8 @@ class EctDatePickerCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"]
                 hour: tHour,
                 minute: tMinute
             }
-        });
+        };
+        this.setState(newState);
     }
     EctDateTimeChildren() {
         const dateTimes = ['year', 'month', 'day', 'hour', 'minute'];
@@ -92674,7 +92676,7 @@ class EctDateTime extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                 end = 23; // end max hour
 
                 compValue = __WEBPACK_IMPORTED_MODULE_1_moment___default()().hour(); // current hour
-                if (this.props.date.year == __WEBPACK_IMPORTED_MODULE_1_moment___default()().year() && this.props.date.month == __WEBPACK_IMPORTED_MODULE_1_moment___default()().month() + 1 && this.props.date.hour == __WEBPACK_IMPORTED_MODULE_1_moment___default()().hour()) {
+                if (this.props.date.year == __WEBPACK_IMPORTED_MODULE_1_moment___default()().year() && this.props.date.month == __WEBPACK_IMPORTED_MODULE_1_moment___default()().month() + 1 && this.props.date.day == __WEBPACK_IMPORTED_MODULE_1_moment___default()().date()) {
                     start = compValue;
                 }
 
@@ -92692,7 +92694,7 @@ class EctDateTime extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                 end = 59; // end max hour
 
                 compValue = __WEBPACK_IMPORTED_MODULE_1_moment___default()().minute(); // current hour
-                if (this.props.date.year == __WEBPACK_IMPORTED_MODULE_1_moment___default()().year() && this.props.date.month == __WEBPACK_IMPORTED_MODULE_1_moment___default()().month() + 1 && this.props.date.hour == __WEBPACK_IMPORTED_MODULE_1_moment___default()().hour() && this.props.date.minute == __WEBPACK_IMPORTED_MODULE_1_moment___default()().minute()) {
+                if (this.props.date.year == __WEBPACK_IMPORTED_MODULE_1_moment___default()().year() && this.props.date.month == __WEBPACK_IMPORTED_MODULE_1_moment___default()().month() + 1 && this.props.date.day == __WEBPACK_IMPORTED_MODULE_1_moment___default()().date() && this.props.date.hour == __WEBPACK_IMPORTED_MODULE_1_moment___default()().hour()) {
                     start = compValue;
                 }
                 labelText = 'Minute';
