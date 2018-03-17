@@ -4,14 +4,28 @@ import moment from "moment";
 class EctDateTime extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            compValue: null
+        }
+        this.dtCall = this
+            .dtCall
+            .bind(this);
+    }
+    dtCall(evt) {
+        console.log(evt);
+        const data = evt.target.value;
+        const cProp = this.props.ectCallback;
+        cProp(data, this.props.type);
     }
     render() {
+        let compValue = '';
         var options = [];
         var start;
         var end;
         var labelText = 'Default';
         switch (this.props.type) {
             case 'year':
+                compValue = moment().year();
                 labelText = 'Year';
                 start = moment().year();
                 end = moment().year() + 50;
@@ -22,6 +36,13 @@ class EctDateTime extends Component {
                 }
                 break;
             case 'month':
+                start = 1;
+                end = 12;
+                compValue = moment().month() + 1;
+                if (this.props.date.year == moment().year()) {
+                    start = compValue;
+                }
+
                 labelText = 'Month';
                 const dpMonths = {
                     1: 'January',
@@ -37,15 +58,26 @@ class EctDateTime extends Component {
                     11: 'November',
                     12: 'December'
                 }
-                for (var i = 1; i <= 11; i++) {
+                for (var i = start; i <= end; i++) {
                     options.push(
                         <option key={labelText + i} value={i}>{dpMonths[i]}</option>
                     )
                 }
                 break;
             case 'day':
+                start = 1; // start min day
+                end = moment(this.props.date.year + '-' + this.props.date.month, 'YYY-MM').daysInMonth(); // end max day
+
+                compValue = moment().date(); // current day
+
+                if (this.props.date.year == moment().year() && this.props.date.month == moment().month() + 1) {
+                    start = compValue;
+                }
                 labelText = 'Day';
-                for (var i = 1; i <= 31; i++) {
+                let maxDays = typeof this.props.date != 'undefined'
+                    ? moment(this.props.date.year + '-' + this.props.date.month, 'YYY-MM').daysInMonth()
+                    : 28;
+                for (var i = start; i <= end; i++) {
                     options.push(
                         <option key={labelText + i} value={i}>{i}</option>
                     )
@@ -53,16 +85,32 @@ class EctDateTime extends Component {
 
                 break;
             case 'hour':
+                start = 0; // start min hour
+                end = 23; // end max hour
+
+                compValue = moment().hour(); // current hour
+                if (this.props.date.year == moment().year() && this.props.date.month == moment().month() + 1 && this.props.date.day == moment().hour()) {
+                    start = compValue;
+                }
+                console.log(this.props.date.day, end);
+
                 labelText = 'Hour';
-                for (var i = 0; i <= 23; i++) {
+                for (var i = start; i <= end; i++) {
                     options.push(
                         <option key={labelText + i} value={i}>{i}</option>
                     )
                 }
                 break;
             case 'minute':
+            start = 0; // start min hour
+            end = 59; // end max hour
+
+            compValue = moment().minute(); // current hour
+            if (this.props.date.year == moment().year() && this.props.date.month == moment().month() + 1 && this.props.date.day == moment().hour()&& this.props.date.minute == moment().minute()) {
+                start = compValue;
+            }
                 labelText = 'Minute';
-                for (var i = 0; i <= 59; i++) {
+                for (var i = start; i <= end; i++) {
                     options.push(
                         <option key={labelText + i} value={i}>{i}</option>
                     )
@@ -70,10 +118,10 @@ class EctDateTime extends Component {
                 break;
         }
         return (
-            <div className={labelText+' cDT'}>
+            <div className={labelText + ' cDT'}>
                 <span>
                     {labelText}</span>
-                <select name={'ectDTP' + labelText}>
+                <select value={compValue} name={'ectDTP' + labelText} onChange={this.dtCall}>
                     {options}
                 </select>
             </div>

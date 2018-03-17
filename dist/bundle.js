@@ -92495,31 +92495,37 @@ class EctDatePickerCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"]
         this.state = {
             fullDate: {
                 year: 2018,
-                month: 1,
-                day: 1,
+                month: 3,
+                day: 19,
                 hour: 12,
-                minute: 12
+                minute: 39
             }
         };
     }
+    ectGetFromChildren(data, type) {}
+    EctDateTimeChildren() {
+        const dateTimes = ['year', 'month', 'day', 'hour', 'minute'];
+        let dateTimesFinal = [];
+        dateTimes.forEach((item, i) => {
+            dateTimesFinal.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__EctDateTime_jsx__["a" /* default */], { key: i, type: item, date: this.state.fullDate, ectCallback: this.ectGetFromChildren }));
+        });
+        return dateTimesFinal;
+    }
     render() {
+        const children = this.props.children;
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            "div",
-            { className: "ectDateTimePicker" },
+            'div',
+            { className: 'ectDateTimePicker' },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                "div",
+                'div',
                 null,
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    "span",
-                    { className: "title" },
-                    "When Should the timer stop?"
+                    'span',
+                    { className: 'title' },
+                    'When Should the timer stop?'
                 )
             ),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__EctDateTime_jsx__["a" /* default */], { type: "year" }),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__EctDateTime_jsx__["a" /* default */], { type: "month" }),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__EctDateTime_jsx__["a" /* default */], { type: "day" }),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__EctDateTime_jsx__["a" /* default */], { type: "hour" }),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__EctDateTime_jsx__["a" /* default */], { type: "minute" })
+            this.EctDateTimeChildren()
         );
     }
 }
@@ -92540,14 +92546,26 @@ class EctDatePickerCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"]
 class EctDateTime extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     constructor(props) {
         super(props);
+        this.state = {
+            compValue: null
+        };
+        this.dtCall = this.dtCall.bind(this);
+    }
+    dtCall(evt) {
+        console.log(evt);
+        const data = evt.target.value;
+        const cProp = this.props.ectCallback;
+        cProp(data, this.props.type);
     }
     render() {
+        let compValue = '';
         var options = [];
         var start;
         var end;
         var labelText = 'Default';
         switch (this.props.type) {
             case 'year':
+                compValue = __WEBPACK_IMPORTED_MODULE_1_moment___default()().year();
                 labelText = 'Year';
                 start = __WEBPACK_IMPORTED_MODULE_1_moment___default()().year();
                 end = __WEBPACK_IMPORTED_MODULE_1_moment___default()().year() + 50;
@@ -92560,6 +92578,13 @@ class EctDateTime extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                 }
                 break;
             case 'month':
+                start = 1;
+                end = 12;
+                compValue = __WEBPACK_IMPORTED_MODULE_1_moment___default()().month() + 1;
+                if (this.props.date.year == __WEBPACK_IMPORTED_MODULE_1_moment___default()().year()) {
+                    start = compValue;
+                }
+
                 labelText = 'Month';
                 const dpMonths = {
                     1: 'January',
@@ -92575,7 +92600,7 @@ class EctDateTime extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                     11: 'November',
                     12: 'December'
                 };
-                for (var i = 1; i <= 11; i++) {
+                for (var i = start; i <= end; i++) {
                     options.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         "option",
                         { key: labelText + i, value: i },
@@ -92584,8 +92609,17 @@ class EctDateTime extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                 }
                 break;
             case 'day':
+                start = 1; // start min day
+                end = __WEBPACK_IMPORTED_MODULE_1_moment___default()(this.props.date.year + '-' + this.props.date.month, 'YYY-MM').daysInMonth(); // end max day
+
+                compValue = __WEBPACK_IMPORTED_MODULE_1_moment___default()().date(); // current day
+
+                if (this.props.date.year == __WEBPACK_IMPORTED_MODULE_1_moment___default()().year() && this.props.date.month == __WEBPACK_IMPORTED_MODULE_1_moment___default()().month() + 1) {
+                    start = compValue;
+                }
                 labelText = 'Day';
-                for (var i = 1; i <= 31; i++) {
+                let maxDays = typeof this.props.date != 'undefined' ? __WEBPACK_IMPORTED_MODULE_1_moment___default()(this.props.date.year + '-' + this.props.date.month, 'YYY-MM').daysInMonth() : 28;
+                for (var i = start; i <= end; i++) {
                     options.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         "option",
                         { key: labelText + i, value: i },
@@ -92595,8 +92629,17 @@ class EctDateTime extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 
                 break;
             case 'hour':
+                start = 0; // start min hour
+                end = 23; // end max hour
+
+                compValue = __WEBPACK_IMPORTED_MODULE_1_moment___default()().hour(); // current hour
+                if (this.props.date.year == __WEBPACK_IMPORTED_MODULE_1_moment___default()().year() && this.props.date.month == __WEBPACK_IMPORTED_MODULE_1_moment___default()().month() + 1 && this.props.date.day == __WEBPACK_IMPORTED_MODULE_1_moment___default()().hour()) {
+                    start = compValue;
+                }
+                console.log(this.props.date.day, end);
+
                 labelText = 'Hour';
-                for (var i = 0; i <= 23; i++) {
+                for (var i = start; i <= end; i++) {
                     options.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         "option",
                         { key: labelText + i, value: i },
@@ -92605,8 +92648,15 @@ class EctDateTime extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                 }
                 break;
             case 'minute':
+                start = 0; // start min hour
+                end = 59; // end max hour
+
+                compValue = __WEBPACK_IMPORTED_MODULE_1_moment___default()().minute(); // current hour
+                if (this.props.date.year == __WEBPACK_IMPORTED_MODULE_1_moment___default()().year() && this.props.date.month == __WEBPACK_IMPORTED_MODULE_1_moment___default()().month() + 1 && this.props.date.day == __WEBPACK_IMPORTED_MODULE_1_moment___default()().hour() && this.props.date.minute == __WEBPACK_IMPORTED_MODULE_1_moment___default()().minute()) {
+                    start = compValue;
+                }
                 labelText = 'Minute';
-                for (var i = 0; i <= 59; i++) {
+                for (var i = start; i <= end; i++) {
                     options.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         "option",
                         { key: labelText + i, value: i },
@@ -92625,7 +92675,7 @@ class EctDateTime extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 "select",
-                { name: 'ectDTP' + labelText },
+                { value: compValue, name: 'ectDTP' + labelText, onChange: this.dtCall },
                 options
             )
         );

@@ -6,26 +6,35 @@ class EctDatePickerCont extends Component {
         this.state = {
             fullDate: {
                 year: 2018,
-                month: 1,
-                day: 1,
+                month: 3,
+                day: 19,
                 hour: 12,
-                minute: 12
+                minute: 39
             }
         }
     }
+    ectGetFromChildren(data,type){
+        
+    }
+    EctDateTimeChildren() {
+        const dateTimes = ['year', 'month', 'day', 'hour', 'minute'];
+        let dateTimesFinal = [];
+        dateTimes.forEach((item, i) => {
+            dateTimesFinal.push(<EctDateTime key={i} type={item} date={this.state.fullDate} ectCallback={this.ectGetFromChildren} />);
+        });
+        return dateTimesFinal;
+
+    }
     render() {
+        const children = this.props.children
         return (
             <div className="ectDateTimePicker">
                 <div>
                     <span className="title">When Should the timer stop?</span>
                 </div>
-                <EctDateTime type="year"/>
-                <EctDateTime type={"month"}/>
-                <EctDateTime type={"day"}/>
-                <EctDateTime type={"hour"}/>
-                <EctDateTime type={"minute"}/>
+                {this.EctDateTimeChildren()}
             </div>
-        )
+        );
     }
 }
 export default EctDatePickerCont;
