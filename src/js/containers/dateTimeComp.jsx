@@ -1,15 +1,17 @@
 import React, {Component} from "react";
 import EctDateTime from './EctDateTime.jsx';
+import moment from "moment";
+
 class EctDatePickerCont extends Component {
     constructor(props) {
         super(props);
         this.state = {
             fullDate: {
-                year: 2018,
-                month: 3,
-                day: 19,
-                hour: 12,
-                minute: 39
+                year: moment().year(),
+                month: moment().month()+1,
+                day: moment().date(),
+                hour: moment().hour(),
+                minute: moment().minute()
             }
         }
     }

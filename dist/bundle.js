@@ -92487,6 +92487,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__EctDateTime_jsx__ = __webpack_require__(746);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_moment__);
+
+
 
 
 class EctDatePickerCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
@@ -92494,11 +92498,11 @@ class EctDatePickerCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"]
         super(props);
         this.state = {
             fullDate: {
-                year: 2018,
-                month: 3,
-                day: 19,
-                hour: 12,
-                minute: 39
+                year: __WEBPACK_IMPORTED_MODULE_2_moment___default()().year(),
+                month: __WEBPACK_IMPORTED_MODULE_2_moment___default()().month() + 1,
+                day: __WEBPACK_IMPORTED_MODULE_2_moment___default()().date(),
+                hour: __WEBPACK_IMPORTED_MODULE_2_moment___default()().hour(),
+                minute: __WEBPACK_IMPORTED_MODULE_2_moment___default()().minute()
             }
         };
     }
@@ -92514,15 +92518,15 @@ class EctDatePickerCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"]
     render() {
         const children = this.props.children;
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'div',
-            { className: 'ectDateTimePicker' },
+            "div",
+            { className: "ectDateTimePicker" },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'div',
+                "div",
                 null,
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'span',
-                    { className: 'title' },
-                    'When Should the timer stop?'
+                    "span",
+                    { className: "title" },
+                    "When Should the timer stop?"
                 )
             ),
             this.EctDateTimeChildren()
@@ -92633,7 +92637,7 @@ class EctDateTime extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                 end = 23; // end max hour
 
                 compValue = __WEBPACK_IMPORTED_MODULE_1_moment___default()().hour(); // current hour
-                if (this.props.date.year == __WEBPACK_IMPORTED_MODULE_1_moment___default()().year() && this.props.date.month == __WEBPACK_IMPORTED_MODULE_1_moment___default()().month() + 1 && this.props.date.day == __WEBPACK_IMPORTED_MODULE_1_moment___default()().hour()) {
+                if (this.props.date.year == __WEBPACK_IMPORTED_MODULE_1_moment___default()().year() && this.props.date.month == __WEBPACK_IMPORTED_MODULE_1_moment___default()().month() + 1 && this.props.date.hour == __WEBPACK_IMPORTED_MODULE_1_moment___default()().hour()) {
                     start = compValue;
                 }
                 console.log(this.props.date.day, end);
@@ -92652,7 +92656,7 @@ class EctDateTime extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                 end = 59; // end max hour
 
                 compValue = __WEBPACK_IMPORTED_MODULE_1_moment___default()().minute(); // current hour
-                if (this.props.date.year == __WEBPACK_IMPORTED_MODULE_1_moment___default()().year() && this.props.date.month == __WEBPACK_IMPORTED_MODULE_1_moment___default()().month() + 1 && this.props.date.day == __WEBPACK_IMPORTED_MODULE_1_moment___default()().hour() && this.props.date.minute == __WEBPACK_IMPORTED_MODULE_1_moment___default()().minute()) {
+                if (this.props.date.year == __WEBPACK_IMPORTED_MODULE_1_moment___default()().year() && this.props.date.month == __WEBPACK_IMPORTED_MODULE_1_moment___default()().month() + 1 && this.props.date.hour == __WEBPACK_IMPORTED_MODULE_1_moment___default()().hour() && this.props.date.minute == __WEBPACK_IMPORTED_MODULE_1_moment___default()().minute()) {
                     start = compValue;
                 }
                 labelText = 'Minute';

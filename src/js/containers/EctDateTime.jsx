@@ -89,7 +89,7 @@ class EctDateTime extends Component {
                 end = 23; // end max hour
 
                 compValue = moment().hour(); // current hour
-                if (this.props.date.year == moment().year() && this.props.date.month == moment().month() + 1 && this.props.date.day == moment().hour()) {
+                if (this.props.date.year == moment().year() && this.props.date.month == moment().month() + 1 && this.props.date.hour == moment().hour()) {
                     start = compValue;
                 }
                 console.log(this.props.date.day, end);
@@ -102,13 +102,13 @@ class EctDateTime extends Component {
                 }
                 break;
             case 'minute':
-            start = 0; // start min hour
-            end = 59; // end max hour
+                start = 0; // start min hour
+                end = 59; // end max hour
 
-            compValue = moment().minute(); // current hour
-            if (this.props.date.year == moment().year() && this.props.date.month == moment().month() + 1 && this.props.date.day == moment().hour()&& this.props.date.minute == moment().minute()) {
-                start = compValue;
-            }
+                compValue = moment().minute(); // current hour
+                if (this.props.date.year == moment().year() && this.props.date.month == moment().month() + 1 && this.props.date.hour == moment().hour() && this.props.date.minute == moment().minute()) {
+                    start = compValue;
+                }
                 labelText = 'Minute';
                 for (var i = start; i <= end; i++) {
                     options.push(
