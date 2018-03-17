@@ -92505,13 +92505,50 @@ class EctDatePickerCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"]
                 minute: __WEBPACK_IMPORTED_MODULE_2_moment___default()().minute()
             }
         };
+        this.ectGetFromChildren = this.ectGetFromChildren.bind(this);
     }
-    ectGetFromChildren(data, type) {}
+    ectGetFromChildren(data, type) {
+        let tYear = this.state.fullDate.year;
+        let tMonth = this.state.fullDate.month;
+        let tDay = this.state.fullDate.day;
+        let tHour = this.state.fullDate.hour;
+        let tMinute = this.state.fullDate.minute;
+        switch (type) {
+            case 'year':
+                tYear = data;
+                break;
+            case 'month':
+                tMonth = data;
+                break;
+            case 'day':
+                tDay = data;
+                break;
+            case 'hour':
+                tHour = data;
+                break;
+            case 'minute':
+                tMinute = data;
+                break;
+        }
+        this.setState({
+            fullDate: {
+                year: tYear,
+                month: tMonth,
+                day: tDay,
+                hour: tHour,
+                minute: tMinute
+            }
+        });
+    }
     EctDateTimeChildren() {
         const dateTimes = ['year', 'month', 'day', 'hour', 'minute'];
         let dateTimesFinal = [];
         dateTimes.forEach((item, i) => {
-            dateTimesFinal.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__EctDateTime_jsx__["a" /* default */], { key: i, type: item, date: this.state.fullDate, ectCallback: this.ectGetFromChildren }));
+            dateTimesFinal.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__EctDateTime_jsx__["a" /* default */], {
+                key: i,
+                type: item,
+                date: this.state.fullDate,
+                ectCallback: this.ectGetFromChildren }));
         });
         return dateTimesFinal;
     }
@@ -92551,18 +92588,18 @@ class EctDateTime extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     constructor(props) {
         super(props);
         this.state = {
-            compValue: null
+            compValue: this.props.data
         };
         this.dtCall = this.dtCall.bind(this);
     }
     dtCall(evt) {
-        console.log(evt);
         const data = evt.target.value;
         const cProp = this.props.ectCallback;
+        this.setState({ compValue: data });
         cProp(data, this.props.type);
     }
     render() {
-        let compValue = '';
+        let compValue = this.state.compValue;
         var options = [];
         var start;
         var end;
@@ -92640,7 +92677,6 @@ class EctDateTime extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                 if (this.props.date.year == __WEBPACK_IMPORTED_MODULE_1_moment___default()().year() && this.props.date.month == __WEBPACK_IMPORTED_MODULE_1_moment___default()().month() + 1 && this.props.date.hour == __WEBPACK_IMPORTED_MODULE_1_moment___default()().hour()) {
                     start = compValue;
                 }
-                console.log(this.props.date.day, end);
 
                 labelText = 'Hour';
                 for (var i = start; i <= end; i++) {
@@ -92679,7 +92715,7 @@ class EctDateTime extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 "select",
-                { value: compValue, name: 'ectDTP' + labelText, onChange: this.dtCall },
+                { value: this.state.compValue, name: 'ectDTP' + labelText, onChange: this.dtCall },
                 options
             )
         );

@@ -5,20 +5,20 @@ class EctDateTime extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            compValue: null
+            compValue: this.props.data
         }
         this.dtCall = this
             .dtCall
             .bind(this);
     }
     dtCall(evt) {
-        console.log(evt);
         const data = evt.target.value;
         const cProp = this.props.ectCallback;
+        this.setState({compValue: data});
         cProp(data, this.props.type);
     }
     render() {
-        let compValue = '';
+        let compValue = this.state.compValue;
         var options = [];
         var start;
         var end;
@@ -92,7 +92,6 @@ class EctDateTime extends Component {
                 if (this.props.date.year == moment().year() && this.props.date.month == moment().month() + 1 && this.props.date.hour == moment().hour()) {
                     start = compValue;
                 }
-                console.log(this.props.date.day, end);
 
                 labelText = 'Hour';
                 for (var i = start; i <= end; i++) {
@@ -121,7 +120,7 @@ class EctDateTime extends Component {
             <div className={labelText + ' cDT'}>
                 <span>
                     {labelText}</span>
-                <select value={compValue} name={'ectDTP' + labelText} onChange={this.dtCall}>
+                <select value={this.state.compValue} name={'ectDTP' + labelText} onChange={this.dtCall}>
                     {options}
                 </select>
             </div>
