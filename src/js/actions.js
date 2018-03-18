@@ -1,5 +1,7 @@
 
 export const selectDate = (date) => {
+    console.log(date,' action date');
+    
         return {
         type: 'DATE_SELECTED',
         payload: date

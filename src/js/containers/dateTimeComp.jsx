@@ -1,5 +1,9 @@
 import React, {Component} from "react";
 import EctDateTime from './EctDateTime.jsx';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {selectDate} from '../actions';
+import dateTimeSel from '../reducers/modifiers/dateTime';
 import moment from "moment";
 
 class EctDatePickerCont extends Component {
@@ -19,7 +23,7 @@ class EctDatePickerCont extends Component {
             .bind(this);
     }
     ectGetFromChildren(data, type) {
-        data= parseInt(data);
+        data = parseInt(data);
         let tYear = this.state.fullDate.year;
         let tMonth = this.state.fullDate.month;
         let tDay = this.state.fullDate.day;
@@ -51,8 +55,30 @@ class EctDatePickerCont extends Component {
                 minute: tMinute
             }
         }
-        this.setState(newState)
-
+        this.setState(newState);
+        const newDate = {
+            id: 1,
+            date: `${tMonth}/${tDay}/${tYear}`,
+            time: `${tHour}:${tMinute}`,
+            timezone: '+7200000',
+            numbersText: {
+                Years: 'Years',
+                Months: 'Months',
+                Weeks: 'Weeks',
+                Days: 'Days',
+                Hours: 'Hours',
+                Minutes: 'Minutes',
+                Seconds: 'Seconds'
+            },
+            numbersSize: 42,
+            numbersTxtSize: 21,
+            numbersColor: 'red',
+            numbersTxtColor: 'green'
+        };
+        console.log(newDate,'newDate');
+        
+        this.props.selectDate(newDate);
+        console.log(this.props.dateTimeSel,'dateTimeSel');
     }
     EctDateTimeChildren() {
         const dateTimes = ['year', 'month', 'day', 'hour', 'minute'];
@@ -79,4 +105,17 @@ class EctDatePickerCont extends Component {
         );
     }
 }
-export default EctDatePickerCont;
+
+function mapStateToProps(state) {
+    return {
+        dateTimeSel: state.dateTimeSel, 
+        layoutSel: state.layoutSel
+    };
+}
+function matchDispatchToProps(dispatch) {
+    return bindActionCreators({
+        selectDate: selectDate
+    }, dispatch);
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(EctDatePickerCont);
