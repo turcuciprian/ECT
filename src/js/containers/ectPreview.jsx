@@ -15,11 +15,9 @@ class EctPreviewCont extends Component {
         this.state = {
             timeout: []
         }
-        this.dinamicComponent = this
-            .dinamicComponent
-            .bind(this);
+        this.dinamicComponent = this.dinamicComponent.bind(this);
     };
-    dinamicComponent() {
+    dinamicComponent() { 
 
         const compnts = {
             HorizontalBasic: HorizontalBasic
@@ -72,7 +70,9 @@ class EctPreviewCont extends Component {
 }
 
 function mapStateToProps(state) {
-    return {dateTimeSel: state.dateTimeSel, layoutSel: state.layoutSel};
+    return {
+        dateTimeSel: state.dateTimeSel, 
+        layoutSel: state.layoutSel};
 }
 
 export default connect(mapStateToProps)(EctPreviewCont);

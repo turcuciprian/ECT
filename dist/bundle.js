@@ -33023,7 +33023,7 @@ class EctDateTime extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                 break;
             case 'minute':
                 start = 0; // start min hour
-                end = 59; // end max hour
+                end = 59; // end max hour 
 
                 compValue = __WEBPACK_IMPORTED_MODULE_1_moment___default()().minute(); // current hour
                 if (this.props.date.year == __WEBPACK_IMPORTED_MODULE_1_moment___default()().year() && this.props.date.month == __WEBPACK_IMPORTED_MODULE_1_moment___default()().month() + 1 && this.props.date.day == __WEBPACK_IMPORTED_MODULE_1_moment___default()().date() && this.props.date.hour == __WEBPACK_IMPORTED_MODULE_1_moment___default()().hour()) {
@@ -92215,31 +92215,43 @@ var _layout = __webpack_require__(738);
 
 var _layout2 = _interopRequireDefault(_layout);
 
-var _dateTime = __webpack_require__(739);
-
-var _dateTime2 = _interopRequireDefault(_dateTime);
-
 var _layout3 = __webpack_require__(740);
 
 var _layout4 = _interopRequireDefault(_layout3);
+
+var _dateTime = __webpack_require__(739);
+
+var _dateTime2 = _interopRequireDefault(_dateTime);
 
 var _dateTime3 = __webpack_require__(741);
 
 var _dateTime4 = _interopRequireDefault(_dateTime3);
 
+var _customTexts = __webpack_require__(750);
+
+var _customTexts2 = _interopRequireDefault(_customTexts);
+
+var _customTexts3 = __webpack_require__(749);
+
+var _customTexts4 = _interopRequireDefault(_customTexts3);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 /*
  * We combine all reducers into a single object before updated data is dispatched (sent) to store
  * Your entire applications state (store) is just whatever gets returned from all your reducers
  * */
 
-var allReducers = (0, _redux.combineReducers)({
+var allReducers = (0, _redux.combineReducers)(_defineProperty({
     dateTime: _dateTime2.default,
     layouts: _layout2.default,
     dateTimeSel: _dateTime4.default,
-    layoutSel: _layout4.default
-});
+    layoutSel: _layout4.default,
+    customTexts: _customTexts2.default,
+    newCustomTexts: _customTexts4.default
+}, 'layoutSel', _layout4.default));
 
 exports.default = allReducers;
 
@@ -92255,10 +92267,14 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 exports.default = function () {
-    return [{
+    return {
         id: 1,
-        type: 'HorizontalBasic'
-    }];
+        type: 'HorizontalBasic',
+        numbersSize: 42,
+        numbersTxtSize: 21,
+        numbersColor: 'red',
+        numbersTxtColor: 'green'
+    };
 };
 
 /***/ }),
@@ -92428,7 +92444,9 @@ class EctPreviewCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 }
 
 function mapStateToProps(state) {
-    return { dateTimeSel: state.dateTimeSel, layoutSel: state.layoutSel };
+    return {
+        dateTimeSel: state.dateTimeSel,
+        layoutSel: state.layoutSel };
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(mapStateToProps)(EctPreviewCont));
@@ -92557,12 +92575,11 @@ var HorizontalBasicCont = function (_Component) {
         value: function render() {
             var _this2 = this;
 
+            var finalResult = null;
             if (this.props.dateTimeSel) {
                 var tempTimeout = this.state.timeout;
                 tempTimeout.push(setTimeout(function () {
-                    _this2.setState({
-                        timeout: []
-                    });
+                    _this2.setState({ timeout: [] });
                 }, 1000));
                 var dateTimeTxt = this.props.dateTimeSel.numbersText;
                 var endDateTimeObj = {
@@ -92606,10 +92623,12 @@ var HorizontalBasicCont = function (_Component) {
                         finalResult.push(tempItem);
                     }
                 }
+                if (!tempDate) {
+                    finalResult = 'Countdown Ended'; // when timer is done because the countdown ended
+                }
             } else {
-                var finalResult = 'Timer Ended';
+                finalResult = 'Countdown Ended'; // when timer is done because redux store is empty - when the page loads
             }
-
             return _react2.default.createElement('div', null, finalResult);
         }
     }]);
@@ -92618,13 +92637,7 @@ var HorizontalBasicCont = function (_Component) {
 }(_react.Component);
 
 function mapStateToProps(state) {
-    return {
-        dateTime: state.dateTime,
-        dateTimeSel: state.dateTimeSel,
-        layouts: state.layouts,
-        layoutSel: state.layoutSel
-
-    };
+    return { dateTime: state.dateTime, dateTimeSel: state.dateTimeSel, layouts: state.layouts, layoutSel: state.layoutSel };
 }
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(HorizontalBasicCont);
@@ -92645,8 +92658,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__actions___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__actions__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__reducers_modifiers_dateTime__ = __webpack_require__(741);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__reducers_modifiers_dateTime___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__reducers_modifiers_dateTime__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_moment__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__reducers_modifiers_customTexts__ = __webpack_require__(749);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__reducers_modifiers_customTexts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__reducers_modifiers_customTexts__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_moment__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_moment__);
+
 
 
 
@@ -92660,22 +92676,33 @@ class EctDatePickerCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"]
         super(props);
         this.state = {
             fullDate: {
-                year: __WEBPACK_IMPORTED_MODULE_6_moment___default()().year(),
-                month: __WEBPACK_IMPORTED_MODULE_6_moment___default()().month() + 1,
-                day: __WEBPACK_IMPORTED_MODULE_6_moment___default()().date(),
-                hour: __WEBPACK_IMPORTED_MODULE_6_moment___default()().hour(),
-                minute: __WEBPACK_IMPORTED_MODULE_6_moment___default()().minute()
+                year: __WEBPACK_IMPORTED_MODULE_7_moment___default()().year(),
+                month: __WEBPACK_IMPORTED_MODULE_7_moment___default()().month() + 1,
+                day: __WEBPACK_IMPORTED_MODULE_7_moment___default()().date(),
+                hour: __WEBPACK_IMPORTED_MODULE_7_moment___default()().hour(),
+                minute: __WEBPACK_IMPORTED_MODULE_7_moment___default()().minute()
             }
         };
         this.ectGetFromChildren = this.ectGetFromChildren.bind(this);
     }
     ectGetFromChildren(data, type) {
         data = parseInt(data);
-        let tYear = this.state.fullDate.year;
-        let tMonth = this.state.fullDate.month;
-        let tDay = this.state.fullDate.day;
-        let tHour = this.state.fullDate.hour;
-        let tMinute = this.state.fullDate.minute;
+        let tYear, tMonth, tDay, tHour, tMinute;
+
+        if (this.props.dateTimeSel) {
+            tYear = this.props.dateTimeSel.year;
+            tMonth = this.props.dateTimeSel.month;
+            tDay = this.props.dateTimeSel.day;
+            tHour = this.props.dateTimeSel.hour;
+            tMinute = this.props.dateTimeSel.minute;
+        } else {
+            tYear = this.state.fullDate.year;
+            tMonth = this.state.fullDate.month;
+            tDay = this.state.fullDate.day;
+            tHour = this.state.fullDate.hour;
+            tMinute = this.state.fullDate.minute;
+        }
+
         switch (type) {
             case 'year':
                 tYear = data;
@@ -92702,30 +92729,26 @@ class EctDatePickerCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"]
                 minute: tMinute
             }
         };
-        this.setState(newState);
+        let newCTxts;
+        if (!this.props.newCustomTexts) {
+            newCTxts = this.props.customTexts;
+        } else {
+            newCTxts = this.props.newCustomTexts;
+        }
+
         const newDate = {
             id: 1,
             date: `${tMonth}/${tDay}/${tYear}`,
             time: `${tHour}:${tMinute}`,
             timezone: '+7200000',
-            numbersText: {
-                Years: 'Years',
-                Months: 'Months',
-                Weeks: 'Weeks',
-                Days: 'Days',
-                Hours: 'Hours',
-                Minutes: 'Minutes',
-                Seconds: 'Seconds'
-            },
+            numbersText: newCTxts,
             numbersSize: 42,
             numbersTxtSize: 21,
             numbersColor: 'red',
             numbersTxtColor: 'green'
         };
-        console.log(newDate, 'newDate');
 
         this.props.selectDate(newDate);
-        console.log(this.props.dateTimeSel, 'dateTimeSel');
     }
     EctDateTimeChildren() {
         const dateTimes = ['year', 'month', 'day', 'hour', 'minute'];
@@ -92759,10 +92782,8 @@ class EctDatePickerCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"]
 }
 
 function mapStateToProps(state) {
-    return {
-        dateTimeSel: state.dateTimeSel,
-        layoutSel: state.layoutSel
-    };
+
+    return { dateTimeSel: state.dateTimeSel, layoutSel: state.layoutSel, customTexts: state.customTexts, newCustomTexts: state.newCustomTexts, newCustomTexts: state.newCustomTexts };
 }
 function matchDispatchToProps(dispatch) {
     return Object(__WEBPACK_IMPORTED_MODULE_3_redux__["bindActionCreators"])({
@@ -92816,8 +92837,6 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 var selectDate = exports.selectDate = function selectDate(date) {
-    console.log(date, ' action date');
-
     return {
         type: 'DATE_SELECTED',
         payload: date
@@ -92829,6 +92848,58 @@ var selectLayout = exports.selectLayout = function selectLayout(layout) {
         type: 'LAYOUT_SELECTED',
         payload: layout
     };
+};
+var changeCustomText = exports.changeCustomText = function changeCustomText(newTexts) {
+    return {
+        type: 'CUSTOM_TXT_CHANGED',
+        payload: newTexts
+    };
+};
+
+/***/ }),
+/* 749 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+exports.default = function () {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    var action = arguments[1];
+
+    switch (action.type) {
+        case 'CUSTOM_TXT_CHANGED':
+            return action.payload;
+            break;
+    }
+    return state;
+};
+
+/***/ }),
+/* 750 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+        value: true
+});
+
+exports.default = function () {
+        return {
+                Years: 'Years',
+                Months: 'Months',
+                Weeks: 'Weeks',
+                Days: 'Days',
+                Hours: 'Hours',
+                Minutes: 'Minutes',
+                Seconds: 'Seconds'
+        };
 };
 
 /***/ })

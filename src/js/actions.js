@@ -1,9 +1,7 @@
 
 export const selectDate = (date) => {
-    console.log(date,' action date');
-    
         return {
-        type: 'DATE_SELECTED',
+        type: 'DATE_SELECTED', 
         payload: date
     }
 };
@@ -14,3 +12,9 @@ export const selectLayout = (layout) => {
         payload: layout
     }
 };
+export const changeCustomText = (newTexts) =>{
+    return {
+        type:'CUSTOM_TXT_CHANGED',
+        payload:newTexts
+    }
+}

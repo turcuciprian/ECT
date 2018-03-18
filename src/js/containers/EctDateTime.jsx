@@ -102,7 +102,7 @@ class EctDateTime extends Component {
                 break;
             case 'minute':
                 start = 0; // start min hour
-                end = 59; // end max hour
+                end = 59; // end max hour 
 
                 compValue = moment().minute(); // current hour
                 if (this.props.date.year == moment().year() && this.props.date.month == moment().month() + 1 && this.props.date.day == moment().date() && this.props.date.hour == moment().hour()) {

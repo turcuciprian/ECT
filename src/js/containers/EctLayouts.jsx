@@ -6,7 +6,7 @@ class EctLayouts extends Component {
     }
     render() {
         return (
-            <div className="ectLayouts">
+            <div className="ectLayouts"> 
                 <div>
                     <span className="title">Timer Layouts</span>
                 </div>

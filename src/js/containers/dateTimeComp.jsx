@@ -2,8 +2,9 @@ import React, {Component} from "react";
 import EctDateTime from './EctDateTime.jsx';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {selectDate} from '../actions';
+import {selectDate, changeCustomText} from '../actions';
 import dateTimeSel from '../reducers/modifiers/dateTime';
+import newCustomTexts from '../reducers/modifiers/customTexts';
 import moment from "moment";
 
 class EctDatePickerCont extends Component {
@@ -24,11 +25,26 @@ class EctDatePickerCont extends Component {
     }
     ectGetFromChildren(data, type) {
         data = parseInt(data);
-        let tYear = this.state.fullDate.year;
-        let tMonth = this.state.fullDate.month;
-        let tDay = this.state.fullDate.day;
-        let tHour = this.state.fullDate.hour;
-        let tMinute = this.state.fullDate.minute;
+        let tYear,
+            tMonth,
+            tDay,
+            tHour,
+            tMinute;
+
+        if (this.props.dateTimeSel) {
+            tYear = this.props.dateTimeSel.year;
+            tMonth = this.props.dateTimeSel.month;
+            tDay = this.props.dateTimeSel.day;
+            tHour = this.props.dateTimeSel.hour;
+            tMinute = this.props.dateTimeSel.minute;
+        } else {
+            tYear = this.state.fullDate.year;
+            tMonth = this.state.fullDate.month;
+            tDay = this.state.fullDate.day;
+            tHour = this.state.fullDate.hour;
+            tMinute = this.state.fullDate.minute;
+        }
+
         switch (type) {
             case 'year':
                 tYear = data;
@@ -55,30 +71,28 @@ class EctDatePickerCont extends Component {
                 minute: tMinute
             }
         }
-        this.setState(newState);
+        let newCTxts;
+        if (!this.props.newCustomTexts) {
+            newCTxts = this.props.customTexts;
+        } else {
+            newCTxts = this.props.newCustomTexts;
+        }
+
         const newDate = {
             id: 1,
             date: `${tMonth}/${tDay}/${tYear}`,
             time: `${tHour}:${tMinute}`,
             timezone: '+7200000',
-            numbersText: {
-                Years: 'Years',
-                Months: 'Months',
-                Weeks: 'Weeks',
-                Days: 'Days',
-                Hours: 'Hours',
-                Minutes: 'Minutes',
-                Seconds: 'Seconds'
-            },
+            numbersText: newCTxts,
             numbersSize: 42,
             numbersTxtSize: 21,
             numbersColor: 'red',
             numbersTxtColor: 'green'
         };
-        console.log(newDate,'newDate');
-        
-        this.props.selectDate(newDate);
-        console.log(this.props.dateTimeSel,'dateTimeSel');
+
+        this
+            .props
+            .selectDate(newDate);
     }
     EctDateTimeChildren() {
         const dateTimes = ['year', 'month', 'day', 'hour', 'minute'];
@@ -107,10 +121,8 @@ class EctDatePickerCont extends Component {
 }
 
 function mapStateToProps(state) {
-    return {
-        dateTimeSel: state.dateTimeSel, 
-        layoutSel: state.layoutSel
-    };
+
+    return {dateTimeSel: state.dateTimeSel, layoutSel: state.layoutSel, customTexts: state.customTexts, newCustomTexts: state.newCustomTexts, newCustomTexts: state.newCustomTexts}
 }
 function matchDispatchToProps(dispatch) {
     return bindActionCreators({
