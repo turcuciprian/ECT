@@ -22,6 +22,10 @@ class EctDatePickerCont extends Component {
         this.ectGetFromChildren = this
             .ectGetFromChildren
             .bind(this);
+        this.EctDateTimeChildren = this
+            .EctDateTimeChildren
+            .bind(this);
+
     }
     ectGetFromChildren(data, type) {
         data = parseInt(data);
@@ -62,15 +66,6 @@ class EctDatePickerCont extends Component {
                 tMinute = data;
                 break;
         }
-        const newState = {
-            fullDate: {
-                year: tYear,
-                month: tMonth,
-                day: tDay,
-                hour: tHour,
-                minute: tMinute
-            }
-        }
         let newCTxts;
         if (!this.props.newCustomTexts) {
             newCTxts = this.props.customTexts;
@@ -80,8 +75,11 @@ class EctDatePickerCont extends Component {
 
         const newDate = {
             id: 1,
-            date: `${tMonth}/${tDay}/${tYear}`,
-            time: `${tHour}:${tMinute}`,
+            year: tYear,
+            month: tMonth,
+            day: tDay,
+            hour: tHour,
+            minute: tMinute,
             timezone: '+7200000',
             numbersText: newCTxts,
             numbersSize: 42,
@@ -89,19 +87,30 @@ class EctDatePickerCont extends Component {
             numbersColor: 'red',
             numbersTxtColor: 'green'
         };
-
         this
             .props
             .selectDate(newDate);
     }
     EctDateTimeChildren() {
         const dateTimes = ['year', 'month', 'day', 'hour', 'minute'];
+            let fullDate;
+            if (!this.props.dateTimeSel) {
+            fullDate = this.state.fullDate;
+        } else {
+            fullDate = {
+                year: this.props.dateTimeSel.year,
+                month: this.props.dateTimeSel.month,
+                day: this.props.dateTimeSel.day,
+                hour: this.props.dateTimeSel.hour,
+                minute: this.props.dateTimeSel.minute
+            }
+        }
         let dateTimesFinal = [];
         dateTimes.forEach((item, i) => {
             dateTimesFinal.push(<EctDateTime
                 key={i}
                 type={item}
-                date={this.state.fullDate}
+                date={fullDate}
                 ectCallback={this.ectGetFromChildren}/>);
         });
         return dateTimesFinal;

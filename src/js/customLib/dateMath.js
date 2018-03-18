@@ -1,6 +1,5 @@
 export  default class dateMath {
     static returnRemainingDateTime(obj) {
-      
       // var tempTimeout = obj.timeout;
       // if (!tempTimeout[0]) {
       //   tempTimeout.push(setTimeout(() => {
@@ -29,6 +28,9 @@ export  default class dateMath {
         let hourToMiliseconds = obj.endHour * oneHour;
         let minutesToMiliseconds = obj.endMinute * oneMinute;
         let date = new Date(obj.endDate);
+        console.log(date);
+        
+        
         var endTimeMiliseconds = date.getTime() + hourToMiliseconds + minutesToMiliseconds;
   
         // timezoneDateSeconds  timezone-ul ales in secunde (se inmulteste cu 3600000

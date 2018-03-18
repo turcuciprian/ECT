@@ -1,8 +1,11 @@
 export default function () {
     return [{
         id: 1,
-        date: '12/12/2099',
-        time: '00:00',
+        year: 2099,
+        month: 12,
+        day: 1,
+        hour: 1,
+        minute: 1,
         timezone: '',
         numbersText: {
             Years: 'Years',

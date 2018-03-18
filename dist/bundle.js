@@ -32797,7 +32797,6 @@ var dateMath = function () {
       _createClass(dateMath, null, [{
             key: 'returnRemainingDateTime',
             value: function returnRemainingDateTime(obj) {
-
                   // var tempTimeout = obj.timeout;
                   // if (!tempTimeout[0]) {
                   //   tempTimeout.push(setTimeout(() => {
@@ -32825,6 +32824,8 @@ var dateMath = function () {
                         var hourToMiliseconds = obj.endHour * oneHour;
                         var minutesToMiliseconds = obj.endMinute * oneMinute;
                         var date = new Date(obj.endDate);
+                        console.log(date);
+
                         var endTimeMiliseconds = date.getTime() + hourToMiliseconds + minutesToMiliseconds;
 
                         // timezoneDateSeconds  timezone-ul ales in secunde (se inmulteste cu 3600000
@@ -92291,8 +92292,11 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = function () {
     return [{
         id: 1,
-        date: '12/12/2099',
-        time: '00:00',
+        year: 2099,
+        month: 12,
+        day: 1,
+        hour: 1,
+        minute: 1,
         timezone: '',
         numbersText: {
             Years: 'Years',
@@ -92408,9 +92412,9 @@ class EctPreviewCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
         //if state exists
         if (this.props.dateTimeSel) {
             endDateTimeObj = {
-                endDate: __WEBPACK_IMPORTED_MODULE_3_moment___default()(this.props.dateTimeSel.date),
-                endHour: this.props.dateTimeSel.time.split(':')[0],
-                endMinute: this.props.dateTimeSel.time.split(':')[1],
+                endDate: `${this.props.dateTimeSel.month}/${this.props.dateTimeSel.day}/${this.props.dateTimeSel.year}`,
+                endHour: this.props.dateTimeSel.hour,
+                endMinute: this.props.dateTimeSel.minute,
                 timezoneOffset: this.props.dateTimeSel.timezone
             };
             const tempDate = __WEBPACK_IMPORTED_MODULE_2__customLib_dateMath___default.a.returnRemainingDateTime(endDateTimeObj);
@@ -92444,9 +92448,7 @@ class EctPreviewCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 }
 
 function mapStateToProps(state) {
-    return {
-        dateTimeSel: state.dateTimeSel,
-        layoutSel: state.layoutSel };
+    return { dateTimeSel: state.dateTimeSel, layoutSel: state.layoutSel };
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(mapStateToProps)(EctPreviewCont));
@@ -92583,13 +92585,14 @@ var HorizontalBasicCont = function (_Component) {
                 }, 1000));
                 var dateTimeTxt = this.props.dateTimeSel.numbersText;
                 var endDateTimeObj = {
-                    endDate: (0, _moment2.default)(this.props.dateTimeSel.date),
-                    endHour: this.props.dateTimeSel.time.split(':')[0],
-                    endMinute: this.props.dateTimeSel.time.split(':')[1],
+                    endDate: this.props.dateTimeSel.month + '/' + this.props.dateTimeSel.day + '/' + this.props.dateTimeSel.year,
+                    endHour: this.props.dateTimeSel.hour,
+                    endMinute: this.props.dateTimeSel.minute,
                     timezoneOffset: this.props.dateTimeSel.timezone
                 };
                 // Date time left
                 var tempDate = _dateMath2.default.returnRemainingDateTime(endDateTimeObj);
+
                 // Numbers variables
                 var numbersSize = this.props.dateTimeSel.numbersSize; // font size
                 var numbersColor = this.props.dateTimeSel.numbersColor; // color
@@ -92684,6 +92687,7 @@ class EctDatePickerCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"]
             }
         };
         this.ectGetFromChildren = this.ectGetFromChildren.bind(this);
+        this.EctDateTimeChildren = this.EctDateTimeChildren.bind(this);
     }
     ectGetFromChildren(data, type) {
         data = parseInt(data);
@@ -92720,15 +92724,6 @@ class EctDatePickerCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"]
                 tMinute = data;
                 break;
         }
-        const newState = {
-            fullDate: {
-                year: tYear,
-                month: tMonth,
-                day: tDay,
-                hour: tHour,
-                minute: tMinute
-            }
-        };
         let newCTxts;
         if (!this.props.newCustomTexts) {
             newCTxts = this.props.customTexts;
@@ -92738,8 +92733,11 @@ class EctDatePickerCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"]
 
         const newDate = {
             id: 1,
-            date: `${tMonth}/${tDay}/${tYear}`,
-            time: `${tHour}:${tMinute}`,
+            year: tYear,
+            month: tMonth,
+            day: tDay,
+            hour: tHour,
+            minute: tMinute,
             timezone: '+7200000',
             numbersText: newCTxts,
             numbersSize: 42,
@@ -92747,17 +92745,28 @@ class EctDatePickerCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"]
             numbersColor: 'red',
             numbersTxtColor: 'green'
         };
-
         this.props.selectDate(newDate);
     }
     EctDateTimeChildren() {
         const dateTimes = ['year', 'month', 'day', 'hour', 'minute'];
+        let fullDate;
+        if (!this.props.dateTimeSel) {
+            fullDate = this.state.fullDate;
+        } else {
+            fullDate = {
+                year: this.props.dateTimeSel.year,
+                month: this.props.dateTimeSel.month,
+                day: this.props.dateTimeSel.day,
+                hour: this.props.dateTimeSel.hour,
+                minute: this.props.dateTimeSel.minute
+            };
+        }
         let dateTimesFinal = [];
         dateTimes.forEach((item, i) => {
             dateTimesFinal.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__EctDateTime_jsx__["a" /* default */], {
                 key: i,
                 type: item,
-                date: this.state.fullDate,
+                date: fullDate,
                 ectCallback: this.ectGetFromChildren }));
         });
         return dateTimesFinal;

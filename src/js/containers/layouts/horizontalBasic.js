@@ -17,23 +17,16 @@ class HorizontalBasicCont extends Component {
             tempTimeout.push(setTimeout(() => {
                 this.setState({timeout: []});
             }, 1000));
-            var dateTimeTxt = this.props.dateTimeSel.numbersText
+            var dateTimeTxt = this.props.dateTimeSel.numbersText;
             var endDateTimeObj = {
-                endDate: moment(this.props.dateTimeSel.date),
-                endHour: this
-                    .props
-                    .dateTimeSel
-                    .time
-                    .split(':')[0],
-                endMinute: this
-                    .props
-                    .dateTimeSel
-                    .time
-                    .split(':')[1],
+                endDate: `${this.props.dateTimeSel.month}/${this.props.dateTimeSel.day}/${this.props.dateTimeSel.year}`,
+                endHour: this.props.dateTimeSel.hour,
+                endMinute: this.props.dateTimeSel.minute,
                 timezoneOffset: this.props.dateTimeSel.timezone
             };
             // Date time left
             const tempDate = dateMath.returnRemainingDateTime(endDateTimeObj);
+
             // Numbers variables
             const numbersSize = this.props.dateTimeSel.numbersSize; // font size
             const numbersColor = this.props.dateTimeSel.numbersColor // color

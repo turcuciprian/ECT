@@ -7,9 +7,7 @@ class EctDateTime extends Component {
         this.state = {
             compValue: this.props.data
         }
-        this.dtCall = this
-            .dtCall
-            .bind(this);
+        this.dtCall = this.dtCall.bind(this);
     }
     dtCall(evt) {
         const data = evt.target.value;

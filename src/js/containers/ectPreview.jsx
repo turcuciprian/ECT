@@ -15,9 +15,11 @@ class EctPreviewCont extends Component {
         this.state = {
             timeout: []
         }
-        this.dinamicComponent = this.dinamicComponent.bind(this);
+        this.dinamicComponent = this
+            .dinamicComponent
+            .bind(this);
     };
-    dinamicComponent() { 
+    dinamicComponent() {
 
         const compnts = {
             HorizontalBasic: HorizontalBasic
@@ -34,17 +36,9 @@ class EctPreviewCont extends Component {
         //if state exists
         if (this.props.dateTimeSel) {
             endDateTimeObj = {
-                endDate: moment(this.props.dateTimeSel.date),
-                endHour: this
-                    .props
-                    .dateTimeSel
-                    .time
-                    .split(':')[0],
-                endMinute: this
-                    .props
-                    .dateTimeSel
-                    .time
-                    .split(':')[1],
+                endDate: `${this.props.dateTimeSel.month}/${this.props.dateTimeSel.day}/${this.props.dateTimeSel.year}`,
+                endHour: this.props.dateTimeSel.hour,
+                endMinute: this.props.dateTimeSel.minute,
                 timezoneOffset: this.props.dateTimeSel.timezone
             };
             const tempDate = dateMath.returnRemainingDateTime(endDateTimeObj);
@@ -70,9 +64,7 @@ class EctPreviewCont extends Component {
 }
 
 function mapStateToProps(state) {
-    return {
-        dateTimeSel: state.dateTimeSel, 
-        layoutSel: state.layoutSel};
+    return {dateTimeSel: state.dateTimeSel, layoutSel: state.layoutSel};
 }
 
 export default connect(mapStateToProps)(EctPreviewCont);
