@@ -11,7 +11,6 @@ class HorizontalBasicCont extends Component {
         }
     }
     render() {
-        var finalResult = null;
         if (this.props.dateTimeSel) {
             var tempTimeout = this.state.timeout;
             tempTimeout.push(setTimeout(() => {
@@ -78,6 +77,7 @@ class HorizontalBasicCont extends Component {
 
             }
         } else {
+          
             finalResult = 'Countdown Ended'; // when timer is done because redux store is empty - when the page loads
         }
         return (

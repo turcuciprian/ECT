@@ -32893,7 +32893,6 @@ var dateMath = function () {
                                 var hourToMiliseconds = obj.endHour * oneHour;
                                 var minutesToMiliseconds = obj.endMinute * oneMinute;
                                 var date = new Date(obj.endDate);
-                                console.log(date);
 
                                 var endTimeMiliseconds = date.getTime() + hourToMiliseconds + minutesToMiliseconds;
 
@@ -90647,7 +90646,7 @@ exports.default = loopable;
 /* 724 */
 /***/ (function(module, exports) {
 
-module.exports = "<!DOCTYPE html>\r\n<html>\r\n\r\n<head>\r\n  <meta charset='utf-8'>\r\n  <title>Easy Countdown Timer </title>\r\n</head>\r\n\r\n<body>\r\n  <div id=\"ect_root\"></div>\r\n  <div id=\"ect_root2\"></div>\r\n  <script type=\"text/javascript\">\r\n    var devMode = true;\r\n    var isOnlyPreview = false;\r\n    var ectWPPath = \"http://localhost/wordpress/wp-json\";\r\n    var ectKs = \"fee6029ca4b45e897b51291840e54e95\";\r\n    var ectProperties = [{\r\n      'ect_root': {\r\n        year: 2099,\r\n        month: 12,\r\n        day: 1,\r\n        hour: 1,\r\n        minute: 1,\r\n        timezone: '+72000000',\r\n        numbersText: {\r\n          Years: 'Years',\r\n          Months: 'Months',\r\n          Weeks: 'Weeks',\r\n          Days: 'Days',\r\n          Hours: 'Hours',\r\n          Minutes: 'Minutes',\r\n          Seconds: 'Seconds'\r\n        },\r\n        numbersSize: 42,\r\n        numbersTxtSize: 21,\r\n        numbersColor: 'red',\r\n        numbersTxtColor: 'green'\r\n      },\r\n      'ect_root2': {\r\n        year: 2099,\r\n        month: 12,\r\n        day: 1,\r\n        hour: 1,\r\n        minute: 1,\r\n        timezone: '+72000000',\r\n        numbersText: {\r\n          Years: 'Years',\r\n          Months: 'Months',\r\n          Weeks: 'Weeks',\r\n          Days: 'Days',\r\n          Hours: 'Hours',\r\n          Minutes: 'Minutes',\r\n          Seconds: 'Seconds'\r\n        },\r\n        numbersSize: 42,\r\n        numbersTxtSize: 21,\r\n        numbersColor: 'red',\r\n        numbersTxtColor: 'green'\r\n      },\r\n    }];\r\n  </script>\r\n  <script src='dist/bundle.js'>\r\n  </script>\r\n</body>\r\n\r\n</html>\r\n";
+module.exports = "<!DOCTYPE html>\r\n<html>\r\n\r\n<head>\r\n  <meta charset='utf-8'>\r\n  <title>Easy Countdown Timer </title>\r\n</head>\r\n\r\n<body>\r\n  <div id=\"ect_root\"></div>\r\n  <div id=\"ect_root2\"></div>\r\n  <script type=\"text/javascript\">\r\n    var devMode = false;\r\n    var isOnlyPreview = true;\r\n    var ectWPPath = \"http://localhost/wordpress/wp-json\";\r\n    var ectKs = \"fee6029ca4b45e897b51291840e54e95\";\r\n    var ectProperties = [{\r\n      'ect_root': {\r\n        year: 2018,\r\n        month: 4,\r\n        day: 1,\r\n        hour: 1,\r\n        minute: 1,\r\n        timezone: '+72000000',\r\n        numbersText: {\r\n          Years: 'Years',\r\n          Months: 'Months',\r\n          Weeks: 'Weeks',\r\n          Days: 'Days',\r\n          Hours: 'Hours',\r\n          Minutes: 'Minutes',\r\n          Seconds: 'Seconds'\r\n        },\r\n        numbersSize: 42,\r\n        numbersTxtSize: 21,\r\n        numbersColor: 'red',\r\n        numbersTxtColor: 'green'\r\n      },\r\n      'ect_root2': {\r\n        year: 2099,\r\n        month: 12,\r\n        day: 1,\r\n        hour: 1,\r\n        minute: 1,\r\n        timezone: '+72000000',\r\n        numbersText: {\r\n          Years: 'Years',\r\n          Months: 'Months',\r\n          Weeks: 'Weeks',\r\n          Days: 'Days',\r\n          Hours: 'Hours',\r\n          Minutes: 'Minutes',\r\n          Seconds: 'Seconds'\r\n        },\r\n        numbersSize: 42,\r\n        numbersTxtSize: 21,\r\n        numbersColor: 'red',\r\n        numbersTxtColor: 'green'\r\n      },\r\n    }];\r\n  </script>\r\n  <script src='dist/bundle.js'>\r\n  </script>\r\n</body>\r\n\r\n</html>\r\n";
 
 /***/ }),
 /* 725 */
@@ -92473,10 +92472,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_redux__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__customLib_dateMath__ = __webpack_require__(359);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__customLib_dateMath___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__customLib_dateMath__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_layouts_all__ = __webpack_require__(747);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_layouts_all___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_layouts_all__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_redux__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__actions__ = __webpack_require__(751);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__actions___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__actions__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_moment__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_layouts_all__ = __webpack_require__(747);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_layouts_all___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_layouts_all__);
+
+
 
 
 
@@ -92485,75 +92489,85 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 // import all layouts
 
 
-/*
- * We need "if(!this.props.user)" because we set state to null by default
- * */
+/* We need "if(!this.props.user)" because we set state to null by default */
 class EctPreviewCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
-    constructor(props) {
-        super(props);
-        this.state = {
-            timeout: []
-        };
-        this.dinamicComponent = this.dinamicComponent.bind(this);
-    }
-    dinamicComponent() {
-        console.log(this.props.parentKey);
+  constructor(props) {
+    super(props);
+    this.state = {
+      timeout: []
+    };
+    this.dinamicComponent = this.dinamicComponent.bind(this);
 
-        const compnts = {
-            HorizontalBasic: __WEBPACK_IMPORTED_MODULE_4__components_layouts_all__["HorizontalBasic"]
-        };
-        var DynamicComponentName = compnts['HorizontalBasic'];
-        if (this.props.layoutSel) {
-            DynamicComponentName = compnts[this.props.layoutSel.type];
-        }
-
-        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(DynamicComponentName, { className: 'floatingPreview' });
+    if (this.props.parentKey) {
+      const tempCustomData = ectProperties[0][this.props.parentKey];
+      const tempDate = tempCustomData;
+      //
+      // set the custom date
+      //
+      this.props.selectDate(tempDate);
     }
-    render() {
-        var endDateTimeObj = {};
-        //if state exists
-        if (this.props.dateTimeSel) {
-            endDateTimeObj = {
-                endDate: `${this.props.dateTimeSel.month}/${this.props.dateTimeSel.day}/${this.props.dateTimeSel.year}`,
-                endHour: this.props.dateTimeSel.hour,
-                endMinute: this.props.dateTimeSel.minute,
-                timezoneOffset: this.props.dateTimeSel.timezone
-            };
-            const tempDate = __WEBPACK_IMPORTED_MODULE_2__customLib_dateMath___default.a.returnRemainingDateTime(endDateTimeObj);
-        }
-        if (devMode) {
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'div',
-                { className: 'ectLivePreview' },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'span',
-                    { className: 'title' },
-                    'Live preview'
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'div',
-                    null,
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'div',
-                        { className: 'preview' },
-                        this.dinamicComponent()
-                    )
-                )
-            );
-        }
-        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+  }
+  dinamicComponent() {
+    const compnts = {
+      HorizontalBasic: __WEBPACK_IMPORTED_MODULE_6__components_layouts_all__["HorizontalBasic"]
+    };
+    var DynamicComponentName = compnts['HorizontalBasic'];
+    if (this.props.layoutSel) {
+      DynamicComponentName = compnts[this.props.layoutSel.type];
+    }
+
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(DynamicComponentName, { className: 'floatingPreview' });
+  }
+  render() {
+    var endDateTimeObj = {};
+    //if state exists
+    if (this.props.dateTimeSel) {
+      endDateTimeObj = {
+        endDate: `${this.props.dateTimeSel.month}/${this.props.dateTimeSel.day}/${this.props.dateTimeSel.year}`,
+        endHour: this.props.dateTimeSel.hour,
+        endMinute: this.props.dateTimeSel.minute,
+        timezoneOffset: this.props.dateTimeSel.timezone
+      };
+      const tempDate = __WEBPACK_IMPORTED_MODULE_2__customLib_dateMath___default.a.returnRemainingDateTime(endDateTimeObj);
+    }
+    if (devMode) {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: 'ectLivePreview' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'span',
+          { className: 'title' },
+          'Live preview'
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'div',
+          null,
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
-            { className: 'ectLivePreview' },
+            { className: 'preview' },
             this.dinamicComponent()
-        );
+          )
+        )
+      );
     }
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'div',
+      { className: 'ectLivePreview' },
+      this.dinamicComponent()
+    );
+  }
 }
 
 function mapStateToProps(state) {
-    return { dateTimeSel: state.dateTimeSel, layoutSel: state.layoutSel };
+  return { dateTimeSel: state.dateTimeSel, layoutSel: state.layoutSel };
+}
+function matchDispatchToProps(dispatch) {
+  return Object(__WEBPACK_IMPORTED_MODULE_3_redux__["bindActionCreators"])({
+    selectDate: __WEBPACK_IMPORTED_MODULE_4__actions__["selectDate"]
+  }, dispatch);
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(mapStateToProps)(EctPreviewCont));
+/* harmony default export */ __webpack_exports__["default"] = (Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(mapStateToProps, matchDispatchToProps)(EctPreviewCont));
 
 /***/ }),
 /* 747 */
@@ -92679,7 +92693,6 @@ var HorizontalBasicCont = function (_Component) {
         value: function render() {
             var _this2 = this;
 
-            var finalResult = null;
             if (this.props.dateTimeSel) {
                 var tempTimeout = this.state.timeout;
                 tempTimeout.push(setTimeout(function () {
@@ -92735,6 +92748,7 @@ var HorizontalBasicCont = function (_Component) {
                     finalResult = 'Countdown Ended'; // when timer is done because the countdown ended
                 }
             } else {
+
                 finalResult = 'Countdown Ended'; // when timer is done because redux store is empty - when the page loads
             }
             return _react2.default.createElement('div', null, finalResult);

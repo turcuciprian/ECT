@@ -28,7 +28,6 @@ export  default class dateMath {
         let hourToMiliseconds = obj.endHour * oneHour;
         let minutesToMiliseconds = obj.endMinute * oneMinute;
         let date = new Date(obj.endDate);
-        console.log(date);
 
 
         var endTimeMiliseconds = date.getTime() + hourToMiliseconds + minutesToMiliseconds;
