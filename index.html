@@ -1,44 +1,66 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset='utf-8'>
-    <title>Easy Countdown Timer </title> 
+  <meta charset='utf-8'>
+  <title>Easy Countdown Timer </title>
 </head>
+
 <body>
-    <div id="ect_root">
-    </div>
-    <script type="text/javascript">
-        var devMode = true;
+  <div id="ect_root"></div>
+  <div id="ect_root2"></div>
+  <script type="text/javascript">
+    var devMode = true;
     var isOnlyPreview = false;
     var ectWPPath = "http://localhost/wordpress/wp-json";
-    var ectKs =  "fee6029ca4b45e897b51291840e54e95";
+    var ectKs = "fee6029ca4b45e897b51291840e54e95";
     var ectProperties = [{
       'ect_root': {
-        timeout: [],
-        endDate: '2029/2/16',
-        timezoneOffset: '+7200000',
-        endHour: '00',
-        endMinute: '00',
-        pFormat: 'D then H:M:S',
-        fontSize: 172,
-        fontSizeTxt: 32,
-        color: 'green',
-        colorTxt: '#F00',
-        isBold: false,
-        isBoldTxt: false,
-        yearsTxt: 'Years',
-        monthsTxt: 'Months',
-        weeksTxt: 'Weeks',
-        daysTxt: 'Days',
-        hoursTxt: 'Hours',
-        minutesTxt: 'Minutes',
-        secondsTxt: 'Seconds',
-        customEndedTxt: 'Timer Ended'
-      }
+        year: 2099,
+        month: 12,
+        day: 1,
+        hour: 1,
+        minute: 1,
+        timezone: '+72000000',
+        numbersText: {
+          Years: 'Years',
+          Months: 'Months',
+          Weeks: 'Weeks',
+          Days: 'Days',
+          Hours: 'Hours',
+          Minutes: 'Minutes',
+          Seconds: 'Seconds'
+        },
+        numbersSize: 42,
+        numbersTxtSize: 21,
+        numbersColor: 'red',
+        numbersTxtColor: 'green'
+      },
+      'ect_root2': {
+        year: 2099,
+        month: 12,
+        day: 1,
+        hour: 1,
+        minute: 1,
+        timezone: '+72000000',
+        numbersText: {
+          Years: 'Years',
+          Months: 'Months',
+          Weeks: 'Weeks',
+          Days: 'Days',
+          Hours: 'Hours',
+          Minutes: 'Minutes',
+          Seconds: 'Seconds'
+        },
+        numbersSize: 42,
+        numbersTxtSize: 21,
+        numbersColor: 'red',
+        numbersTxtColor: 'green'
+      },
     }];
-    </script>
-    <script src='dist/bundle.js'>
-    </script>
+  </script>
+  <script src='dist/bundle.js'>
+  </script>
 </body>
 
 </html>

@@ -15,6 +15,9 @@ class HorizontalBasicCont extends Component {
         if (this.props.dateTimeSel) {
             var tempTimeout = this.state.timeout;
             tempTimeout.push(setTimeout(() => {
+                if (this.state.timeout[1]) {
+                    clearTimeout(this.state.timeout[1]);
+                }
                 this.setState({timeout: []});
             }, 1000));
             var dateTimeTxt = this.props.dateTimeSel.numbersText;

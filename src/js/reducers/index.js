@@ -5,6 +5,8 @@ import dateTime from './original/dateTime';
 import dateTimeSel from './modifiers/dateTime';
 import customTexts from './original/customTexts';
 import newCustomTexts from './modifiers/customTexts';
+import origStyle from './original/style';
+import styleSel from './modifiers/style';
 
 /*
  * We combine all reducers into a single object before updated data is dispatched (sent) to store
@@ -18,7 +20,8 @@ const allReducers = combineReducers({
     layoutSel: layoutSel,
     customTexts: customTexts,
     newCustomTexts: newCustomTexts,
-    layoutSel: layoutSel,
+    origStyle: origStyle,
+    styleSel: styleSel,
 });
 
 export default allReducers;

@@ -18,3 +18,9 @@ export const changeCustomText = (newTexts) =>{
         payload:newTexts
     }
 }
+export const changeStyle = (newStyle) =>{
+    return {
+        type:'STYLE_CHANGED',
+        payload:newStyle
+    }
+}

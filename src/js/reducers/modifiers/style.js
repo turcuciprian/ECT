@@ -1,6 +1,6 @@
 export default function (state = null, action) {
-    switch (action.type) {
-        case 'DATE_SELECTED':
+        switch (action.type) {
+        case 'STYLE_CHANGED':
             return action.payload;
             break;
     }

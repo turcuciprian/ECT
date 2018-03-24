@@ -20,6 +20,7 @@ class EctPreviewCont extends Component {
             .bind(this);
     };
     dinamicComponent() {
+      console.log(this.props.parentKey);
 
         const compnts = {
             HorizontalBasic: HorizontalBasic

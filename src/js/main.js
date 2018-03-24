@@ -11,28 +11,34 @@ import EctDatePickerCont from './containers/dateTimeComp.jsx';
 import EctLayouts from './containers/EctLayouts.jsx';
 
 class MainComponent extends Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
+  }
+  showComponents() {
+    if (isOnlyPreview) {
+      return (<div>
+        <EctPreviewCont parentKey={this.props.parentKey} />
+      </div>);
+    } else {
+      return (<div>
+        <EctPreviewCont/>
+        <EctDatePickerCont/>
+        <EctLayouts/>
+      </div>)
     }
-    render() {
-        return (
-            <Provider store={store}>
-                <div>
-                    <EctPreviewCont/>
-                    <EctDatePickerCont/>
-                    <EctLayouts/>
-
-                </div>
-            </Provider>
-        )
-    }
+  }
+  render() {
+    const logger = createLogger();
+    const store = createStore(allReducers, applyMiddleware(thunk, promise, logger));
+    return (<Provider store={store}>
+      {this.showComponents()}
+    </Provider>)
+  }
 }
-const logger = createLogger();
-const store = createStore(allReducers, applyMiddleware(thunk, promise, logger));
-if (typeof ectProperties != "undefined") 
-    ectProperties.forEach(function (eachTimer) {
-        for (var key in eachTimer) {
-            ReactDOM.render(
-                <MainComponent parentID={key}/>, document.getElementById(key));
-        }
-    });
+
+if (typeof ectProperties != "undefined")
+  ectProperties.forEach(function(eachTimer) {
+    for (var key in eachTimer) {
+      ReactDOM.render(<MainComponent parentKey={key}/>, document.getElementById(key));
+    }
+  });
