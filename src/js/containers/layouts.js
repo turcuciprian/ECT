@@ -1,1 +1,0 @@
-import selectLayout from '../actions';

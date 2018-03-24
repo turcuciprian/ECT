@@ -8,7 +8,7 @@ import createLogger from 'redux-logger';
 import allReducers from './reducers';
 import EctPreviewCont from './containers/ectPreview.jsx';
 import EctDatePickerCont from './containers/dateTimeComp.jsx';
-import EctLayouts from './containers/EctLayouts.jsx';
+import EctLayouts from './components/EctLayouts.jsx';
 
 class MainComponent extends Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class MainComponent extends Component {
   showComponents() {
     if (isOnlyPreview) {
       return (<div>
-        <EctPreviewCont parentKey={this.props.parentKey} />
+        <EctPreviewCont parentKey={this.props.parentKey}/>
       </div>);
     } else {
       return (<div>

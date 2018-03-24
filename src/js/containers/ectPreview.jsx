@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import dateMath from '../customLib/dateMath';
 import {bindActionCreators} from 'redux';
-import {selectDate, changeCustomText, changeStyle} from '../actions';
+import {selectDate, changeCustomText, changeStyle, changeLayout} from '../actions';
 import moment from "moment";
 
 // import all layouts
@@ -18,22 +18,25 @@ class EctPreviewCont extends Component {
     this.dinamicComponent = this.dinamicComponent.bind(this);
 
     if (this.props.parentKey) {
-      const tempCustomData = ectProperties[0][this.props.parentKey];
-      const tempDate = tempCustomData;
       //
       // set the custom date
       //
-      this.props.selectDate(tempDate);
+      this.props.selectDate(ectProperties[0][this.props.parentKey]);
     }
+    //Set custom layout -set the first one as default if not set
+
   };
   dinamicComponent() {
+    let tempLayout;
+    if (!this.props.layoutSel) {
+      tempLayout = this.props.layouts[0];
+    } else {
+      tempLayout = this.props.layoutSel;
+    }
     const compnts = {
       HorizontalBasic: HorizontalBasic
     };
-    var DynamicComponentName = compnts['HorizontalBasic'];
-    if (this.props.layoutSel) {
-      DynamicComponentName = compnts[this.props.layoutSel.type];
-    }
+    var DynamicComponentName = compnts[tempLayout.type];
 
     return (<DynamicComponentName className="floatingPreview"/>);
   }
@@ -66,11 +69,12 @@ class EctPreviewCont extends Component {
 }
 
 function mapStateToProps(state) {
-  return {dateTimeSel: state.dateTimeSel, layoutSel: state.layoutSel};
+  return {dateTimeSel: state.dateTimeSel, layoutSel: state.layoutSel, layouts: state.layouts};
 }
 function matchDispatchToProps(dispatch) {
   return bindActionCreators({
-    selectDate: selectDate
+    selectDate: selectDate,
+    changeLayout: changeLayout
   }, dispatch);
 }
 

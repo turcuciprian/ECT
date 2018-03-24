@@ -90646,7 +90646,7 @@ exports.default = loopable;
 /* 724 */
 /***/ (function(module, exports) {
 
-module.exports = "<!DOCTYPE html>\r\n<html>\r\n\r\n<head>\r\n  <meta charset='utf-8'>\r\n  <title>Easy Countdown Timer </title>\r\n</head>\r\n\r\n<body>\r\n  <div id=\"ect_root\"></div>\r\n  <div id=\"ect_root2\"></div>\r\n  <script type=\"text/javascript\">\r\n    var devMode = false;\r\n    var isOnlyPreview = true;\r\n    var ectWPPath = \"http://localhost/wordpress/wp-json\";\r\n    var ectKs = \"fee6029ca4b45e897b51291840e54e95\";\r\n    var ectProperties = [{\r\n      'ect_root': {\r\n        year: 2018,\r\n        month: 4,\r\n        day: 1,\r\n        hour: 1,\r\n        minute: 1,\r\n        timezone: '+72000000',\r\n        numbersText: {\r\n          Years: 'Years',\r\n          Months: 'Months',\r\n          Weeks: 'Weeks',\r\n          Days: 'Days',\r\n          Hours: 'Hours',\r\n          Minutes: 'Minutes',\r\n          Seconds: 'Seconds'\r\n        },\r\n        numbersSize: 42,\r\n        numbersTxtSize: 21,\r\n        numbersColor: 'red',\r\n        numbersTxtColor: 'green'\r\n      },\r\n      'ect_root2': {\r\n        year: 2099,\r\n        month: 12,\r\n        day: 1,\r\n        hour: 1,\r\n        minute: 1,\r\n        timezone: '+72000000',\r\n        numbersText: {\r\n          Years: 'Years',\r\n          Months: 'Months',\r\n          Weeks: 'Weeks',\r\n          Days: 'Days',\r\n          Hours: 'Hours',\r\n          Minutes: 'Minutes',\r\n          Seconds: 'Seconds'\r\n        },\r\n        numbersSize: 42,\r\n        numbersTxtSize: 21,\r\n        numbersColor: 'red',\r\n        numbersTxtColor: 'green'\r\n      },\r\n    }];\r\n  </script>\r\n  <script src='dist/bundle.js'>\r\n  </script>\r\n</body>\r\n\r\n</html>\r\n";
+module.exports = "<!DOCTYPE html>\r\n<html>\r\n\r\n<head>\r\n  <meta charset='utf-8'>\r\n  <title>Easy Countdown Timer </title>\r\n</head>\r\n\r\n<body>\r\n  <div id=\"ect_root\"></div>\r\n  <div id=\"ect_root2\"></div>\r\n  <script type=\"text/javascript\">\r\n    var devMode = true;\r\n    var isOnlyPreview = false;\r\n    var ectWPPath = \"http://localhost/wordpress/wp-json\";\r\n    var ectKs = \"fee6029ca4b45e897b51291840e54e95\";\r\n    var ectProperties = [{\r\n      'ect_root': {\r\n        year: 2028,\r\n        month: 4,\r\n        day: 1,\r\n        hour: 1,\r\n        minute: 1,\r\n        timezone: '+72000000',\r\n        numbersText: {\r\n          Years: 'Years',\r\n          Months: 'Months',\r\n          Weeks: 'Weeks',\r\n          Days: 'Days',\r\n          Hours: 'Hours',\r\n          Minutes: 'Minutes',\r\n          Seconds: 'Seconds'\r\n        },\r\n        numbersSize: 42,\r\n        numbersTxtSize: 21,\r\n        numbersColor: 'red',\r\n        numbersTxtColor: 'green'\r\n      }\r\n    }];\r\n  </script>\r\n  <script src='dist/bundle.js'>\r\n  </script>\r\n</body>\r\n\r\n</html>\r\n";
 
 /***/ }),
 /* 725 */
@@ -90738,7 +90738,7 @@ var _dateTimeComp = __webpack_require__(750);
 
 var _dateTimeComp2 = _interopRequireDefault(_dateTimeComp);
 
-var _EctLayouts = __webpack_require__(752);
+var _EctLayouts = __webpack_require__(753);
 
 var _EctLayouts2 = _interopRequireDefault(_EctLayouts);
 
@@ -92330,13 +92330,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var allReducers = (0, _redux.combineReducers)({
     dateTime: _dateTime2.default,
-    layouts: _layout2.default,
     dateTimeSel: _dateTime4.default,
-    layoutSel: _layout4.default,
     customTexts: _customTexts2.default,
     newCustomTexts: _customTexts4.default,
     origStyle: _style2.default,
-    styleSel: _style4.default
+    styleSel: _style4.default,
+    layouts: _layout2.default,
+    layoutSel: _layout4.default
 });
 
 exports.default = allReducers;
@@ -92349,18 +92349,35 @@ exports.default = allReducers;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 exports.default = function () {
-    return {
-        id: 1,
-        type: 'HorizontalBasic',
-        numbersSize: 42,
-        numbersTxtSize: 21,
-        numbersColor: 'red',
-        numbersTxtColor: 'green'
-    };
+  return [{
+    id: 1,
+    name: 'Red&Green Small',
+    type: 'HorizontalBasic',
+    numbersSize: 14,
+    numbersTxtSize: 10,
+    numbersColor: 'red',
+    numbersTxtColor: 'green'
+  }, {
+    id: 2,
+    name: 'Red&Green Medium',
+    type: 'HorizontalBasic',
+    numbersSize: 42,
+    numbersTxtSize: 21,
+    numbersColor: 'red',
+    numbersTxtColor: 'green'
+  }, {
+    id: 3,
+    name: 'Red&Green Large',
+    type: 'HorizontalBasic',
+    numbersSize: 81,
+    numbersTxtSize: 40,
+    numbersColor: 'red',
+    numbersTxtColor: 'green'
+  }];
 };
 
 /***/ }),
@@ -92380,7 +92397,9 @@ exports.default = function () {
 
     switch (action.type) {
         case 'SELECTED_LAYOUT':
-            return action.data;
+            console.log(action.payload);
+
+            return action.payload;
             break;
     }
     return state;
@@ -92499,22 +92518,24 @@ class EctPreviewCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     this.dinamicComponent = this.dinamicComponent.bind(this);
 
     if (this.props.parentKey) {
-      const tempCustomData = ectProperties[0][this.props.parentKey];
-      const tempDate = tempCustomData;
       //
       // set the custom date
       //
-      this.props.selectDate(tempDate);
+      this.props.selectDate(ectProperties[0][this.props.parentKey]);
     }
+    //Set custom layout -set the first one as default if not set
   }
   dinamicComponent() {
+    let tempLayout;
+    if (!this.props.layoutSel) {
+      tempLayout = this.props.layouts[0];
+    } else {
+      tempLayout = this.props.layoutSel;
+    }
     const compnts = {
       HorizontalBasic: __WEBPACK_IMPORTED_MODULE_6__components_layouts_all__["HorizontalBasic"]
     };
-    var DynamicComponentName = compnts['HorizontalBasic'];
-    if (this.props.layoutSel) {
-      DynamicComponentName = compnts[this.props.layoutSel.type];
-    }
+    var DynamicComponentName = compnts[tempLayout.type];
 
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(DynamicComponentName, { className: 'floatingPreview' });
   }
@@ -92559,11 +92580,12 @@ class EctPreviewCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 }
 
 function mapStateToProps(state) {
-  return { dateTimeSel: state.dateTimeSel, layoutSel: state.layoutSel };
+  return { dateTimeSel: state.dateTimeSel, layoutSel: state.layoutSel, layouts: state.layouts };
 }
 function matchDispatchToProps(dispatch) {
   return Object(__WEBPACK_IMPORTED_MODULE_3_redux__["bindActionCreators"])({
-    selectDate: __WEBPACK_IMPORTED_MODULE_4__actions__["selectDate"]
+    selectDate: __WEBPACK_IMPORTED_MODULE_4__actions__["selectDate"],
+    changeLayout: __WEBPACK_IMPORTED_MODULE_4__actions__["changeLayout"]
   }, dispatch);
 }
 
@@ -92647,7 +92669,7 @@ exports.default = HorizontalBasic;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -92675,91 +92697,91 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var HorizontalBasicCont = function (_Component) {
-    _inherits(HorizontalBasicCont, _Component);
+  _inherits(HorizontalBasicCont, _Component);
 
-    function HorizontalBasicCont(props) {
-        _classCallCheck(this, HorizontalBasicCont);
+  function HorizontalBasicCont(props) {
+    _classCallCheck(this, HorizontalBasicCont);
 
-        var _this = _possibleConstructorReturn(this, (HorizontalBasicCont.__proto__ || Object.getPrototypeOf(HorizontalBasicCont)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (HorizontalBasicCont.__proto__ || Object.getPrototypeOf(HorizontalBasicCont)).call(this, props));
 
-        _this.state = {
-            timeout: []
+    _this.state = {
+      timeout: []
+    };
+    return _this;
+  }
+
+  _createClass(HorizontalBasicCont, [{
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      if (this.props.dateTimeSel) {
+        var tempTimeout = this.state.timeout;
+        tempTimeout.push(setTimeout(function () {
+          if (_this2.state.timeout[1]) {
+            clearTimeout(_this2.state.timeout[1]);
+          }
+          _this2.setState({ timeout: [] });
+        }, 1000));
+        var dateTimeTxt = this.props.dateTimeSel.numbersText;
+        var endDateTimeObj = {
+          endDate: this.props.dateTimeSel.month + '/' + this.props.dateTimeSel.day + '/' + this.props.dateTimeSel.year,
+          endHour: this.props.dateTimeSel.hour,
+          endMinute: this.props.dateTimeSel.minute,
+          timezoneOffset: this.props.dateTimeSel.timezone
         };
-        return _this;
-    }
+        // Date time left
+        var tempDate = _dateMath2.default.returnRemainingDateTime(endDateTimeObj);
 
-    _createClass(HorizontalBasicCont, [{
-        key: 'render',
-        value: function render() {
-            var _this2 = this;
+        // Numbers variables
+        var numbersSize = this.props.dateTimeSel.numbersSize; // font size
+        var numbersColor = this.props.dateTimeSel.numbersColor; // color
+        // Numbers  TEXT variables
+        var numbersTxtSize = this.props.dateTimeSel.numbersTxtSize; // font size
+        var numbersTxtColor = this.props.dateTimeSel.numbersTxtColor; // color
 
-            if (this.props.dateTimeSel) {
-                var tempTimeout = this.state.timeout;
-                tempTimeout.push(setTimeout(function () {
-                    if (_this2.state.timeout[1]) {
-                        clearTimeout(_this2.state.timeout[1]);
-                    }
-                    _this2.setState({ timeout: [] });
-                }, 1000));
-                var dateTimeTxt = this.props.dateTimeSel.numbersText;
-                var endDateTimeObj = {
-                    endDate: this.props.dateTimeSel.month + '/' + this.props.dateTimeSel.day + '/' + this.props.dateTimeSel.year,
-                    endHour: this.props.dateTimeSel.hour,
-                    endMinute: this.props.dateTimeSel.minute,
-                    timezoneOffset: this.props.dateTimeSel.timezone
-                };
-                // Date time left
-                var tempDate = _dateMath2.default.returnRemainingDateTime(endDateTimeObj);
+        //STYLE for numbers
+        var numbersStyle = {
+          fontSize: numbersSize,
+          color: numbersColor
+        };
+        //STYLE for numbers Text
+        var numbersTxtStyle = {
+          fontSize: numbersTxtSize,
+          color: numbersTxtColor
+        };
 
-                // Numbers variables
-                var numbersSize = this.props.dateTimeSel.numbersSize; // font size
-                var numbersColor = this.props.dateTimeSel.numbersColor; // color
-                // Numbers  TEXT variables
-                var numbersTxtSize = this.props.dateTimeSel.numbersTxtSize; // font size
-                var numbersTxtColor = this.props.dateTimeSel.numbersTxtColor; // color
-
-                //STYLE for numbers
-                var numbersStyle = {
-                    fontSize: numbersSize,
-                    color: numbersColor
-                };
-                //STYLE for numbers Text
-                var numbersTxtStyle = {
-                    fontSize: numbersTxtSize,
-                    color: numbersTxtColor
-                };
-
-                var finalResult = [];
-                var isLast = true;
-                for (var key in tempDate) {
-                    if (key != 'Styles') {
-                        if (isLast) {
-                            if (tempDate[key] != 0) {
-                                isLast = false;
-                            } else {
-                                continue;
-                            }
-                        }
-                        var tempItem = _react2.default.createElement('span', { key: key, className: 'spanDiv' }, _react2.default.createElement('span', { style: numbersStyle }, tempDate[key]), _react2.default.createElement('span', { style: numbersTxtStyle }, dateTimeTxt[key]), '\xA0');
-                        finalResult.push(tempItem);
-                    }
-                }
-                if (!tempDate) {
-                    finalResult = 'Countdown Ended'; // when timer is done because the countdown ended
-                }
-            } else {
-
-                finalResult = 'Countdown Ended'; // when timer is done because redux store is empty - when the page loads
+        var finalResult = [];
+        var isLast = true;
+        for (var key in tempDate) {
+          if (key != 'Styles') {
+            if (isLast) {
+              if (tempDate[key] != 0) {
+                isLast = false;
+              } else {
+                continue;
+              }
             }
-            return _react2.default.createElement('div', null, finalResult);
+            var tempItem = _react2.default.createElement('span', { key: key, className: 'spanDiv' }, _react2.default.createElement('span', { style: numbersStyle }, tempDate[key]), _react2.default.createElement('span', { style: numbersTxtStyle }, dateTimeTxt[key]), '\xA0');
+            finalResult.push(tempItem);
+          }
         }
-    }]);
+        if (!tempDate) {
+          finalResult = 'Countdown Ended'; // when timer is done because the countdown ended
+        }
+      } else {
 
-    return HorizontalBasicCont;
+        finalResult = 'Countdown Ended'; // when timer is done because redux store is empty - when the page loads
+      }
+      return _react2.default.createElement('div', { onClick: this.changeLayout }, finalResult);
+    }
+  }]);
+
+  return HorizontalBasicCont;
 }(_react.Component);
 
 function mapStateToProps(state) {
-    return { dateTime: state.dateTime, dateTimeSel: state.dateTimeSel, layouts: state.layouts, layoutSel: state.layoutSel };
+  return { dateTime: state.dateTime, dateTimeSel: state.dateTimeSel, layouts: state.layouts, layoutSel: state.layoutSel };
 }
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(HorizontalBasicCont);
@@ -92949,9 +92971,9 @@ var selectDate = exports.selectDate = function selectDate(date) {
     };
 };
 
-var selectLayout = exports.selectLayout = function selectLayout(layout) {
+var changeLayout = exports.changeLayout = function changeLayout(layout) {
     return {
-        type: 'LAYOUT_SELECTED',
+        type: 'SELECTED_LAYOUT',
         payload: layout
     };
 };
@@ -92969,14 +92991,17 @@ var changeStyle = exports.changeStyle = function changeStyle(newStyle) {
 };
 
 /***/ }),
-/* 752 */
+/* 752 */,
+/* 753 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__EctDateTime_jsx__ = __webpack_require__(360);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__containers_EctDateTime_jsx__ = __webpack_require__(360);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__containers_layouts_jsx__ = __webpack_require__(754);
+
 
 
 class EctLayouts extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
@@ -92985,21 +93010,92 @@ class EctLayouts extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     }
     render() {
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            "div",
-            { className: "ectLayouts" },
+            'div',
+            { className: 'ectLayouts' },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                "div",
+                'div',
                 null,
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    "span",
-                    { className: "title" },
-                    "Timer Layouts"
-                )
+                    'span',
+                    { className: 'title' },
+                    'Timer Layouts'
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__containers_layouts_jsx__["a" /* default */], null)
             )
         );
     }
 }
 /* harmony default export */ __webpack_exports__["default"] = (EctLayouts);
+
+/***/ }),
+/* 754 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__EctDateTime_jsx__ = __webpack_require__(360);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_redux__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_redux___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_redux__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_redux__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__actions__ = __webpack_require__(751);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__actions___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__actions__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__reducers_modifiers_dateTime__ = __webpack_require__(356);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__reducers_modifiers_dateTime___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__reducers_modifiers_dateTime__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__reducers_modifiers_customTexts__ = __webpack_require__(357);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__reducers_modifiers_customTexts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__reducers_modifiers_customTexts__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__reducers_modifiers_style__ = __webpack_require__(358);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__reducers_modifiers_style___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__reducers_modifiers_style__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_moment__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_moment__);
+
+
+
+
+
+
+
+
+
+
+class LayoutsCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
+  constructor(props) {
+    super(props);
+
+    // this.EctDateTimeChildren = this.EctDateTimeChildren.bind(this);
+  }
+  render() {
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'div',
+      { className: 'layouts' },
+      this.props.layouts.map(item => {
+        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'div',
+          { className: 'indLayout', key: item.id },
+          item.name
+        );
+      })
+    );
+  }
+}
+function mapStateToProps(state) {
+  return {
+    layoutSel: state.layoutSel,
+    layouts: state.layouts,
+    customTexts: state.customTexts,
+    newCustomTexts: state.newCustomTexts,
+    origStyle: state.origStyle,
+    newStyle: state.styleSel
+  };
+}
+function matchDispatchToProps(dispatch) {
+  return Object(__WEBPACK_IMPORTED_MODULE_3_redux__["bindActionCreators"])({
+    selectDate: __WEBPACK_IMPORTED_MODULE_4__actions__["selectDate"],
+    changeLayout: __WEBPACK_IMPORTED_MODULE_4__actions__["changeLayout"]
+  }, dispatch);
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_2_react_redux__["connect"])(mapStateToProps, matchDispatchToProps)(LayoutsCont));
 
 /***/ })
 /******/ ]);

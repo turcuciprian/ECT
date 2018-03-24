@@ -6,9 +6,9 @@ export const selectDate = (date) => {
     }
 };
 
-export const selectLayout = (layout) => {
+export const changeLayout = (layout) => {
     return {
-        type: 'LAYOUT_SELECTED',
+        type: 'SELECTED_LAYOUT',
         payload: layout
     }
 };

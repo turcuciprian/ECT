@@ -15,13 +15,13 @@ import styleSel from './modifiers/style';
 
 const allReducers = combineReducers({
     dateTime: dateTime,
-    layouts: layouts,
     dateTimeSel: dateTimeSel,
-    layoutSel: layoutSel,
     customTexts: customTexts,
     newCustomTexts: newCustomTexts,
     origStyle: origStyle,
     styleSel: styleSel,
+    layouts: layouts,
+    layoutSel: layoutSel
 });
 
 export default allReducers;

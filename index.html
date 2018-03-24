@@ -10,13 +10,13 @@
   <div id="ect_root"></div>
   <div id="ect_root2"></div>
   <script type="text/javascript">
-    var devMode = false;
-    var isOnlyPreview = true;
+    var devMode = true;
+    var isOnlyPreview = false;
     var ectWPPath = "http://localhost/wordpress/wp-json";
     var ectKs = "fee6029ca4b45e897b51291840e54e95";
     var ectProperties = [{
       'ect_root': {
-        year: 2018,
+        year: 2028,
         month: 4,
         day: 1,
         hour: 1,
@@ -35,28 +35,7 @@
         numbersTxtSize: 21,
         numbersColor: 'red',
         numbersTxtColor: 'green'
-      },
-      'ect_root2': {
-        year: 2099,
-        month: 12,
-        day: 1,
-        hour: 1,
-        minute: 1,
-        timezone: '+72000000',
-        numbersText: {
-          Years: 'Years',
-          Months: 'Months',
-          Weeks: 'Weeks',
-          Days: 'Days',
-          Hours: 'Hours',
-          Minutes: 'Minutes',
-          Seconds: 'Seconds'
-        },
-        numbersSize: 42,
-        numbersTxtSize: 21,
-        numbersColor: 'red',
-        numbersTxtColor: 'green'
-      },
+      }
     }];
   </script>
   <script src='dist/bundle.js'>
