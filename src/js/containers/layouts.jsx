@@ -27,10 +27,10 @@ class LayoutsCont extends Component {
     }
     this.props.changeStyle(newStyle);
 
-    newEndDate.numbersSize = newStyle.numbersSize;
-    newEndDate.numbersTxtSize = newStyle.numbersTxtSize;
-    newEndDate.numbersColor = newStyle.numbersColor;
-    newEndDate.numbersTxtColor = newStyle.numbersTxtColor;
+    newEndDate.style.numbersSize = newStyle.numbersSize;
+    newEndDate.style.numbersTxtSize = newStyle.numbersTxtSize;
+    newEndDate.style.numbersColor = newStyle.numbersColor;
+    newEndDate.style.numbersTxtColor = newStyle.numbersTxtColor;
     console.log('newEndDate', newEndDate);
     // this.props.changeLayout(item);
 

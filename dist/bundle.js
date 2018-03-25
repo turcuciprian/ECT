@@ -33007,6 +33007,7 @@ class EctDateTime extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     var start;
     var end;
     var labelText = 'Default';
+    console.log(this.props);
     switch (this.props.type) {
       case 'year':
         compValue = __WEBPACK_IMPORTED_MODULE_1_moment___default()().year();
@@ -92359,6 +92360,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = function () {
   return [{
     id: 1,
+    layout: 'horizontalBasic',
     name: 'Red&Green Small',
     type: 'HorizontalBasic',
     numbersSize: 34,
@@ -92367,6 +92369,7 @@ exports.default = function () {
     numbersTxtColor: 'green'
   }, {
     id: 2,
+    layout: 'horizontalBasic',
     name: 'Dark and grey Small',
     type: 'HorizontalBasic',
     numbersSize: 34,
@@ -92409,32 +92412,36 @@ exports.default = function () {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 exports.default = function () {
-    return [{
-        id: 1,
-        year: 2099,
-        month: 12,
-        day: 1,
-        hour: 1,
-        minute: 1,
-        timezone: '',
-        numbersText: {
-            Years: 'Years',
-            Months: 'Months',
-            Weeks: 'Weeks',
-            Days: 'Days',
-            Hours: 'Hours',
-            Minutes: 'Minutes',
-            Seconds: 'Seconds'
-        },
-        numbersSize: 34,
-        numbersTxtSize: 22,
-        numbersColor: 'red',
-        numbersTxtColor: 'green'
-    }];
+  return {
+    'endDate': {
+      year: 2099,
+      month: 12,
+      day: 1,
+      hour: 1,
+      minute: 1,
+      timezone: ''
+    },
+    numbersText: {
+      Years: 'Years',
+      Months: 'Months',
+      Weeks: 'Weeks',
+      Days: 'Days',
+      Hours: 'Hours',
+      Minutes: 'Minutes',
+      Seconds: 'Seconds'
+    },
+    style: {
+      'layout': 'horizontalBasic',
+      numbersSize: 34,
+      numbersTxtSize: 22,
+      numbersColor: 'red',
+      numbersTxtColor: 'green'
+    }
+  };
 };
 
 /***/ }),
@@ -92540,10 +92547,10 @@ class EctPreviewCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     //if state exists
     if (this.props.dateTimeSel) {
       endDateTimeObj = {
-        endDate: `${this.props.dateTimeSel.month}/${this.props.dateTimeSel.day}/${this.props.dateTimeSel.year}`,
-        endHour: this.props.dateTimeSel.hour,
-        endMinute: this.props.dateTimeSel.minute,
-        timezoneOffset: this.props.dateTimeSel.timezone
+        endDate: `${this.props.dateTimeSel.endDate.month}/${this.props.dateTimeSel.endDate.day}/${this.props.dateTimeSel.endDate.year}`,
+        endHour: this.props.dateTimeSel.endDate.hour,
+        endMinute: this.props.dateTimeSel.endDate.minute,
+        timezoneOffset: this.props.dateTimeSel.endDate.timezone
       };
       const tempDate = __WEBPACK_IMPORTED_MODULE_2__customLib_dateMath___default.a.returnRemainingDateTime(endDateTimeObj);
     }
@@ -92721,20 +92728,20 @@ var HorizontalBasicCont = function (_Component) {
         }, 1000));
         var dateTimeTxt = this.props.dateTimeSel.numbersText;
         var endDateTimeObj = {
-          endDate: this.props.dateTimeSel.month + '/' + this.props.dateTimeSel.day + '/' + this.props.dateTimeSel.year,
-          endHour: this.props.dateTimeSel.hour,
-          endMinute: this.props.dateTimeSel.minute,
-          timezoneOffset: this.props.dateTimeSel.timezone
+          endDate: this.props.dateTimeSel.endDate.month + '/' + this.props.dateTimeSel.endDate.day + '/' + this.props.dateTimeSel.endDate.year,
+          endHour: this.props.dateTimeSel.endDate.hour,
+          endMinute: this.props.dateTimeSel.endDate.minute,
+          timezoneOffset: this.props.dateTimeSel.endDate.timezone
         };
         // Date time left
         var tempDate = _dateMath2.default.returnRemainingDateTime(endDateTimeObj);
 
         // Numbers variables
-        var numbersSize = this.props.dateTimeSel.numbersSize; // font size
-        var numbersColor = this.props.dateTimeSel.numbersColor; // color
+        var numbersSize = this.props.dateTimeSel.style.numbersSize; // font size
+        var numbersColor = this.props.dateTimeSel.style.numbersColor; // color
         // Numbers  TEXT variables
-        var numbersTxtSize = this.props.dateTimeSel.numbersTxtSize; // font size
-        var numbersTxtColor = this.props.dateTimeSel.numbersTxtColor; // color
+        var numbersTxtSize = this.props.dateTimeSel.style.numbersTxtSize; // font size
+        var numbersTxtColor = this.props.dateTimeSel.style.numbersTxtColor; // color
 
         //STYLE for numbers
         var numbersStyle = {
@@ -92834,11 +92841,11 @@ class EctDatePickerCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"]
     let tYear, tMonth, tDay, tHour, tMinute;
 
     if (this.props.dateTimeSel) {
-      tYear = this.props.dateTimeSel.year;
-      tMonth = this.props.dateTimeSel.month;
-      tDay = this.props.dateTimeSel.day;
-      tHour = this.props.dateTimeSel.hour;
-      tMinute = this.props.dateTimeSel.minute;
+      tYear = this.props.dateTimeSel.endDate.year;
+      tMonth = this.props.dateTimeSel.endDate.month;
+      tDay = this.props.dateTimeSel.endDate.day;
+      tHour = this.props.dateTimeSel.endDate.hour;
+      tMinute = this.props.dateTimeSel.endDate.minute;
     } else {
       tYear = this.state.fullDate.year;
       tMonth = this.state.fullDate.month;
@@ -92878,18 +92885,16 @@ class EctDatePickerCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"]
     }
 
     const newDate = {
-      id: 1,
-      year: tYear,
-      month: tMonth,
-      day: tDay,
-      hour: tHour,
-      minute: tMinute,
-      timezone: '+7200000',
+      'endDate': {
+        year: tYear,
+        month: tMonth,
+        day: tDay,
+        hour: tHour,
+        minute: tMinute,
+        timezone: '+7200000'
+      },
       numbersText: newCTxts,
-      numbersSize: newStyle.numbersSize,
-      numbersTxtSize: newStyle.numbersTxtSize,
-      numbersColor: newStyle.numbersColor,
-      numbersTxtColor: newStyle.numbersTxtColor
+      style: newStyle
     };
     this.props.selectDate(newDate);
   }
@@ -92900,11 +92905,11 @@ class EctDatePickerCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"]
       fullDate = this.state.fullDate;
     } else {
       fullDate = {
-        year: this.props.dateTimeSel.year,
-        month: this.props.dateTimeSel.month,
-        day: this.props.dateTimeSel.day,
-        hour: this.props.dateTimeSel.hour,
-        minute: this.props.dateTimeSel.minute
+        year: this.props.dateTimeSel.endDate.year,
+        month: this.props.dateTimeSel.endDate.month,
+        day: this.props.dateTimeSel.endDate.day,
+        hour: this.props.dateTimeSel.endDate.hour,
+        minute: this.props.dateTimeSel.endDate.minute
       };
     }
     let dateTimesFinal = [];
@@ -93072,10 +93077,10 @@ class LayoutsCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     };
     this.props.changeStyle(newStyle);
 
-    newEndDate.numbersSize = newStyle.numbersSize;
-    newEndDate.numbersTxtSize = newStyle.numbersTxtSize;
-    newEndDate.numbersColor = newStyle.numbersColor;
-    newEndDate.numbersTxtColor = newStyle.numbersTxtColor;
+    newEndDate.style.numbersSize = newStyle.numbersSize;
+    newEndDate.style.numbersTxtSize = newStyle.numbersTxtSize;
+    newEndDate.style.numbersColor = newStyle.numbersColor;
+    newEndDate.style.numbersTxtColor = newStyle.numbersTxtColor;
     console.log('newEndDate', newEndDate);
     // this.props.changeLayout(item);
 
@@ -93190,6 +93195,7 @@ class EctButtons extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
   constructor(props) {
     super(props);
     this.insertTimerData = this.insertTimerData.bind(this);
+    this.deletePopup = this.deletePopup.bind(this);
   }
   insertTimerData() {
     let _data = {};
@@ -93204,6 +93210,15 @@ class EctButtons extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     if (typeof window.ectWPClosePopupButton != "undefined") {
       window.ectWPClosePopupButton();
     }
+    this.props.changeCustomText({
+      Years: 'a',
+      Months: 'b',
+      Weeks: 'c',
+      Days: 'd',
+      Hours: 'e',
+      Minutes: 'f',
+      Seconds: 'g'
+    });
   }
   render() {
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -93231,12 +93246,16 @@ class EctButtons extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
   }
 }
 function mapStateToProps(state) {
-  return {
-    dateTimeSel: state.dateTimeSel
-  };
+  return { dateTimeSel: state.dateTimeSel, newCustomTexts: state.newCustomTexts };
+}
+function matchDispatchToProps(dispatch) {
+  return Object(__WEBPACK_IMPORTED_MODULE_3_redux__["bindActionCreators"])({
+    selectDate: __WEBPACK_IMPORTED_MODULE_4__actions__["selectDate"],
+    changeCustomText: __WEBPACK_IMPORTED_MODULE_4__actions__["changeCustomText"]
+  }, dispatch);
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(__WEBPACK_IMPORTED_MODULE_2_react_redux__["connect"])(mapStateToProps)(EctButtons));
+/* harmony default export */ __webpack_exports__["default"] = (Object(__WEBPACK_IMPORTED_MODULE_2_react_redux__["connect"])(mapStateToProps, matchDispatchToProps)(EctButtons));
 
 /***/ }),
 /* 756 */

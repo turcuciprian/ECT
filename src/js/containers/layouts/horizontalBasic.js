@@ -22,20 +22,20 @@ class HorizontalBasicCont extends Component {
       }, 1000));
       var dateTimeTxt = this.props.dateTimeSel.numbersText;
       var endDateTimeObj = {
-        endDate: `${this.props.dateTimeSel.month}/${this.props.dateTimeSel.day}/${this.props.dateTimeSel.year}`,
-        endHour: this.props.dateTimeSel.hour,
-        endMinute: this.props.dateTimeSel.minute,
-        timezoneOffset: this.props.dateTimeSel.timezone
+        endDate: `${this.props.dateTimeSel.endDate.month}/${this.props.dateTimeSel.endDate.day}/${this.props.dateTimeSel.endDate.year}`,
+        endHour: this.props.dateTimeSel.endDate.hour,
+        endMinute: this.props.dateTimeSel.endDate.minute,
+        timezoneOffset: this.props.dateTimeSel.endDate.timezone
       };
       // Date time left
       const tempDate = dateMath.returnRemainingDateTime(endDateTimeObj);
 
       // Numbers variables
-      const numbersSize = this.props.dateTimeSel.numbersSize; // font size
-      const numbersColor = this.props.dateTimeSel.numbersColor // color
+      const numbersSize = this.props.dateTimeSel.style.numbersSize; // font size
+      const numbersColor = this.props.dateTimeSel.style.numbersColor // color
       // Numbers  TEXT variables
-      const numbersTxtSize = this.props.dateTimeSel.numbersTxtSize; // font size
-      const numbersTxtColor = this.props.dateTimeSel.numbersTxtColor; // color
+      const numbersTxtSize = this.props.dateTimeSel.style.numbersTxtSize; // font size
+      const numbersTxtColor = this.props.dateTimeSel.style.numbersTxtColor; // color
 
       //STYLE for numbers
       const numbersStyle = {

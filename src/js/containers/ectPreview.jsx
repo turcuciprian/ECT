@@ -45,10 +45,10 @@ class EctPreviewCont extends Component {
     //if state exists
     if (this.props.dateTimeSel) {
       endDateTimeObj = {
-        endDate: `${this.props.dateTimeSel.month}/${this.props.dateTimeSel.day}/${this.props.dateTimeSel.year}`,
-        endHour: this.props.dateTimeSel.hour,
-        endMinute: this.props.dateTimeSel.minute,
-        timezoneOffset: this.props.dateTimeSel.timezone
+        endDate: `${this.props.dateTimeSel.endDate.month}/${this.props.dateTimeSel.endDate.day}/${this.props.dateTimeSel.endDate.year}`,
+        endHour: this.props.dateTimeSel.endDate.hour,
+        endMinute: this.props.dateTimeSel.endDate.minute,
+        timezoneOffset: this.props.dateTimeSel.endDate.timezone
       };
       const tempDate = dateMath.returnRemainingDateTime(endDateTimeObj);
     }

@@ -33,11 +33,11 @@ class EctDatePickerCont extends Component {
       tMinute;
 
     if (this.props.dateTimeSel) {
-      tYear = this.props.dateTimeSel.year;
-      tMonth = this.props.dateTimeSel.month;
-      tDay = this.props.dateTimeSel.day;
-      tHour = this.props.dateTimeSel.hour;
-      tMinute = this.props.dateTimeSel.minute;
+      tYear = this.props.dateTimeSel.endDate.year;
+      tMonth = this.props.dateTimeSel.endDate.month;
+      tDay = this.props.dateTimeSel.endDate.day;
+      tHour = this.props.dateTimeSel.endDate.hour;
+      tMinute = this.props.dateTimeSel.endDate.minute;
     } else {
       tYear = this.state.fullDate.year;
       tMonth = this.state.fullDate.month;
@@ -78,19 +78,17 @@ class EctDatePickerCont extends Component {
     }
 
     const newDate = {
-      id: 1,
-      year: tYear,
-      month: tMonth,
-      day: tDay,
-      hour: tHour,
-      minute: tMinute,
-      timezone: '+7200000',
+      'endDate': {
+        year: tYear,
+        month: tMonth,
+        day: tDay,
+        hour: tHour,
+        minute: tMinute,
+        timezone: '+7200000'
+      },
       numbersText: newCTxts,
-      numbersSize: newStyle.numbersSize,
-      numbersTxtSize: newStyle.numbersTxtSize,
-      numbersColor: newStyle.numbersColor,
-      numbersTxtColor: newStyle.numbersTxtColor
-    };
+      style: newStyle
+    }
     this.props.selectDate(newDate);
   }
   EctDateTimeChildren() {
@@ -100,11 +98,11 @@ class EctDatePickerCont extends Component {
       fullDate = this.state.fullDate;
     } else {
       fullDate = {
-        year: this.props.dateTimeSel.year,
-        month: this.props.dateTimeSel.month,
-        day: this.props.dateTimeSel.day,
-        hour: this.props.dateTimeSel.hour,
-        minute: this.props.dateTimeSel.minute
+        year: this.props.dateTimeSel.endDate.year,
+        month: this.props.dateTimeSel.endDate.month,
+        day: this.props.dateTimeSel.endDate.day,
+        hour: this.props.dateTimeSel.endDate.hour,
+        minute: this.props.dateTimeSel.endDate.minute
       }
     }
     let dateTimesFinal = [];

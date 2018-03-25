@@ -21,6 +21,7 @@ class EctDateTime extends Component {
     var start;
     var end;
     var labelText = 'Default';
+    console.log(this.props);
     switch (this.props.type) {
       case 'year':
         compValue = moment().year();
