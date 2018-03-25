@@ -9,6 +9,7 @@ import allReducers from './reducers';
 import EctPreviewCont from './containers/ectPreview.jsx';
 import EctDatePickerCont from './containers/dateTimeComp.jsx';
 import EctLayouts from './components/EctLayouts.jsx';
+import EctButtons from './containers/EctButtons.jsx';
 
 class MainComponent extends Component {
   constructor(props) {
@@ -23,7 +24,8 @@ class MainComponent extends Component {
       return (<div>
         <EctPreviewCont/>
         <EctDatePickerCont/>
-        <EctLayouts/>
+          <EctLayouts/>
+        <EctButtons/>
       </div>)
     }
   }

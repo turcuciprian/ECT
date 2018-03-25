@@ -4,28 +4,19 @@ export default function() {
       id: 1,
       name: 'Red&Green Small',
       type: 'HorizontalBasic',
-      numbersSize: 14,
-      numbersTxtSize: 10,
+      numbersSize: 34,
+      numbersTxtSize: 22,
       numbersColor: 'red',
       numbersTxtColor: 'green'
     },
     {
       id: 2,
-      name: 'Red&Green Medium',
+      name: 'Dark and grey Small',
       type: 'HorizontalBasic',
-      numbersSize: 42,
-      numbersTxtSize: 21,
-      numbersColor: 'red',
-      numbersTxtColor: 'green'
-    },
-    {
-      id: 3,
-      name: 'Red&Green Large',
-      type: 'HorizontalBasic',
-      numbersSize: 81,
-      numbersTxtSize: 40,
-      numbersColor: 'red',
-      numbersTxtColor: 'green'
+      numbersSize: 34,
+      numbersTxtSize: 22,
+      numbersColor: 'green',
+      numbersTxtColor: '#ccc'
     }
   ]
 
