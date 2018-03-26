@@ -28,15 +28,15 @@ class EctPreviewCont extends Component {
   };
   dinamicComponent() {
     let tempLayout;
-    if (!this.props.layoutSel) {
-      tempLayout = this.props.layouts[0];
+    if (!this.props.dateTimeSel) {
+      tempLayout = this.props.layouts[0].type;
     } else {
-      tempLayout = this.props.layoutSel;
+      tempLayout = this.props.dateTimeSel.style.layout;
     }
     const compnts = {
       HorizontalBasic: HorizontalBasic
     };
-    var DynamicComponentName = compnts[tempLayout.type];
+    var DynamicComponentName = compnts[tempLayout];
 
     return (<DynamicComponentName className="floatingPreview"/>);
   }

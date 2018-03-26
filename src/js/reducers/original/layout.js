@@ -2,7 +2,7 @@ export default function() {
   return [
     {
       id: 1,
-      layout: 'horizontalBasic',
+      layout: 'HorizontalBasic',
       name: 'Red&Green Small',
       type: 'HorizontalBasic',
       numbersSize: 34,
@@ -11,7 +11,7 @@ export default function() {
       numbersTxtColor: 'green'
     }, {
       id: 2,
-      layout: 'horizontalBasic',
+      layout: 'HorizontalBasic',
       name: 'Dark and grey Small',
       type: 'HorizontalBasic',
       numbersSize: 34,

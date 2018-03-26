@@ -84578,7 +84578,7 @@ exports.default = loopable;
 /* 718 */
 /***/ (function(module, exports) {
 
-module.exports = "<!DOCTYPE html>\r\n<html>\r\n\r\n<head>\r\n  <meta charset='utf-8'>\r\n  <title>Easy Countdown Timer </title>\r\n</head>\r\n\r\n<body>\r\n  <div id=\"ect_root\"></div>\r\n  <div id=\"ect_root2\"></div>\r\n  <script type=\"text/javascript\">\r\n    var devMode = true;\r\n    var isOnlyPreview = false;\r\n    var ectWPPath = \"http://localhost/wordpress/wp-json\";\r\n    var ectKs = \"b30a02aabb9955ce8de5956198c2bbf9\";\r\n    var ectProperties = [{\r\n      'ect_root': {\r\n        year: 2028,\r\n        month: 4,\r\n        day: 1,\r\n        hour: 1,\r\n        minute: 1,\r\n        timezone: '+72000000',\r\n        numbersText: {\r\n          Years: 'Years',\r\n          Months: 'Months',\r\n          Weeks: 'Weeks',\r\n          Days: 'Days',\r\n          Hours: 'Hours',\r\n          Minutes: 'Minutes',\r\n          Seconds: 'Seconds'\r\n        },\r\n        numbersSize: 34,\r\n        numbersTxtSize: 22,\r\n        numbersColor: 'red',\r\n        numbersTxtColor: 'green'\r\n      }\r\n    }];\r\n  </script>\r\n  <script src='dist/bundle.js'>\r\n  </script>\r\n</body>\r\n\r\n</html>\r\n";
+module.exports = "<!DOCTYPE html>\r\n<html>\r\n\r\n<head>\r\n  <meta charset='utf-8'>\r\n  <title>Easy Countdown Timer </title>\r\n</head>\r\n\r\n<body>\r\n  <div id=\"ect_root\"></div>\r\n  <div id=\"ect_root2\"></div>\r\n  <script type=\"text/javascript\">\r\n    var devMode = true;\r\n    var isOnlyPreview = false;\r\n    var ectWPPath = \"http://localhost/wordpress/wp-json\";\r\n    var ectKs = \"b30a02aabb9955ce8de5956198c2bbf9\";\r\n    var ectProperties = [{\r\n      'ect_root': {\r\n        'endDate': {\r\n          year: 2099,\r\n          month: 12,\r\n          day: 1,\r\n          hour: 1,\r\n          minute: 1,\r\n          timezone: '-10800000'\r\n        },\r\n        numbersText: {\r\n          Years: 'Years',\r\n          Months: 'Months',\r\n          Weeks: 'Weeks',\r\n          Days: 'Days',\r\n          Hours: 'Hours',\r\n          Minutes: 'Minutes',\r\n          Seconds: 'Seconds'\r\n        },\r\n        style: {\r\n          layout: 'HorizontalBasic',\r\n          numbersSize: 34,\r\n          numbersTxtSize: 22,\r\n          numbersColor: 'red',\r\n          numbersTxtColor: 'green'\r\n        }\r\n      }\r\n    }];\r\n  </script>\r\n  <script src='dist/bundle.js'>\r\n  </script>\r\n</body>\r\n\r\n</html>\r\n";
 
 /***/ }),
 /* 719 */
@@ -86822,7 +86822,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = function () {
   return [{
     id: 1,
-    layout: 'horizontalBasic',
+    layout: 'HorizontalBasic',
     name: 'Red&Green Small',
     type: 'HorizontalBasic',
     numbersSize: 34,
@@ -86831,7 +86831,7 @@ exports.default = function () {
     numbersTxtColor: 'green'
   }, {
     id: 2,
-    layout: 'horizontalBasic',
+    layout: 'HorizontalBasic',
     name: 'Dark and grey Small',
     type: 'HorizontalBasic',
     numbersSize: 34,
@@ -86897,7 +86897,7 @@ exports.default = function () {
       Seconds: 'Seconds'
     },
     style: {
-      'layout': 'horizontalBasic',
+      'layout': 'HorizontalBasic',
       numbersSize: 34,
       numbersTxtSize: 22,
       numbersColor: 'red',
@@ -86941,7 +86941,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 exports.default = function () {
-  return { numbersSize: 34, numbersTxtSize: 22, numbersColor: 'red', numbersTxtColor: 'green' };
+  return { layout: 'HorizontalBasic', numbersSize: 34, numbersTxtSize: 22, numbersColor: 'red', numbersTxtColor: 'green' };
 };
 
 /***/ }),
@@ -86992,15 +86992,15 @@ class EctPreviewCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
   }
   dinamicComponent() {
     let tempLayout;
-    if (!this.props.layoutSel) {
-      tempLayout = this.props.layouts[0];
+    if (!this.props.dateTimeSel) {
+      tempLayout = this.props.layouts[0].type;
     } else {
-      tempLayout = this.props.layoutSel;
+      tempLayout = this.props.dateTimeSel.style.layout;
     }
     const compnts = {
       HorizontalBasic: __WEBPACK_IMPORTED_MODULE_6__components_layouts_all__["HorizontalBasic"]
     };
-    var DynamicComponentName = compnts[tempLayout.type];
+    var DynamicComponentName = compnts[tempLayout];
 
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(DynamicComponentName, { className: 'floatingPreview' });
   }
@@ -87487,6 +87487,8 @@ class EctLayouts extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 class LayoutsCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
   constructor(props) {
     super(props);
+
+    // this.EctDateTimeChildren = this.EctDateTimeChildren.bind(this);
   }
   changeLayout(item) {
     console.log(this.props.dateTimeSel);
@@ -87500,10 +87502,10 @@ class LayoutsCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     };
     this.props.changeStyle(newStyle);
 
-    newEndDate.style.numbersSize = newStyle.numbersSize;
-    newEndDate.style.numbersTxtSize = newStyle.numbersTxtSize;
-    newEndDate.style.numbersColor = newStyle.numbersColor;
-    newEndDate.style.numbersTxtColor = newStyle.numbersTxtColor;
+    newEndDate.numbersSize = newStyle.numbersSize;
+    newEndDate.numbersTxtSize = newStyle.numbersTxtSize;
+    newEndDate.numbersColor = newStyle.numbersColor;
+    newEndDate.numbersTxtColor = newStyle.numbersTxtColor;
     console.log('newEndDate', newEndDate);
     // this.props.changeLayout(item);
 

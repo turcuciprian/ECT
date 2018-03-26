@@ -18,7 +18,7 @@ export default function() {
       Seconds: 'Seconds'
     },
     style: {
-      'layout': 'horizontalBasic',
+      'layout': 'HorizontalBasic',
       numbersSize: 34,
       numbersTxtSize: 22,
       numbersColor: 'red',
