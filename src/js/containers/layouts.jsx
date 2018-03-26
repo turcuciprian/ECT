@@ -16,22 +16,21 @@ class LayoutsCont extends Component {
 
   }
   changeLayout(item) {
-    console.log(this.props.dateTimeSel);
-    let newEndDate = this.props.dateTimeSel;
-    const selLay = item;
+    let newEndDate = this.props.dateTimeSel.style;
     const newStyle = {
-      numbersSize: selLay.numbersSize,
-      numbersTxtSize: selLay.numbersTxtSize,
-      numbersColor: selLay.numbersColor,
-      numbersTxtColor: selLay.numbersTxtColor
+      layout: item.layout,
+      numbersSize: item.numbersSize,
+      numbersTxtSize: item.numbersTxtSize,
+      numbersColor: item.numbersColor,
+      numbersTxtColor: item.numbersTxtColor
     }
     this.props.changeStyle(newStyle);
 
+    newEndDate.layout = newStyle.layout;
     newEndDate.numbersSize = newStyle.numbersSize;
     newEndDate.numbersTxtSize = newStyle.numbersTxtSize;
     newEndDate.numbersColor = newStyle.numbersColor;
     newEndDate.numbersTxtColor = newStyle.numbersTxtColor;
-    console.log('newEndDate', newEndDate);
     // this.props.changeLayout(item);
 
     //set new date
