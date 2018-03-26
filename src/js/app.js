@@ -4,9 +4,6 @@ import 'react';
 import 'react-dom';
 import 'react-redux';
 
-import  'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-
 
 import 'moment';
 import 'material-ui';

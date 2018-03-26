@@ -76,7 +76,7 @@ class EctDatePickerCont extends Component {
     } else {
       newStyle = this.props.styleSel;
     }
-
+    const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     const newDate = {
       'endDate': {
         year: tYear,
@@ -84,7 +84,7 @@ class EctDatePickerCont extends Component {
         day: tDay,
         hour: tHour,
         minute: tMinute,
-        timezone: '+7200000'
+        timezone: -moment().toDate().getTimezoneOffset()*60000
       },
       numbersText: newCTxts,
       style: newStyle

@@ -11,9 +11,6 @@ import moment from "moment";
 class LayoutsCont extends Component {
   constructor(props) {
     super(props);
-
-    // this.EctDateTimeChildren = this.EctDateTimeChildren.bind(this);
-
   }
   changeLayout(item) {
     console.log(this.props.dateTimeSel);
