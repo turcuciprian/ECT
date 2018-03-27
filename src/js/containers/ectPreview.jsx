@@ -6,7 +6,7 @@ import {selectDate, changeCustomText, changeStyle, changeLayout} from '../action
 import moment from "moment";
 
 // import all layouts
-import {HorizontalBasic} from '../components/layouts/all';
+import {HorizontalBasic,VerticalBasic} from '../components/layouts/all';
 
 /* We need "if(!this.props.user)" because we set state to null by default */
 class EctPreviewCont extends Component {
@@ -34,11 +34,12 @@ class EctPreviewCont extends Component {
       tempLayout = this.props.dateTimeSel.style.layout;
     }
     const compnts = {
-      HorizontalBasic: HorizontalBasic
+      HorizontalBasic: HorizontalBasic,
+      VerticalBasic: VerticalBasic
     };
     var DynamicComponentName = compnts[tempLayout];
 
-    return (<DynamicComponentName className="floatingPreview"/>);
+    return (<DynamicComponentName className={DynamicComponentName} className="floatingPreview"/>);
   }
   render() {
     var endDateTimeObj = {};
@@ -52,8 +53,12 @@ class EctPreviewCont extends Component {
       };
       const tempDate = dateMath.returnRemainingDateTime(endDateTimeObj);
     }
+    let parentLayClass;
+    if(this.props.dateTimeSel){
+      parentLayClass = this.props.dateTimeSel.style.layout
+    }
     if (devMode) {
-      return (<div className="ectLivePreview">
+      return (<div className={` ectLivePreview ${parentLayClass}`}>
         <span className="title">Live preview</span>
         <div>
           <div className="preview">

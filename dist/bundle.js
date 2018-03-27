@@ -84620,7 +84620,7 @@ exports = module.exports = __webpack_require__(721)(false);
 
 
 // module
-exports.push([module.i, "body .react-datepicker__time-list {\n  padding: 0;\n  margin: 0; }\n\nbody .ectLivePreview {\n  display: inline-block; }\n  body .ectLivePreview .preview {\n    display: inline-block;\n    border: 1px solid #c1c1c1;\n    padding: 10px; }\n\nbody .ectDateTimePicker {\n  margin-top: 20px; }\n  body .ectDateTimePicker .cDT {\n    padding: 10px;\n    text-align: center;\n    border: 1px solid #c1c1c1;\n    margin: 10px 10px 10px 0;\n    display: inline-block;\n    -webkit-border-radius: 10px;\n    -moz-border-radius: 10px;\n    border-radius: 10px; }\n    body .ectDateTimePicker .cDT span {\n      display: block;\n      text-align: center;\n      margin-bottom: 5px;\n      text-transform: uppercase; }\n  body .ectDateTimePicker span.title {\n    font-size: 14px; }\n\nbody .ectLayouts .layouts .indLayout {\n  display: inline-block;\n  cursor: pointer;\n  min-width: 110px;\n  min-height: 110px;\n  border: 1px solid #c1c1c1;\n  margin: 10px;\n  text-align: center; }\n  body .ectLayouts .layouts .indLayout:hover {\n    background: #000;\n    color: #Fff; }\n  body .ectLayouts .layouts .indLayout .cont {\n    height: 100px;\n    display: flex;\n    align-items: center;\n    justify-content: center; }\n\nbody span.title {\n  background-color: #000;\n  color: #FFFFFF;\n  font-size: 18px;\n  line-height: 35px;\n  padding: 5px;\n  font-weight: bold;\n  text-transform: capitalize; }\n", ""]);
+exports.push([module.i, "body .react-datepicker__time-list {\n  padding: 0;\n  margin: 0; }\n\nbody .ectLivePreview {\n  display: inline-block; }\n  body .ectLivePreview .preview {\n    display: inline-block;\n    border: 1px solid #c1c1c1;\n    padding: 10px; }\n\nbody .ectDateTimePicker {\n  margin-top: 20px; }\n  body .ectDateTimePicker .cDT {\n    padding: 10px;\n    text-align: center;\n    border: 1px solid #c1c1c1;\n    margin: 10px 10px 10px 0;\n    display: inline-block;\n    -webkit-border-radius: 10px;\n    -moz-border-radius: 10px;\n    border-radius: 10px; }\n    body .ectDateTimePicker .cDT span {\n      display: block;\n      text-align: center;\n      margin-bottom: 5px;\n      text-transform: uppercase; }\n  body .ectDateTimePicker span.title {\n    font-size: 14px; }\n\nbody .ectLayouts .layouts {\n  display: flex; }\n  body .ectLayouts .layouts .indLayout {\n    display: inline-block;\n    cursor: pointer;\n    min-width: 110px;\n    min-height: 110px;\n    border: 1px solid #c1c1c1;\n    margin: 10px;\n    text-align: center; }\n    body .ectLayouts .layouts .indLayout:hover {\n      background: #000;\n      color: #Fff; }\n    body .ectLayouts .layouts .indLayout .cont.spanDiv {\n      height: 100px;\n      display: flex;\n      align-items: center;\n      justify-content: center; }\n\nbody span.title {\n  background-color: #000;\n  color: #FFFFFF;\n  font-size: 18px;\n  line-height: 35px;\n  padding: 5px;\n  font-weight: bold;\n  text-transform: capitalize; }\n\nbody .buttons button.insert {\n  padding: 10px;\n  font-size: 18px;\n  -webkit-border-radius: 5px;\n  -moz-border-radius: 5px;\n  -ms-border-radius: 5px;\n  border-radius: 5px;\n  background: #4365cb;\n  color: #FFF;\n  width: 200px; }\n\n.VerticalBasic .spanDiv {\n  display: inline-block; }\n  .VerticalBasic .spanDiv span {\n    display: block;\n    margin: 0 10px;\n    text-align: center; }\n", ""]);
 
 // exports
 
@@ -86823,7 +86823,6 @@ exports.default = function () {
   return [{
     id: 1,
     layout: 'HorizontalBasic',
-    name: 'Red&Green Small',
     type: 'HorizontalBasic',
     numbersSize: 34,
     numbersTxtSize: 22,
@@ -86831,13 +86830,12 @@ exports.default = function () {
     numbersTxtColor: 'green'
   }, {
     id: 2,
-    layout: 'HorizontalBasic',
-    name: 'Dark and grey Small',
-    type: 'HorizontalBasic',
+    layout: 'VerticalBasic',
+    type: 'VerticalBasic',
     numbersSize: 34,
     numbersTxtSize: 22,
-    numbersColor: 'green',
-    numbersTxtColor: '#ccc'
+    numbersColor: 'red',
+    numbersTxtColor: 'green'
   }];
 };
 
@@ -86998,11 +86996,12 @@ class EctPreviewCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
       tempLayout = this.props.dateTimeSel.style.layout;
     }
     const compnts = {
-      HorizontalBasic: __WEBPACK_IMPORTED_MODULE_6__components_layouts_all__["HorizontalBasic"]
+      HorizontalBasic: __WEBPACK_IMPORTED_MODULE_6__components_layouts_all__["HorizontalBasic"],
+      VerticalBasic: __WEBPACK_IMPORTED_MODULE_6__components_layouts_all__["VerticalBasic"]
     };
     var DynamicComponentName = compnts[tempLayout];
 
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(DynamicComponentName, { className: 'floatingPreview' });
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(DynamicComponentName, { className: DynamicComponentName, className: 'floatingPreview' });
   }
   render() {
     var endDateTimeObj = {};
@@ -87016,10 +87015,14 @@ class EctPreviewCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
       };
       const tempDate = __WEBPACK_IMPORTED_MODULE_2__customLib_dateMath___default.a.returnRemainingDateTime(endDateTimeObj);
     }
+    let parentLayClass;
+    if (this.props.dateTimeSel) {
+      parentLayClass = this.props.dateTimeSel.style.layout;
+    }
     if (devMode) {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
-        { className: 'ectLivePreview' },
+        { className: ` ectLivePreview ${parentLayClass}` },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'span',
           { className: 'title' },
@@ -87066,15 +87069,20 @@ function matchDispatchToProps(dispatch) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.HorizontalBasic = undefined;
+exports.VerticalBasic = exports.HorizontalBasic = undefined;
 
 var _horizontalBasic = __webpack_require__(745);
 
 var _horizontalBasic2 = _interopRequireDefault(_horizontalBasic);
 
+var _verticalBasic = __webpack_require__(770);
+
+var _verticalBasic2 = _interopRequireDefault(_verticalBasic);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.HorizontalBasic = _horizontalBasic2.default;
+exports.VerticalBasic = _verticalBasic2.default;
 
 /***/ }),
 /* 745 */
@@ -87237,6 +87245,10 @@ var HorizontalBasicCont = function (_Component) {
       } else {
 
         finalResult = 'Countdown Ended'; // when timer is done because redux store is empty - when the page loads
+      }
+
+      if (this.props.pType == "preview") {
+        finalResult = _react2.default.createElement('span', { className: 'spanDiv' }, _react2.default.createElement('span', null, '16'), _react2.default.createElement('span', null, 'Hours'), '\xA0');
       }
       return _react2.default.createElement('div', { onClick: this.changeLayout }, finalResult);
     }
@@ -87506,9 +87518,7 @@ class LayoutsCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     newEndDate.numbersTxtSize = newStyle.numbersTxtSize;
     newEndDate.numbersColor = newStyle.numbersColor;
     newEndDate.numbersTxtColor = newStyle.numbersTxtColor;
-    // this.props.changeLayout(item);
-
-    //set new date
+    // this.props.changeLayout(item); set new date
     // this.props.selectDate(newEndDate);
   }
   render() {
@@ -87535,10 +87545,13 @@ class LayoutsCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
         };
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
-          { className: 'indLayout', key: item.id, onClick: () => this.changeLayout(item) },
+          {
+            className: `indLayout ${item.layout}`,
+            key: item.id,
+            onClick: () => this.changeLayout(item) },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
-            { className: 'cont' },
+            { className: `cont spanDiv` },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'div',
               null,
@@ -87653,7 +87666,7 @@ class EctButtons extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
         null,
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'button',
-          { type: 'button', className: 'btn btn-primary', onClick: this.insertTimerData },
+          { type: 'button', className: 'insert', onClick: this.insertTimerData },
           'Add Timer'
         )
       ),
@@ -88512,6 +88525,181 @@ module.exports = function spread(callback) {
     return callback.apply(null, arr);
   };
 };
+
+/***/ }),
+/* 770 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _verticalBasic = __webpack_require__(771);
+
+var _verticalBasic2 = _interopRequireDefault(_verticalBasic);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var VerticalBasic = function (_Component) {
+    _inherits(VerticalBasic, _Component);
+
+    function VerticalBasic(props) {
+        _classCallCheck(this, VerticalBasic);
+
+        return _possibleConstructorReturn(this, (VerticalBasic.__proto__ || Object.getPrototypeOf(VerticalBasic)).call(this, props));
+    }
+
+    _createClass(VerticalBasic, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(_verticalBasic2.default, null);
+        }
+    }]);
+
+    return VerticalBasic;
+}(_react.Component);
+
+exports.default = VerticalBasic;
+
+/***/ }),
+/* 771 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(33);
+
+var _dateMath = __webpack_require__(361);
+
+var _dateMath2 = _interopRequireDefault(_dateMath);
+
+var _moment = __webpack_require__(2);
+
+var _moment2 = _interopRequireDefault(_moment);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var HorizontalBasicCont = function (_Component) {
+  _inherits(HorizontalBasicCont, _Component);
+
+  function HorizontalBasicCont(props) {
+    _classCallCheck(this, HorizontalBasicCont);
+
+    var _this = _possibleConstructorReturn(this, (HorizontalBasicCont.__proto__ || Object.getPrototypeOf(HorizontalBasicCont)).call(this, props));
+
+    _this.state = {
+      timeout: []
+    };
+    return _this;
+  }
+
+  _createClass(HorizontalBasicCont, [{
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      if (this.props.dateTimeSel) {
+        var tempTimeout = this.state.timeout;
+        tempTimeout.push(setTimeout(function () {
+          if (_this2.state.timeout[1]) {
+            clearTimeout(_this2.state.timeout[1]);
+          }
+          _this2.setState({ timeout: [] });
+        }, 1000));
+        var dateTimeTxt = this.props.dateTimeSel.numbersText;
+        var endDateTimeObj = {
+          endDate: this.props.dateTimeSel.endDate.month + '/' + this.props.dateTimeSel.endDate.day + '/' + this.props.dateTimeSel.endDate.year,
+          endHour: this.props.dateTimeSel.endDate.hour,
+          endMinute: this.props.dateTimeSel.endDate.minute,
+          timezoneOffset: this.props.dateTimeSel.endDate.timezone
+        };
+        // Date time left
+        var tempDate = _dateMath2.default.returnRemainingDateTime(endDateTimeObj);
+
+        // Numbers variables
+        var numbersSize = this.props.dateTimeSel.style.numbersSize; // font size
+        var numbersColor = this.props.dateTimeSel.style.numbersColor; // color
+        // Numbers  TEXT variables
+        var numbersTxtSize = this.props.dateTimeSel.style.numbersTxtSize; // font size
+        var numbersTxtColor = this.props.dateTimeSel.style.numbersTxtColor; // color
+
+        //STYLE for numbers
+        var numbersStyle = {
+          fontSize: numbersSize,
+          color: numbersColor
+        };
+        //STYLE for numbers Text
+        var numbersTxtStyle = {
+          fontSize: numbersTxtSize,
+          color: numbersTxtColor
+        };
+
+        var finalResult = [];
+        var isLast = true;
+        for (var key in tempDate) {
+          if (key != 'Styles') {
+            if (isLast) {
+              if (tempDate[key] != 0) {
+                isLast = false;
+              } else {
+                continue;
+              }
+            }
+            var tempItem = _react2.default.createElement('span', { key: key, className: 'spanDiv' }, _react2.default.createElement('span', { style: numbersStyle }, tempDate[key]), _react2.default.createElement('span', { style: numbersTxtStyle }, dateTimeTxt[key]), '\xA0');
+            finalResult.push(tempItem);
+          }
+        }
+        if (!tempDate) {
+          finalResult = 'Countdown Ended'; // when timer is done because the countdown ended
+        }
+      } else {
+
+        finalResult = 'Countdown Ended'; // when timer is done because redux store is empty - when the page loads
+      }
+      return _react2.default.createElement('div', { onClick: this.changeLayout }, finalResult);
+    }
+  }]);
+
+  return HorizontalBasicCont;
+}(_react.Component);
+
+function mapStateToProps(state) {
+  return { dateTime: state.dateTime, dateTimeSel: state.dateTimeSel, layouts: state.layouts, layoutSel: state.layoutSel };
+}
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(HorizontalBasicCont);
 
 /***/ })
 /******/ ]);

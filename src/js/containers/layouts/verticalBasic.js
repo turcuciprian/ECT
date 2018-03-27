@@ -80,26 +80,10 @@ class HorizontalBasicCont extends Component {
     } else {
 
       finalResult = 'Countdown Ended'; // when timer is done because redux store is empty - when the page loads
-
-    }
-
-    if (this.props.pType == "preview") {
-      finalResult = (
-        <span className="spanDiv">
-              <span>
-                16
-              </span>
-              <span>
-                Hours
-              </span>
-              &nbsp;
-            </span>
-      );
     }
     return (
       <div onClick={this.changeLayout}>{finalResult}</div>
     );
-
   }
 }
 

@@ -1,86 +1,12 @@
-//variables
-$borderColor: #c1c1c1;
-$backgroundDarkColor: #000; //the main styles
-
-body {
-  .react-datepicker__time-list {
-    padding: 0;
-    margin: 0;
-  }
-
-  .ectLivePreview {
-    display: inline-block;
-
-    .preview {
-      display: inline-block;
-      border: 1px solid $borderColor;
-      padding: 10px;
-    }
-  }
-
-  .ectDateTimePicker {
-    margin-top: 20px;
-
-    .cDT {
-      padding: 10px;
-      text-align: center;
-      border: 1px solid $borderColor;
-      margin: 10px 10px 10px 0;
-      display: inline-block;
-      -webkit-border-radius: 10px;
-      -moz-border-radius: 10px;
-      border-radius: 10px;
-
-      span {
-        display: block;
-        text-align: center;
-        margin-bottom: 5px;
-        text-transform: uppercase;
-      }
-    }
-
-    span {
-      &.title {
-        font-size: 14px;
-      }
-    }
-  }
-
-  .ectLayouts {
-    .layouts {
-      .indLayout {
-        display: inline-block;
-        cursor: pointer;
-        min-width: 110px;
-        min-height: 110px;
-        border: 1px solid $borderColor;
-        margin: 10px;
-        text-align: center;
-
-        &:hover {
-          background: $backgroundDarkColor;
-          color: #Fff;
+@import 'mixins';
+@import 'general';
+.VerticalBasic{
+    .spanDiv{
+        display:inline-block;
+        span{
+            display: block;
+            margin:0 10px;
+            text-align: center;
         }
-
-        .cont {
-          height: 100px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-      }
     }
-  }
-
-  span {
-    &.title {
-      background-color: $backgroundDarkColor;
-      color: #FFFFFF;
-      font-size: 18px;
-      line-height: 35px;
-      padding: 5px;
-      font-weight: bold;
-      text-transform: capitalize;
-    }
-  }
 }

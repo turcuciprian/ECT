@@ -41,7 +41,7 @@ class EctButtons extends Component {
   render() {
     return (<div className="buttons">
       <p>
-        <button type="button" className="btn btn-primary" onClick={this.insertTimerData}>Add Timer</button>
+        <button type="button" className="insert" onClick={this.insertTimerData}>Add Timer</button>
       </p>
       <p>
         <button type="button" onClick={this.deletePopup}>Close Popup</button>

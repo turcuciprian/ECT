@@ -24,55 +24,64 @@ class LayoutsCont extends Component {
       numbersColor: item.numbersColor,
       numbersTxtColor: item.numbersTxtColor
     }
-    this.props.changeStyle(newStyle);
+    this
+      .props
+      .changeStyle(newStyle);
 
     newEndDate.layout = newStyle.layout;
     newEndDate.numbersSize = newStyle.numbersSize;
     newEndDate.numbersTxtSize = newStyle.numbersTxtSize;
     newEndDate.numbersColor = newStyle.numbersColor;
     newEndDate.numbersTxtColor = newStyle.numbersTxtColor;
-    // this.props.changeLayout(item);
-
-    //set new date
+    // this.props.changeLayout(item); set new date
     // this.props.selectDate(newEndDate);
 
   }
   render() {
-    return (<div className="layouts">
-      {
-        this.props.layouts.map((item) => {
-          // Numbers variables
-          const numbersSize = item.numbersSize; // font size
-          const numbersColor = item.numbersColor // color
-          // Numbers  TEXT variables
-          const numbersTxtSize = item.numbersTxtSize; // font size
-          const numbersTxtColor = item.numbersTxtColor; // color
+    return (
+      <div className="layouts">
+        {this
+          .props
+          .layouts
+          .map((item) => {
+            // Numbers variables
+            const numbersSize = item.numbersSize; // font size
+            const numbersColor = item.numbersColor // color
+            // Numbers  TEXT variables
+            const numbersTxtSize = item.numbersTxtSize; // font size
+            const numbersTxtColor = item.numbersTxtColor; // color
 
-          //STYLE for numbers
-          const numbersStyle = {
-            fontSize: numbersSize,
-            color: numbersColor
-          };
-          //STYLE for numbers Text
-          const numbersTxtStyle = {
-            fontSize: numbersTxtSize,
-            color: numbersTxtColor
-          };
-          return (<div className="indLayout" key={item.id} onClick={() => this.changeLayout(item)}>
-            <div className="cont">
-              <div>
-                <span style={numbersStyle}>
-                  16
-                </span>
-                <span style={numbersTxtStyle}>
-                  Hours
-                </span>
+            //STYLE for numbers
+            const numbersStyle = {
+              fontSize: numbersSize,
+              color: numbersColor
+            };
+            //STYLE for numbers Text
+            const numbersTxtStyle = {
+              fontSize: numbersTxtSize,
+              color: numbersTxtColor
+            };
+            return (
+              <div
+                className={`indLayout ${item.layout}`}
+                key={item.id}
+                onClick={() => this.changeLayout(item)}>
+                <div className={`cont spanDiv`}>
+                  <div>
+                    <span style={numbersStyle}>
+                      16
+                    </span>
+                    <span style={numbersTxtStyle}>
+                      Hours
+                    </span>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>);
-        })
-      }
-    </div>);
+            );
+          })
+}
+      </div>
+    );
   }
 }
 function mapStateToProps(state) {
