@@ -1,6 +1,7 @@
 //variables
 $borderColor: #c1c1c1;
 $backgroundDarkColor: #000; //the main styles
+$backgroundLightColor: #efefef; //the main styles
 body {
     .react-datepicker__time-list {
         padding: 0;
@@ -39,9 +40,8 @@ body {
         }
     }
     .ectLayouts {
-      
         .layouts {
-          display: flex;
+            display: flex;
             .indLayout {
                 display: inline-block;
                 cursor: pointer;
@@ -88,37 +88,38 @@ body {
             }
         }
     }
-    .moreOptions{
-          margin:10px 10px 30px 0;
-          span{
-        &.expand{
-          padding:10px;
-          weight:900;
-          background:rgb(223, 223, 223);
-          &:hover{
-            cursor:pointer;
-          background:rgb(80, 80, 80);
-          color:#FFF;
-            
-          }
-        }
-      }
-      .ReactCollapse--content{
-        padding:30px 10px 10px 0;
-      }
-      .EctSlider{
-          div{
-              div{
-                  margin:0px !important;
-              }
-          }
-        span{
-            &.title{
-                background: none;
-                color:$backgroundDarkColor;
+    .moreOptions {
+        margin: 20px 10px 30px 0;
+        span {
+            &.expand {
+                padding: 10px;
+                weight: 900;
+                background: rgb(223, 223, 223);
+                &:hover {
+                    cursor: pointer;
+                    background: rgb(80, 80, 80);
+                    color: #FFF;
+                }
             }
         }
-    }
-      
+        .ReactCollapse--content {
+            border: 1px solid $borderColor;
+            background-color: $backgroundLightColor;
+            padding: 30px 20px 20px 20px;
+            margin-top:9px;
+        }
+        .EctSlider {
+            div {
+                div {
+                    margin: 0px !important;
+                }
+            }
+            span {
+                &.title {
+                    background: none;
+                    color: $backgroundDarkColor;
+                }
+            }
+        }
     }
 }
