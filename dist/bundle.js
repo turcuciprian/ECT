@@ -85236,7 +85236,7 @@ exports = module.exports = __webpack_require__(730)(false);
 
 
 // module
-exports.push([module.i, "body .react-datepicker__time-list {\n  padding: 0;\n  margin: 0; }\n\nbody .ectLivePreview {\n  display: inline-block; }\n  body .ectLivePreview .preview {\n    display: inline-block;\n    border: 1px solid #c1c1c1;\n    padding: 10px; }\n\nbody .ectDateTimePicker {\n  margin-top: 20px; }\n  body .ectDateTimePicker .cDT {\n    padding: 10px;\n    text-align: center;\n    border: 1px solid #c1c1c1;\n    margin: 10px 10px 10px 0;\n    display: inline-block;\n    -webkit-border-radius: 10px;\n    -moz-border-radius: 10px;\n    border-radius: 10px; }\n    body .ectDateTimePicker .cDT span {\n      display: block;\n      text-align: center;\n      margin-bottom: 5px;\n      text-transform: uppercase; }\n  body .ectDateTimePicker span.title {\n    font-size: 14px; }\n\nbody .ectLayouts .layouts {\n  display: flex; }\n  body .ectLayouts .layouts .indLayout {\n    display: inline-block;\n    cursor: pointer;\n    min-width: 110px;\n    min-height: 110px;\n    border: 1px solid #c1c1c1;\n    margin: 10px;\n    text-align: center; }\n    body .ectLayouts .layouts .indLayout:hover {\n      background: #000;\n      color: #Fff; }\n    body .ectLayouts .layouts .indLayout .cont.spanDiv {\n      height: 100px;\n      display: flex;\n      align-items: center;\n      justify-content: center; }\n\nbody span.title {\n  background-color: #000;\n  color: #FFFFFF;\n  font-size: 18px;\n  line-height: 35px;\n  padding: 5px;\n  font-weight: bold;\n  text-transform: capitalize; }\n\nbody .buttons button.insert {\n  padding: 10px;\n  font-size: 18px;\n  -webkit-border-radius: 5px;\n  -moz-border-radius: 5px;\n  -ms-border-radius: 5px;\n  border-radius: 5px;\n  background: #4365cb;\n  color: #FFF;\n  width: 200px; }\n\nbody .moreOptions {\n  margin: 10px 10px 10px 0; }\n  body .moreOptions span.expand {\n    padding: 10px;\n    weight: 900;\n    background: #dfdfdf; }\n    body .moreOptions span.expand:hover {\n      cursor: pointer;\n      background: #505050;\n      color: #FFF; }\n  body .moreOptions .ReactCollapse--content {\n    padding: 30px 10px 10px 0; }\n\n.VerticalBasic .spanDiv {\n  display: inline-block; }\n  .VerticalBasic .spanDiv span {\n    display: block;\n    margin: 0 10px;\n    text-align: center; }\n", ""]);
+exports.push([module.i, "body .react-datepicker__time-list {\n  padding: 0;\n  margin: 0; }\n\nbody .ectLivePreview {\n  display: inline-block; }\n  body .ectLivePreview .preview {\n    display: inline-block;\n    border: 1px solid #c1c1c1;\n    padding: 10px; }\n\nbody .ectDateTimePicker {\n  margin-top: 20px; }\n  body .ectDateTimePicker .cDT {\n    padding: 10px;\n    text-align: center;\n    border: 1px solid #c1c1c1;\n    margin: 10px 10px 10px 0;\n    display: inline-block;\n    -webkit-border-radius: 10px;\n    -moz-border-radius: 10px;\n    border-radius: 10px; }\n    body .ectDateTimePicker .cDT span {\n      display: block;\n      text-align: center;\n      margin-bottom: 5px;\n      text-transform: uppercase; }\n  body .ectDateTimePicker span.title {\n    font-size: 14px; }\n\nbody .ectLayouts .layouts {\n  display: flex; }\n  body .ectLayouts .layouts .indLayout {\n    display: inline-block;\n    cursor: pointer;\n    min-width: 110px;\n    min-height: 110px;\n    border: 1px solid #c1c1c1;\n    margin: 10px;\n    text-align: center; }\n    body .ectLayouts .layouts .indLayout:hover {\n      background: #000;\n      color: #Fff; }\n    body .ectLayouts .layouts .indLayout .cont.spanDiv {\n      height: 100px;\n      display: flex;\n      align-items: center;\n      justify-content: center; }\n\nbody span.title {\n  background-color: #000;\n  color: #FFFFFF;\n  font-size: 18px;\n  line-height: 35px;\n  padding: 5px;\n  font-weight: bold;\n  text-transform: capitalize; }\n\nbody .buttons button.insert {\n  padding: 10px;\n  font-size: 18px;\n  -webkit-border-radius: 5px;\n  -moz-border-radius: 5px;\n  -ms-border-radius: 5px;\n  border-radius: 5px;\n  background: #4365cb;\n  color: #FFF;\n  width: 200px; }\n\nbody .moreOptions {\n  margin: 10px 10px 30px 0; }\n  body .moreOptions span.expand {\n    padding: 10px;\n    weight: 900;\n    background: #dfdfdf; }\n    body .moreOptions span.expand:hover {\n      cursor: pointer;\n      background: #505050;\n      color: #FFF; }\n  body .moreOptions .ReactCollapse--content {\n    padding: 30px 10px 10px 0; }\n  body .moreOptions .EctSlider div div {\n    margin: 0px !important; }\n  body .moreOptions .EctSlider span.title {\n    background: none;\n    color: #000; }\n\n.VerticalBasic .spanDiv {\n  display: inline-block; }\n  .VerticalBasic .spanDiv span {\n    display: block;\n    margin: 0 10px;\n    text-align: center; }\n", ""]);
 
 // exports
 
@@ -85793,6 +85793,10 @@ var _redux = __webpack_require__(34);
 
 var _reactRedux = __webpack_require__(29);
 
+var _MuiThemeProvider = __webpack_require__(324);
+
+var _MuiThemeProvider2 = _interopRequireDefault(_MuiThemeProvider);
+
 var _reduxPromise = __webpack_require__(734);
 
 var _reduxPromise2 = _interopRequireDefault(_reduxPromise);
@@ -85850,28 +85854,16 @@ var MainComponent = function (_Component) {
     _this.state = {
       collapsed: true
     };
-    _this.expCol = _this.expCol.bind(_this);
     return _this;
   }
 
   _createClass(MainComponent, [{
-    key: "expCol",
-    value: function expCol() {
-      this.setState({
-        collapsed: !this.state.collapsed
-      });
-    }
-  }, {
     key: "showComponents",
     value: function showComponents() {
-      var _this2 = this;
-
       if (isOnlyPreview) {
         return _react2.default.createElement("div", null, _react2.default.createElement(_ectPreview2.default, { parentKey: this.props.parentKey }));
       } else {
-        return _react2.default.createElement("div", null, _react2.default.createElement(_ectPreview2.default, null), _react2.default.createElement(_dateTimeComp2.default, null), _react2.default.createElement(_EctLayouts2.default, null), _react2.default.createElement("div", { className: "moreOptions" }, _react2.default.createElement("span", { className: "expand", onClick: function onClick() {
-            return _this2.expCol();
-          } }, "More Features"), _react2.default.createElement(_reactCollapse.UnmountClosed, { isOpened: !this.state.collapsed }, _react2.default.createElement("div", null, "Random contentRandom contentRandom contentRandom contentRandom contentRandom contentRandom contentRandom contentRandom content Random contentRandom contentRandom contentRandom contentRandom contentRandom contentRandom contentRandom contentRandom content Random contentRandom contentRandom contentRandom contentRandom contentRandom contentRandom contentRandom contentRandom content Random contentRandom contentRandom contentRandom contentRandom contentRandom contentRandom contentRandom contentRandom content Random contentRandom contentRandom contentRandom contentRandom contentRandom contentRandom contentRandom contentRandom content"))), _react2.default.createElement(_EctButtons2.default, null));
+        return _react2.default.createElement("div", null, _react2.default.createElement(_ectPreview2.default, null), _react2.default.createElement(_dateTimeComp2.default, null), _react2.default.createElement(_EctLayouts2.default, null), _react2.default.createElement(_MuiThemeProvider2.default, null, _react2.default.createElement(_moreOptions2.default, null)), _react2.default.createElement(_EctButtons2.default, null));
       }
     }
   }, {
@@ -89349,8 +89341,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__EctDateTime_jsx__ = __webpack_require__(66);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_collapse__ = __webpack_require__(373);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_collapse___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_collapse__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__slider_jsx__ = __webpack_require__(791);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_collapse__ = __webpack_require__(373);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_collapse___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_react_collapse__);
+
 
 
 
@@ -89362,20 +89356,27 @@ class MoreOptions extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     this.state = {
       collapsed: true
     };
+    this.expCol = this.expCol.bind(this);
   }
-
+  expCol() {
+    this.setState({
+      collapsed: !this.state.collapsed
+    });
+  }
   render() {
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
       { className: 'moreOptions' },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        __WEBPACK_IMPORTED_MODULE_2_react_collapse__["UnmountClosed"],
+        'span',
+        { className: 'expand', onClick: () => this.expCol() },
+        'More Features'
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        __WEBPACK_IMPORTED_MODULE_3_react_collapse__["UnmountClosed"],
         { isOpened: !this.state.collapsed },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'div',
-          null,
-          'Lorem ipsum dolor sit amet, no vix nobis verear, eu dictas maiorum nominavi ius. Mea vivendo menandri cu, cu mea facer praesent dissentias, te habeo option periculis sit. Ei sumo accusata quo. Ad sonet iisque ius, te eos cibo copiosae gubergren. Wisi nominati an sit. No vis vitae tibique omittantur, sit ludus fuisset ne. Agam justo per no. Vis quem laoreet facilisi id. Cu cum nibh dicam, eripuit pericula ne vix, ei impetus phaedrum scribentur his. Ferri verear eleifend an per, abhorreant incorrupte qui in. Vis ut primis accusata argumentum, ne vel platonem sapientem. Pro quod corrumpit ne. Nec odio graecis no, tamquam postulant usu ex. Et sensibus neglegentur duo. Et putant officiis percipitur vel, laudem incorrupte ea nec, dictas copiosae pro ei. Sed et similique adipiscing, ex probatus postulant sed. Integre democritum interpretaris qui cu, est sanctus nominavi senserit ei, ei cum probo solet minimum. Ut odio decore oporteat per, et mei postea quidam periculis. Purto albucius mea no. Ad eum wisi reque falli, prima officiis in mel. Omnis legimus pro et. Mei at cetero labores incorrupte, saperet similique per ea. Ne iusto cetero pri, mea cu repudiare concludaturque. Ad sea choro iudico adipisci, et ferri solet delectus mei. Option regione eloquentiam sed ad, cetero convenire dissentiunt ius ad. Id vel omnis homero assueverit, eam justo lorem noster cu.'
-        )
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__slider_jsx__["a" /* default */], { type: 'numbers' }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__slider_jsx__["a" /* default */], { type: 'texts' })
       )
     );
   }
@@ -90962,6 +90963,79 @@ UnmountClosed.propTypes = {
   isOpened: _propTypes2.default.bool.isRequired,
   onRest: _propTypes2.default.func
 };
+
+/***/ }),
+/* 791 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__EctDateTime_jsx__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_redux__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_redux___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_redux__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_redux__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__actions__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__actions___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__actions__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__reducers_modifiers_dateTime__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__reducers_modifiers_dateTime___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__reducers_modifiers_dateTime__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__reducers_modifiers_customTexts__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__reducers_modifiers_customTexts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__reducers_modifiers_customTexts__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__reducers_modifiers_style__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__reducers_modifiers_style___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__reducers_modifiers_style__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_moment__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_axios__ = __webpack_require__(762);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_material_ui__ = __webpack_require__(413);
+
+
+
+
+
+
+
+
+
+
+
+
+class EctSlider extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    let title;
+    switch (this.props.type) {
+      case 'numbers':
+        title = 'Numbers(ex: 0,1,2,3...) Size';
+        break;
+      case 'texts':
+        title = 'Numbers Text (ex: Year, Month,...) Size';
+        break;
+    }
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'div',
+      { className: 'EctSlider' },
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'span',
+        { className: 'title' },
+        title
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_10_material_ui__["Slider"], { defaultValue: 0.2 })
+    );
+  }
+}
+function mapStateToProps(state) {
+  return { dateTimeSel: state.dateTimeSel, newCustomTexts: state.newCustomTexts };
+}
+function matchDispatchToProps(dispatch) {
+  return Object(__WEBPACK_IMPORTED_MODULE_3_redux__["bindActionCreators"])({
+    selectDate: __WEBPACK_IMPORTED_MODULE_4__actions__["selectDate"]
+  }, dispatch);
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_2_react_redux__["connect"])(mapStateToProps, matchDispatchToProps)(EctSlider));
 
 /***/ })
 /******/ ]);

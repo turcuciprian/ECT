@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import ReactDOM from "react-dom";
 import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import promise from 'redux-promise';
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
@@ -20,16 +21,9 @@ class MainComponent extends Component {
     this.state = {
       collapsed: true
     }
-    this.expCol = this
-      .expCol
-      .bind(this);
+
   }
 
-  expCol() {
-    this.setState({
-      collapsed: !this.state.collapsed
-    });
-  }
   showComponents() {
     if (isOnlyPreview) {
       return (
@@ -43,23 +37,10 @@ class MainComponent extends Component {
           <EctPreviewCont/>
           <EctDatePickerCont/>
           <EctLayouts/>
-          <div className="moreOptions">
-            <span className="expand" onClick={() => this.expCol()}>
-              More Features</span>
-            <UnmountClosed isOpened={!this.state.collapsed}>
-              <div>Random contentRandom contentRandom contentRandom contentRandom
-                contentRandom contentRandom contentRandom contentRandom content Random
-                contentRandom contentRandom contentRandom contentRandom contentRandom
-                contentRandom contentRandom contentRandom content Random contentRandom
-                contentRandom contentRandom contentRandom contentRandom contentRandom
-                contentRandom contentRandom content Random contentRandom contentRandom
-                contentRandom contentRandom contentRandom contentRandom contentRandom
-                contentRandom content Random contentRandom contentRandom contentRandom
-                contentRandom contentRandom contentRandom contentRandom contentRandom content
+          <MuiThemeProvider>
+            <MoreOptions/>
+          </MuiThemeProvider>
 
-              </div>
-            </UnmountClosed>
-          </div>
           <EctButtons/>
         </div>
       )
