@@ -12,23 +12,31 @@ import axios from "axios";
 class EctButtons extends Component {
   constructor(props) {
     super(props);
-    this.insertTimerData = this.insertTimerData.bind(this);
-    this.deletePopup = this.deletePopup.bind(this);
+    this.insertTimerData = this
+      .insertTimerData
+      .bind(this);
+    this.deletePopup = this
+      .deletePopup
+      .bind(this);
   }
   insertTimerData() {
     let _data = {};
     _data['data'] = this.props.dateTimeSel;
     console.log(_data);
     _data['ectKs'] = ectKs;
-    axios.put('http://localhost/wordpress/wp-json/ect/v2/addTimer', _data).then(function(response) {
-      console.log(response);
-    });
+    axios
+      .put('http://localhost/wordpress/wp-json/ect/v2/addTimer', _data)
+      .then(function (response) {
+        console.log(response);
+      });
   }
   deletePopup() {
     if (typeof window.ectWPClosePopupButton != "undefined") {
       window.ectWPClosePopupButton();
     }
-    this.props.changeCustomText({
+    this
+      .props
+      .changeCustomText({
         Years: 'a',
         Months: 'b',
         Weeks: 'c',
@@ -36,17 +44,25 @@ class EctButtons extends Component {
         Hours: 'e',
         Minutes: 'f',
         Seconds: 'g'
-    })
+      })
   }
   render() {
-    return (<div className="buttons">
-      <p>
-        <button type="button" className="insert" onClick={this.insertTimerData}>Add Timer</button>
-      </p>
-      <p>
-        <button type="button" onClick={this.deletePopup}>Close Popup</button>
-      </p>
-    </div>);
+    if (this.props.dateTimeSel) {
+
+      return (
+        <div className="buttons">
+          <p>
+            <button type="button" className="insert" onClick={this.insertTimerData}>Add Timer</button>
+          </p>
+          <p>
+            <button type="button" onClick={this.deletePopup}>Close Popup</button>
+          </p>
+        </div>
+      );
+    } else {
+      return false;
+    }
+
   }
 }
 function mapStateToProps(state) {

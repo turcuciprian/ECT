@@ -106,9 +106,10 @@ body {
             border: 1px solid $borderColor;
             background-color: $backgroundLightColor;
             padding: 30px 20px 20px 20px;
-            margin-top:9px;
+            margin-top: 9px;
         }
-        .EctSlider {
+        .EctSlider,
+        .EctColorPicker {
             div {
                 div {
                     margin: 0px !important;
@@ -116,6 +117,7 @@ body {
             }
             span {
                 &.title {
+                    display:block;
                     background: none;
                     color: $backgroundDarkColor;
                 }

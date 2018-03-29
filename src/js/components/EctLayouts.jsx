@@ -1,4 +1,7 @@
 import React, {Component} from "react";
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+
 import EctDateTime from '../containers/EctDateTime.jsx';
 import LayoutsCont from '../containers/layouts.jsx';
 class EctLayouts extends Component {
@@ -6,15 +9,23 @@ class EctLayouts extends Component {
         super(props);
     }
     render() {
-        return (
-            <div className="ectLayouts">
-                <div>
-                    <span className="title">Timer Layouts</span>
-                    <LayoutsCont />
-                </div>
+        if (this.props.dateTimeSel) {
+            return (
+                <div className="ectLayouts">
+                    <div>
+                        <span className="title">Timer Layouts</span>
+                        <LayoutsCont/>
+                    </div>
 
-            </div>
-        )
+                </div>
+            );
+        } else {
+            return false;
+        }
     }
 }
-export default EctLayouts;
+function mapStateToProps(state) {
+    return {dateTimeSel: state.dateTimeSel};
+}
+
+export default connect(mapStateToProps)(EctLayouts);

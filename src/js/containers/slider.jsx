@@ -4,10 +4,6 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {selectDate} from '../actions';
 import dateTimeSel from '../reducers/modifiers/dateTime';
-import newCustomTexts from '../reducers/modifiers/customTexts';
-import newStyle from '../reducers/modifiers/style';
-import moment from "moment";
-import axios from "axios";
 import {Slider} from 'material-ui';
 
 class EctSlider extends Component {
@@ -47,7 +43,7 @@ class EctSlider extends Component {
     let originalDateTime = this.props.dateTimeSel;
     switch (this.props.type) {
       case 'numbers':
-        startTitle = 'Numbers(ex: 0,1,2,3...) Size';
+        startTitle = '';
         if (this.state.dateTimeSel) {
           startNr = (this.props.dateTimeSel.style.numbersSize / this.state.maxNr) ;
 
@@ -56,7 +52,7 @@ class EctSlider extends Component {
         }
         break;
       case 'texts':
-        startTitle = 'Numbers Text (ex: Year, Month,...) Size';
+        startTitle = '';
         if (this.state.dateTimeSel) {
           startNr = (this.props.dateTimeSel.style.numbersTxtSize / this.state.maxNr);
         } else {
@@ -67,7 +63,7 @@ class EctSlider extends Component {
 
     return (
       <div className="EctSlider">
-        <span className="title">{startTitle}</span>
+        <span className="title">Size</span>
         <Slider defaultValue={startNr} onChange={this.modifySize}/>
       </div>
     );
