@@ -87844,9 +87844,7 @@ var HorizontalBasicCont = function (_Component) {
           if (_this2.state.timeout[1]) {
             clearTimeout(_this2.state.timeout[1]);
           }
-          if (devMode) {
-            _this2.setState({ timeout: [] });
-          }
+          _this2.setState({ timeout: [] });
         }, 1000));
         var dateTimeTxt = this.props.dateTimeSel.numbersText;
         var endDateTimeObj = {
@@ -87868,9 +87866,7 @@ var HorizontalBasicCont = function (_Component) {
         var numbersTxtSize = this.props.dateTimeSel.style.numbersTxtSize; // font size
         var numbersTxtColor = this.props.dateTimeSel.style.numbersTxtColor; // color
 
-        //STYLE for numbers
-
-        //STYLE for numbers
+        //STYLE for numbers STYLE for numbers
         var numbersStyle = {
           fontSize: numbersSize,
           lineHeight: Math.round(numbersSize + numbersSize * 0.5) + 'px',
@@ -88528,20 +88524,14 @@ class EctButtons extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     __WEBPACK_IMPORTED_MODULE_9_axios___default.a.put(ectWPPath + '/ect/v2/addTimer', _data).then(function (response) {
 
       let _data = response.data[1];
-      //reset timer
-      // tThis
-      //   .props
-      //   .selectDate(null);
+      //reset timer tThis   .props   .selectDate(null);
       if (typeof window.ectWPInsertSC != "undefined") {
         ectWPInsertSC(_data.returnID);
       }
     });
   }
   deletePopup() {
-    //reset timer
-    // this
-    //   .props
-    //   .selectDate(null);
+    //reset timer this   .props   .selectDate(null);
     if (typeof window.ectWPClosePopupButton != "undefined") {
 
       window.ectWPClosePopupButton();
@@ -88549,6 +88539,15 @@ class EctButtons extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
   }
   render() {
     if (this.props.dateTimeSel) {
+      let closePopupButton = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'p',
+        null,
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'button',
+          { className: 'close', type: 'button', onClick: this.deletePopup },
+          'Close Popup'
+        )
+      );
 
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
@@ -88562,18 +88561,18 @@ class EctButtons extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
             'Add Timer'
           )
         ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'p',
-          null,
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'button',
-            { type: 'button', onClick: this.deletePopup },
-            'Close Popup'
-          )
-        )
+        closePopupButton
       );
     } else {
-      return false;
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'p',
+        null,
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'button',
+          { type: 'button', onClick: this.deletePopup },
+          'Close Popup'
+        )
+      );
     }
   }
 }

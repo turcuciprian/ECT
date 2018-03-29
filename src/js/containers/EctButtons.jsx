@@ -32,20 +32,14 @@ class EctButtons extends Component {
       .then(function (response) {
 
         let _data = response.data[1];
-        //reset timer
-        // tThis
-        //   .props
-        //   .selectDate(null);
+        //reset timer tThis   .props   .selectDate(null);
         if (typeof window.ectWPInsertSC != "undefined") {
           ectWPInsertSC(_data.returnID);
         }
       });
   }
   deletePopup() {
-        //reset timer
-    // this
-    //   .props
-    //   .selectDate(null);
+    //reset timer this   .props   .selectDate(null);
     if (typeof window.ectWPClosePopupButton != "undefined") {
 
       window.ectWPClosePopupButton();
@@ -53,19 +47,26 @@ class EctButtons extends Component {
   }
   render() {
     if (this.props.dateTimeSel) {
+      let closePopupButton = (
+        <p>
+          <button className="close" type="button" onClick={this.deletePopup}>Close Popup</button>
+        </p>
+      );
 
       return (
         <div className="buttons">
           <p>
             <button type="button" className="insert" onClick={this.insertTimerData}>Add Timer</button>
           </p>
-          <p>
-            <button type="button" onClick={this.deletePopup}>Close Popup</button>
-          </p>
+          {closePopupButton}
         </div>
       );
     } else {
-      return false;
+      return (
+        <p>
+          <button type="button" onClick={this.deletePopup}>Close Popup</button>
+        </p>
+      );
     }
 
   }
