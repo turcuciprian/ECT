@@ -6,7 +6,7 @@ import {selectDate, changeCustomText, changeStyle, changeLayout} from '../action
 import moment from "moment";
 
 // import all layouts
-import {HorizontalBasic,VerticalBasic} from '../components/layouts/all';
+import {HorizontalBasic, VerticalBasic} from '../components/layouts/all';
 
 /* We need "if(!this.props.user)" because we set state to null by default */
 class EctPreviewCont extends Component {
@@ -15,13 +15,24 @@ class EctPreviewCont extends Component {
     this.state = {
       timeout: []
     }
-    this.dinamicComponent = this.dinamicComponent.bind(this);
+    this.dinamicComponent = this
+      .dinamicComponent
+      .bind(this);
 
     if (this.props.parentKey) {
       //
       // set the custom date
       //
-      this.props.selectDate(ectProperties[0][this.props.parentKey]);
+      const tThis = this;
+      ectProperties.forEach(function (item, index) {
+        console.log(ectProperties[index]);
+        if (ectProperties[index][tThis.props.parentKey]) {
+          tThis
+            .props
+            .selectDate(ectProperties[index][tThis.props.parentKey]);
+        }
+      });
+
     }
     //Set custom layout -set the first one as default if not set
 
@@ -39,7 +50,9 @@ class EctPreviewCont extends Component {
     };
     var DynamicComponentName = compnts[tempLayout];
 
-    return (<DynamicComponentName className={DynamicComponentName} className="floatingPreview"/>);
+    return (<DynamicComponentName
+      className={DynamicComponentName}
+      className="floatingPreview"/>);
   }
   render() {
     var endDateTimeObj = {};
@@ -54,22 +67,26 @@ class EctPreviewCont extends Component {
       // const tempDate = dateMath.returnRemainingDateTime(endDateTimeObj);
     }
     let parentLayClass;
-    if(this.props.dateTimeSel){
+    if (this.props.dateTimeSel) {
       parentLayClass = this.props.dateTimeSel.style.layout
     }
     if (devMode) {
-      return (<div className={` ectLivePreview ${parentLayClass}`}>
-        <span className="title">Live preview</span>
-        <div>
-          <div className="preview">
-            {this.dinamicComponent()}
+      return (
+        <div className={` ectLivePreview ${parentLayClass}`}>
+          <span className="title">Live preview</span>
+          <div>
+            <div className="preview">
+              {this.dinamicComponent()}
+            </div>
           </div>
         </div>
-      </div>);
+      );
     }
-    return (<div className={` ectLivePreview ${parentLayClass}`}>
-      {this.dinamicComponent()}
-    </div>);
+    return (
+      <div className={` ectLivePreview ${parentLayClass}`}>
+        {this.dinamicComponent()}
+      </div>
+    );
   }
 }
 

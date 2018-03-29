@@ -47,8 +47,6 @@ class MainComponent extends Component {
     }
   }
   render() {
-    console.log(ectProperties);
-    
     const logger = createLogger();
     const store = createStore(allReducers, applyMiddleware(thunk, promise, logger));
     return (
@@ -60,7 +58,11 @@ class MainComponent extends Component {
 }
 if (typeof ectProperties != "undefined") 
   ectProperties.forEach(function (eachTimer) {
+    if (!eachTimer) {
+      return;
+    }
     for (var key in eachTimer) {
+
       ReactDOM.render(
         <MainComponent parentKey={key}/>, document.getElementById(key));
     }
