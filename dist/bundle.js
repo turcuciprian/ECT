@@ -34022,6 +34022,8 @@ __webpack_require__(728);
 
 __webpack_require__(733);
 
+__webpack_require__(852);
+
 /***/ }),
 /* 378 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -85239,7 +85241,7 @@ exports = module.exports = __webpack_require__(730)(false);
 
 
 // module
-exports.push([module.i, "body .react-datepicker__time-list {\n  padding: 0;\n  margin: 0; }\n\nbody .ectLivePreview {\n  display: inline-block; }\n  body .ectLivePreview .preview {\n    display: inline-block;\n    border: 1px solid #c1c1c1;\n    padding: 10px; }\n\nbody .ectDateTimePicker {\n  margin-top: 20px; }\n  body .ectDateTimePicker .cDT {\n    padding: 10px;\n    text-align: center;\n    border: 1px solid #c1c1c1;\n    margin: 10px 10px 10px 0;\n    display: inline-block;\n    -webkit-border-radius: 10px;\n    -moz-border-radius: 10px;\n    border-radius: 10px; }\n    body .ectDateTimePicker .cDT span {\n      display: block;\n      text-align: center;\n      margin-bottom: 5px;\n      text-transform: uppercase; }\n  body .ectDateTimePicker span.title {\n    font-size: 14px; }\n\nbody .ectLayouts .layouts {\n  display: flex; }\n  body .ectLayouts .layouts .indLayout {\n    display: inline-block;\n    cursor: pointer;\n    min-width: 110px;\n    min-height: 110px;\n    border: 1px solid #c1c1c1;\n    margin: 10px;\n    text-align: center; }\n    body .ectLayouts .layouts .indLayout:hover {\n      background: #000;\n      color: #Fff; }\n    body .ectLayouts .layouts .indLayout.selected {\n      -webkit-box-shadow: 0px 0px 20px 5px #0091ff;\n      -moz-box-shadow: 0px 0px 20px 5px #0091ff;\n      box-shadow: 0px 0px 20px 5px #0091ff; }\n    body .ectLayouts .layouts .indLayout .cont.spanDiv {\n      min-height: 100px;\n      display: flex;\n      align-items: center;\n      justify-content: center; }\n\nbody span.title {\n  background-color: #000;\n  color: #FFFFFF;\n  font-size: 18px;\n  line-height: 35px;\n  padding: 5px;\n  font-weight: bold;\n  text-transform: capitalize; }\n\nbody .buttons button.insert {\n  padding: 10px;\n  font-size: 18px;\n  -webkit-border-radius: 5px;\n  -moz-border-radius: 5px;\n  -ms-border-radius: 5px;\n  border-radius: 5px;\n  background: #4365cb;\n  color: #FFF;\n  width: 200px; }\n\nbody .moreOptions {\n  margin: 20px 10px 30px 0; }\n  body .moreOptions span.expand {\n    padding: 10px;\n    weight: 900;\n    background: #dfdfdf; }\n    body .moreOptions span.expand:hover {\n      cursor: pointer;\n      background: #505050;\n      color: #FFF; }\n  body .moreOptions .ReactCollapse--content {\n    border: 1px solid #c1c1c1;\n    background-color: #efefef;\n    padding: 30px 20px 20px 20px;\n    margin-top: 9px; }\n  body .moreOptions .EctSlider div div,\n  body .moreOptions .EctColorPicker div div {\n    margin: 0px !important; }\n  body .moreOptions .EctSlider span.title,\n  body .moreOptions .EctColorPicker span.title {\n    display: block;\n    background: none;\n    color: #000; }\n\n.VerticalBasic .spanDiv {\n  display: inline-block; }\n  .VerticalBasic .spanDiv span {\n    display: block;\n    margin: 0 10px;\n    text-align: center; }\n", ""]);
+exports.push([module.i, "body .react-datepicker__time-list {\n  padding: 0;\n  margin: 0; }\n\nbody .ectLivePreview {\n  display: inline-block; }\n  body .ectLivePreview .preview {\n    display: inline-block;\n    border: 1px solid #c1c1c1;\n    padding: 10px; }\n\nbody .ectDateTimePicker {\n  margin-top: 20px; }\n  body .ectDateTimePicker .cDT {\n    padding: 10px;\n    text-align: center;\n    border: 1px solid #c1c1c1;\n    margin: 10px 10px 10px 0;\n    display: inline-block;\n    -webkit-border-radius: 10px;\n    -moz-border-radius: 10px;\n    border-radius: 10px; }\n    body .ectDateTimePicker .cDT span {\n      display: block;\n      text-align: center;\n      margin-bottom: 5px;\n      text-transform: uppercase; }\n  body .ectDateTimePicker span.title {\n    font-size: 14px; }\n\nbody .ectLayouts .layouts {\n  display: flex; }\n  body .ectLayouts .layouts .indLayout {\n    display: inline-block;\n    cursor: pointer;\n    min-width: 110px;\n    min-height: 110px;\n    border: 1px solid #c1c1c1;\n    margin: 10px;\n    text-align: center; }\n    body .ectLayouts .layouts .indLayout:hover {\n      background: #000;\n      color: #Fff; }\n    body .ectLayouts .layouts .indLayout.selected {\n      -webkit-box-shadow: 0px 0px 20px 5px #0091ff;\n      -moz-box-shadow: 0px 0px 20px 5px #0091ff;\n      box-shadow: 0px 0px 20px 5px #0091ff; }\n    body .ectLayouts .layouts .indLayout .cont.spanDiv {\n      min-height: 100px;\n      display: flex;\n      align-items: center;\n      justify-content: center; }\n\nbody span.title {\n  background-color: #000;\n  color: #FFFFFF;\n  font-size: 18px;\n  line-height: 35px;\n  padding: 5px;\n  font-weight: bold;\n  text-transform: capitalize; }\n\nbody .buttons button.insert {\n  padding: 10px;\n  font-size: 18px;\n  -webkit-border-radius: 5px;\n  -moz-border-radius: 5px;\n  -ms-border-radius: 5px;\n  border-radius: 5px;\n  background: #4365cb;\n  color: #FFF;\n  width: 200px; }\n\nbody .moreOptions {\n  margin: 20px 10px 30px 0; }\n  body .moreOptions span.expand {\n    padding: 10px;\n    weight: 900;\n    background: #dfdfdf; }\n    body .moreOptions span.expand:hover {\n      cursor: pointer;\n      background: #505050;\n      color: #FFF; }\n  body .moreOptions .ReactCollapse--content {\n    border: 1px solid #c1c1c1;\n    background-color: #efefef;\n    padding: 30px 20px 20px 20px;\n    margin-top: 9px; }\n  body .moreOptions .EctSlider div div,\n  body .moreOptions .EctColorPicker div div {\n    margin: 0px !important; }\n  body .moreOptions .EctSlider span.title,\n  body .moreOptions .EctColorPicker span.title {\n    display: block;\n    background: none;\n    color: #000; }\n\nbody .VerticalBasic .spanDiv {\n  display: inline-block; }\n  body .VerticalBasic .spanDiv span {\n    display: block;\n    margin: 0 10px;\n    text-align: center; }\n\n#allTimers ul li {\n  list-style: none;\n  border-radius: 9px 9px 9px 9px;\n  -moz-border-radius: 9px 9px 9px 9px;\n  -webkit-border-radius: 9px 9px 9px 9px;\n  border: 1px solid #b7b7b7;\n  background-color: #f0f0f0;\n  margin: 10px 0;\n  padding: 5px;\n  height: 25px;\n  width: 40%; }\n  #allTimers ul li:hover {\n    background-color: #89f5ec;\n    cursor: pointer; }\n  #allTimers ul li .timersName {\n    float: left;\n    line-height: 29px;\n    font-size: 20px; }\n  #allTimers ul li .timersDeleteContainer {\n    float: right;\n    margin: 0px 10px; }\n    #allTimers ul li .timersDeleteContainer input {\n      margin-right: 10px;\n      float: left;\n      width: 120px; }\n    #allTimers ul li .timersDeleteContainer img {\n      float: right;\n      opacity: 0.4; }\n      #allTimers ul li .timersDeleteContainer img:hover {\n        opacity: 1;\n        cursor: pointer; }\n", ""]);
 
 // exports
 
@@ -98475,6 +98477,134 @@ Twitter.defaultProps = {
 };
 
 exports.default = (0, _common.ColorWrap)(Twitter);
+
+/***/ }),
+/* 852 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(762);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
+
+
+
+
+class AllTimers extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+    constructor(props) {
+        super(props);
+        this.returnTimers();
+        this.state = {
+            timersHTML: ''
+        };
+        this.returnTimers = this.returnTimers.bind(this);
+        this.deleteTimer = this.deleteTimer.bind(this);
+    }
+    deleteTimer(itemToDelete, id, index) {
+        var _parent = this;
+
+        __WEBPACK_IMPORTED_MODULE_2_axios___default.a.delete(ectWPPath + '/ect/v2/removeTimer/' + id + '/' + ectKs).then(function (response) {
+            var allTimers = _parent.state.timersHTML;
+            allTimers.forEach(function (item, tIndex) {
+
+                if (item.key == id) {
+                    index = tIndex;
+                    return;
+                }
+            });
+
+            allTimers.splice(index, 1);
+            _parent.setState({ timersHTML: allTimers });
+            _parent.setState({ timersHTML: allTimers });
+        });
+    }
+
+    returnTimers() {
+        var timersReturned;
+        var _parent = this;
+        __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get(ectWPPath + '/ect/v2/getTimers/' + ectKs).then(function (response) {
+            var _data = response.data;
+            timersReturned = _data;
+            var timerToShow = [];
+            let i = 0;
+            for (var key in timersReturned) {
+                let element = timersReturned[key];
+
+                if (!element['timerID']) {
+                    continue;
+                }
+                console.log('element', element);
+                let ListElement;
+                var timerNameFinal;
+                var imgUrl = ectScriptBase + "/src/img/trash.png";
+                var shortcodeId = '[ectSc id="' + element['timerID'] + '"]';
+                if (typeof element.timerName != "undefined" && element.timerName != "") {
+                    timerNameFinal = element.timerName;
+                } else {
+                    timerNameFinal = 'Timer-' + element['timerID'];
+                }
+                ListElement = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    "li",
+                    { key: element['timerID'] },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "div",
+                        { className: "timersName" },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            "span",
+                            null,
+                            timerNameFinal
+                        )
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "div",
+                        { className: "timersDeleteContainer" },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "text", value: shortcodeId, readOnly: true }),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", {
+                            onClick: () => {
+                                _parent.deleteTimer(element, element['timerID'], i);
+                            },
+                            src: imgUrl })
+                    )
+                );
+
+                timerToShow.push(ListElement);
+                i++;
+            };
+            console.log('timerToShow', timerToShow);
+
+            _parent.setState({ timersHTML: timerToShow });
+        }).catch(function (error) {
+            console.log(error);
+        });
+    }
+    render() {
+        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "div",
+            null,
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "h1",
+                null,
+                "Easy Countdown Timer - Timers"
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "p",
+                null,
+                "Manage your timers"
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "ul",
+                null,
+                this.state.timersHTML
+            )
+        );
+    }
+}
+const allTimersElem = document.getElementById("allTimers");
+if (allTimersElem != null) __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(AllTimers, null), allTimersElem);
 
 /***/ })
 /******/ ]);

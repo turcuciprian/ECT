@@ -16,3 +16,4 @@ import '../../node_modules/axios/dist/axios.min';
         import '../../index.html';
 import "../scss/main.scss";
         import "./main.js";
+        import "./allTimers.jsx";

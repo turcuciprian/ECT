@@ -1,0 +1,42 @@
+#allTimers {
+    ul {
+        li {
+            list-style: none;
+            border-radius: 9px 9px 9px 9px;
+            -moz-border-radius: 9px 9px 9px 9px;
+            -webkit-border-radius: 9px 9px 9px 9px;
+            border: 1px solid #b7b7b7;
+            background-color: #f0f0f0;
+            margin: 10px 0;
+            padding: 5px;
+            height: 25px;
+            width: 40%;
+            &:hover {
+                background-color: #89f5ec;
+                cursor: pointer;
+            }
+            .timersName {
+                float: left;
+                line-height: 29px;
+                font-size: 20px;
+            }
+            .timersDeleteContainer {
+                float: right;
+                margin: 0px 10px;
+                input {
+                    margin-right: 10px;
+                    float: left;
+                    width: 120px;
+                }
+                img {
+                    float: right;
+                    opacity: 0.4;
+                    &:hover {
+                        opacity: 1;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}
