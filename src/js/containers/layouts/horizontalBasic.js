@@ -20,7 +20,9 @@ class HorizontalBasicCont extends Component {
         if (this.state.timeout[1]) {
           clearTimeout(this.state.timeout[1]);
         }
-        this.setState({timeout: []});
+        if(devMode){
+          this.setState({timeout: []});
+        }
       }, 1000));
       var dateTimeTxt = this.props.dateTimeSel.numbersText;
       var endDateTimeObj = {
@@ -45,13 +47,17 @@ class HorizontalBasicCont extends Component {
       const numbersTxtColor = this.props.dateTimeSel.style.numbersTxtColor; // color
 
       //STYLE for numbers
+
+      //STYLE for numbers
       const numbersStyle = {
         fontSize: numbersSize,
+        lineHeight: Math.round(numbersSize + (numbersSize * 0.5)) + 'px',
         color: numbersColor
       };
       //STYLE for numbers Text
       const numbersTxtStyle = {
         fontSize: numbersTxtSize,
+        lineHeight: Math.round(numbersTxtSize + (numbersTxtSize * 0.5)) + 'px',
         color: numbersTxtColor
       };
 

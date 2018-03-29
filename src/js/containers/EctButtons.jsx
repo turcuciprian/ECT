@@ -24,17 +24,30 @@ class EctButtons extends Component {
     _data['data'] = this.props.dateTimeSel;
     console.log(_data);
     _data['ectKs'] = ectKs;
+    // get the this scope of the component
+    let tThis = this;
+
     axios
       .put(ectWPPath + '/ect/v2/addTimer', _data)
       .then(function (response) {
-        console.log(response.data);
-        
+
         let _data = response.data[1];
-        ectWPInsertSC(_data.returnID);
+        //reset timer
+        // tThis
+        //   .props
+        //   .selectDate(null);
+        if (typeof window.ectWPInsertSC != "undefined") {
+          ectWPInsertSC(_data.returnID);
+        }
       });
   }
   deletePopup() {
+        //reset timer
+    // this
+    //   .props
+    //   .selectDate(null);
     if (typeof window.ectWPClosePopupButton != "undefined") {
+
       window.ectWPClosePopupButton();
     }
   }

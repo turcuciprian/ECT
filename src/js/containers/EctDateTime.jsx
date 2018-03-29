@@ -7,7 +7,9 @@ class EctDateTime extends Component {
     this.state = {
       compValue: this.props.data
     }
-    this.dtCall = this.dtCall.bind(this);
+    this.dtCall = this
+      .dtCall
+      .bind(this);
   }
   dtCall(evt) {
     const data = evt.target.value;
@@ -29,7 +31,9 @@ class EctDateTime extends Component {
         start = moment().year();
         end = moment().year() + 50;
         for (var i = start; i <= end; i++) {
-          options.push(<option key={labelText + i} value={i}>{i}</option>)
+          options.push(
+            <option key={labelText + i} value={i}>{i}</option>
+          )
         }
         break;
       case 'month':
@@ -56,7 +60,9 @@ class EctDateTime extends Component {
           12: 'December'
         }
         for (var i = start; i <= end; i++) {
-          options.push(<option key={labelText + i} value={i}>{dpMonths[i]}</option>)
+          options.push(
+            <option key={labelText + i} value={i}>{dpMonths[i]}</option>
+          )
         }
         break;
       case 'day':
@@ -73,7 +79,9 @@ class EctDateTime extends Component {
           ? moment(this.props.date.year + '-' + this.props.date.month, 'YYY-MM').daysInMonth()
           : 28;
         for (var i = start; i <= end; i++) {
-          options.push(<option key={labelText + i} value={i}>{i}</option>)
+          options.push(
+            <option key={labelText + i} value={i}>{i}</option>
+          )
         }
 
         break;
@@ -88,7 +96,9 @@ class EctDateTime extends Component {
 
         labelText = 'Hour';
         for (var i = start; i <= end; i++) {
-          options.push(<option key={labelText + i} value={i}>{i}</option>)
+          options.push(
+            <option key={labelText + i} value={i}>{i}</option>
+          )
         }
         break;
       case 'minute':
@@ -101,17 +111,24 @@ class EctDateTime extends Component {
         }
         labelText = 'Minute';
         for (var i = start; i <= end; i++) {
-          options.push(<option key={labelText + i} value={i}>{i}</option>)
+          options.push(
+            <option key={labelText + i} value={i}>{i}</option>
+          )
         }
         break;
     }
-    return (<div className={labelText + ' cDT'}>
-      <span>
-        {labelText}</span>
-      <select value={this.state.compValue} name={'ectDTP' + labelText} onChange={this.dtCall}>
-        {options}
-      </select>
-    </div>)
+    return (
+      <div className={labelText + ' cDT'}>
+        <span>
+          {labelText}</span>
+        <select
+          value={this.state.compValue}
+          name={'ectDTP' + labelText}
+          onChange={this.dtCall}>
+          {options}
+        </select>
+      </div>
+    )
   }
 }
 export default EctDateTime;

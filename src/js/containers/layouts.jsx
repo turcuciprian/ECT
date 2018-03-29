@@ -65,12 +65,14 @@ class LayoutsCont extends Component {
             //STYLE for numbers
             const numbersStyle = {
               fontSize: numbersSize,
-              color: numbersColor
+        lineHeight: Math.round(numbersSize + (numbersSize * 0.5)) + 'px',
+        color: numbersColor
             };
             //STYLE for numbers Text
             const numbersTxtStyle = {
               fontSize: numbersTxtSize,
-              color: numbersTxtColor
+        lineHeight: Math.round(numbersTxtSize + (numbersTxtSize * 0.5)) + 'px',
+        color: numbersTxtColor
             };
             return (
               <div

@@ -20,8 +20,12 @@ class EctDatePickerCont extends Component {
         minute: moment().minute()
       }
     }
-    this.ectGetFromChildren = this.ectGetFromChildren.bind(this);
-    this.EctDateTimeChildren = this.EctDateTimeChildren.bind(this);
+    this.ectGetFromChildren = this
+      .ectGetFromChildren
+      .bind(this);
+    this.EctDateTimeChildren = this
+      .EctDateTimeChildren
+      .bind(this);
 
   }
   ectGetFromChildren(data, type) {
@@ -76,7 +80,10 @@ class EctDatePickerCont extends Component {
     } else {
       newStyle = this.props.styleSel;
     }
-    const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const userTimezone = Intl
+      .DateTimeFormat()
+      .resolvedOptions()
+      .timeZone;
     const newDate = {
       'endDate': {
         year: tYear,
@@ -84,12 +91,16 @@ class EctDatePickerCont extends Component {
         day: tDay,
         hour: tHour,
         minute: tMinute,
-        timezone: -moment().toDate().getTimezoneOffset()*60000
+        timezone: -moment()
+          .toDate()
+          .getTimezoneOffset() * 60000
       },
       numbersText: newCTxts,
       style: newStyle
     }
-    this.props.selectDate(newDate);
+    this
+      .props
+      .selectDate(newDate);
   }
   EctDateTimeChildren() {
     const dateTimes = ['year', 'month', 'day', 'hour', 'minute'];
@@ -107,19 +118,25 @@ class EctDatePickerCont extends Component {
     }
     let dateTimesFinal = [];
     dateTimes.forEach((item, i) => {
-      dateTimesFinal.push(<EctDateTime key={i} type={item} date={fullDate} ectCallback={this.ectGetFromChildren}/>);
+      dateTimesFinal.push(<EctDateTime
+        key={i}
+        type={item}
+        date={fullDate}
+        ectCallback={this.ectGetFromChildren}/>);
     });
     return dateTimesFinal;
 
   }
   render() {
     const children = this.props.children
-    return (<div className="ectDateTimePicker">
-      <div>
-        <span className="title">When Should the timer stop?</span>
+    return (
+      <div className="ectDateTimePicker">
+        <div>
+          <span className="title">When Should the timer stop?</span>
+        </div>
+        {this.EctDateTimeChildren()}
       </div>
-      {this.EctDateTimeChildren()}
-    </div>);
+    );
   }
 }
 

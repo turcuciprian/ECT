@@ -47,11 +47,13 @@ class HorizontalBasicCont extends Component {
       //STYLE for numbers
       const numbersStyle = {
         fontSize: numbersSize,
+        lineHeight: Math.round(numbersSize + (numbersSize * 0.25)) + 'px',
         color: numbersColor
       };
       //STYLE for numbers Text
       const numbersTxtStyle = {
         fontSize: numbersTxtSize,
+        lineHeight: Math.round(numbersTxtSize + (numbersTxtSize * 0.25)) + 'px',
         color: numbersTxtColor
       };
 

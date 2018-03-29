@@ -8685,7 +8685,10 @@ class EctDateTime extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
       ),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         "select",
-        { value: this.state.compValue, name: 'ectDTP' + labelText, onChange: this.dtCall },
+        {
+          value: this.state.compValue,
+          name: 'ectDTP' + labelText,
+          onChange: this.dtCall },
         options
       )
     );
@@ -85194,7 +85197,7 @@ exports.default = loopable;
 /* 727 */
 /***/ (function(module, exports) {
 
-module.exports = "<!DOCTYPE html>\r\n<html>\r\n\r\n<head>\r\n  <meta charset='utf-8'>\r\n  <title>Easy Countdown Timer </title>\r\n</head>\r\n\r\n<body>\r\n  <div id=\"ect_root\"></div>\r\n  <div id=\"ect_root2\"></div>\r\n  <script type=\"text/javascript\">\r\n    var devMode = true;\r\n    var isOnlyPreview = false;\r\n    var ectWPPath = \"http://localhost/wordpress/\";\r\n    var ectKs = \"b30a02aabb9955ce8de5956198c2bbf9\";\r\n    var ectProperties = [{\r\n      'ect_root': {\r\n        'endDate': {\r\n          year: 2099,\r\n          month: 12,\r\n          day: 1,\r\n          hour: 1,\r\n          minute: 1,\r\n          timezone: '-10800000'\r\n        },\r\n        numbersText: {\r\n          Years: 'Years',\r\n          Months: 'Months',\r\n          Weeks: 'Weeks',\r\n          Days: 'Days',\r\n          Hours: 'Hours',\r\n          Minutes: 'Minutes',\r\n          Seconds: 'Seconds'\r\n        },\r\n        style: {\r\n          layout: 'VerticalBasic',\r\n          numbersSize: 34,\r\n          numbersTxtSize: 22,\r\n          numbersColor: 'red',\r\n          numbersTxtColor: 'green'\r\n        }\r\n      }\r\n    }];\r\n  </script>\r\n  <script src='dist/bundle.js'>\r\n  </script>\r\n</body>\r\n\r\n</html>\r\n";
+module.exports = "<!DOCTYPE html>\r\n<html>\r\n\r\n<head>\r\n  <meta charset='utf-8'>\r\n  <title>Easy Countdown Timer </title>\r\n</head>\r\n\r\n<body>\r\n  <div id=\"ect_root\"></div>\r\n  <div id=\"ect_root2\"></div>\r\n  <script type=\"text/javascript\">\r\n    var devMode = true;\r\n    var isOnlyPreview = false;\r\n    var ectWPPath = \"http://localhost/wordpress/wp-json\";\r\n    var ectKs = \"b30a02aabb9955ce8de5956198c2bbf9\";\r\n    var ectProperties = [{\r\n      'ect_root': {\r\n        'endDate': {\r\n          year: 2099,\r\n          month: 12,\r\n          day: 1,\r\n          hour: 1,\r\n          minute: 1,\r\n          timezone: '-10800000'\r\n        },\r\n        numbersText: {\r\n          Years: 'Years',\r\n          Months: 'Months',\r\n          Weeks: 'Weeks',\r\n          Days: 'Days',\r\n          Hours: 'Hours',\r\n          Minutes: 'Minutes',\r\n          Seconds: 'Seconds'\r\n        },\r\n        style: {\r\n          layout: 'VerticalBasic',\r\n          numbersSize: 34,\r\n          numbersTxtSize: 22,\r\n          numbersColor: 'red',\r\n          numbersTxtColor: 'green'\r\n        }\r\n      }\r\n    }];\r\n  </script>\r\n  <script src='dist/bundle.js'>\r\n  </script>\r\n</body>\r\n\r\n</html>\r\n";
 
 /***/ }),
 /* 728 */
@@ -87841,7 +87844,9 @@ var HorizontalBasicCont = function (_Component) {
           if (_this2.state.timeout[1]) {
             clearTimeout(_this2.state.timeout[1]);
           }
-          _this2.setState({ timeout: [] });
+          if (devMode) {
+            _this2.setState({ timeout: [] });
+          }
         }, 1000));
         var dateTimeTxt = this.props.dateTimeSel.numbersText;
         var endDateTimeObj = {
@@ -87864,13 +87869,17 @@ var HorizontalBasicCont = function (_Component) {
         var numbersTxtColor = this.props.dateTimeSel.style.numbersTxtColor; // color
 
         //STYLE for numbers
+
+        //STYLE for numbers
         var numbersStyle = {
           fontSize: numbersSize,
+          lineHeight: Math.round(numbersSize + numbersSize * 0.5) + 'px',
           color: numbersColor
         };
         //STYLE for numbers Text
         var numbersTxtStyle = {
           fontSize: numbersTxtSize,
+          lineHeight: Math.round(numbersTxtSize + numbersTxtSize * 0.5) + 'px',
           color: numbersTxtColor
         };
 
@@ -88057,11 +88066,13 @@ var HorizontalBasicCont = function (_Component) {
         //STYLE for numbers
         var numbersStyle = {
           fontSize: numbersSize,
+          lineHeight: Math.round(numbersSize + numbersSize * 0.25) + 'px',
           color: numbersColor
         };
         //STYLE for numbers Text
         var numbersTxtStyle = {
           fontSize: numbersTxtSize,
+          lineHeight: Math.round(numbersTxtSize + numbersTxtSize * 0.25) + 'px',
           color: numbersTxtColor
         };
 
@@ -88229,7 +88240,11 @@ class EctDatePickerCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"]
     }
     let dateTimesFinal = [];
     dateTimes.forEach((item, i) => {
-      dateTimesFinal.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__EctDateTime_jsx__["a" /* default */], { key: i, type: item, date: fullDate, ectCallback: this.ectGetFromChildren }));
+      dateTimesFinal.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__EctDateTime_jsx__["a" /* default */], {
+        key: i,
+        type: item,
+        date: fullDate,
+        ectCallback: this.ectGetFromChildren }));
     });
     return dateTimesFinal;
   }
@@ -88402,11 +88417,13 @@ class LayoutsCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
         //STYLE for numbers
         const numbersStyle = {
           fontSize: numbersSize,
+          lineHeight: Math.round(numbersSize + numbersSize * 0.5) + 'px',
           color: numbersColor
         };
         //STYLE for numbers Text
         const numbersTxtStyle = {
           fontSize: numbersTxtSize,
+          lineHeight: Math.round(numbersTxtSize + numbersTxtSize * 0.5) + 'px',
           color: numbersTxtColor
         };
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -88505,15 +88522,28 @@ class EctButtons extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     _data['data'] = this.props.dateTimeSel;
     console.log(_data);
     _data['ectKs'] = ectKs;
+    // get the this scope of the component
+    let tThis = this;
+
     __WEBPACK_IMPORTED_MODULE_9_axios___default.a.put(ectWPPath + '/ect/v2/addTimer', _data).then(function (response) {
-      console.log(response.data);
 
       let _data = response.data[1];
-      ectWPInsertSC(_data.returnID);
+      //reset timer
+      // tThis
+      //   .props
+      //   .selectDate(null);
+      if (typeof window.ectWPInsertSC != "undefined") {
+        ectWPInsertSC(_data.returnID);
+      }
     });
   }
   deletePopup() {
+    //reset timer
+    // this
+    //   .props
+    //   .selectDate(null);
     if (typeof window.ectWPClosePopupButton != "undefined") {
+
       window.ectWPClosePopupButton();
     }
   }
