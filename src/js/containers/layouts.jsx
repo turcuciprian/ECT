@@ -44,12 +44,23 @@ class LayoutsCont extends Component {
           .props
           .layouts
           .map((item) => {
+            let tNumbersSize = item.numbersSize;
+            let tNumbersColor = item.numbersColor;
+            let tNumbersTxtSize = item.numbersTxtSize;
+            let tNumbersTxtColor = item.numbersTxtColor;
+            if(this.props.dateTimeSel){
+              tNumbersSize = this.props.dateTimeSel.style.numbersSize;
+            tNumbersColor = this.props.dateTimeSel.style.numbersColor;
+            tNumbersTxtSize = this.props.dateTimeSel.style.numbersTxtSize;
+            tNumbersTxtColor = this.props.dateTimeSel.style.numbersTxtColor;
+            }
+
             // Numbers variables
-            const numbersSize = item.numbersSize; // font size
-            const numbersColor = item.numbersColor // color
+            const numbersSize = tNumbersSize; // font size
+            const numbersColor = tNumbersColor // color
             // Numbers  TEXT variables
-            const numbersTxtSize = item.numbersTxtSize; // font size
-            const numbersTxtColor = item.numbersTxtColor; // color
+            const numbersTxtSize = tNumbersTxtSize; // font size
+            const numbersTxtColor = tNumbersTxtColor; // color
 
             //STYLE for numbers
             const numbersStyle = {
