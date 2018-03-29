@@ -67,7 +67,7 @@ class EctPreviewCont extends Component {
         </div>
       </div>);
     }
-    return (<div className="ectLivePreview">
+    return (<div className={` ectLivePreview ${parentLayClass}`}>
       {this.dinamicComponent()}
     </div>);
   }

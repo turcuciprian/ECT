@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
 import dateMath from '../../customLib/dateMath';
 import moment from "moment";
 import {selectDate} from '../../actions';
+import {bindActionCreators} from 'redux';
 
 class HorizontalBasicCont extends Component {
   constructor(props) {
@@ -81,12 +81,12 @@ class HorizontalBasicCont extends Component {
         }
       }
       if (!tempDate) {
-        finalResult = 'Countdown Ended'; // when timer is done because the countdown ended
+        finalResult = 'Please select a End Date & time to count down to'; // when timer is done because the countdown ended
 
       }
     } else {
 
-      finalResult = 'Countdown Ended'; // when timer is done because redux store is empty - when the page loads
+      finalResult = 'Please select a End Date & time to count down to'; // when timer is done because redux store is empty - when the page loads
 
     }
 

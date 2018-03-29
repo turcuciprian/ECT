@@ -85194,7 +85194,7 @@ exports.default = loopable;
 /* 727 */
 /***/ (function(module, exports) {
 
-module.exports = "<!DOCTYPE html>\r\n<html>\r\n\r\n<head>\r\n  <meta charset='utf-8'>\r\n  <title>Easy Countdown Timer </title>\r\n</head>\r\n\r\n<body>\r\n  <div id=\"ect_root\"></div>\r\n  <div id=\"ect_root2\"></div>\r\n  <script type=\"text/javascript\">\r\n    var devMode = true;\r\n    var isOnlyPreview = false;\r\n    var ectWPPath = \"http://localhost/wordpress/wp-json\";\r\n    var ectKs = \"b30a02aabb9955ce8de5956198c2bbf9\";\r\n    var ectProperties = [{\r\n      'ect_root': {\r\n        'endDate': {\r\n          year: 2099,\r\n          month: 12,\r\n          day: 1,\r\n          hour: 1,\r\n          minute: 1,\r\n          timezone: '-10800000'\r\n        },\r\n        numbersText: {\r\n          Years: 'Years',\r\n          Months: 'Months',\r\n          Weeks: 'Weeks',\r\n          Days: 'Days',\r\n          Hours: 'Hours',\r\n          Minutes: 'Minutes',\r\n          Seconds: 'Seconds'\r\n        },\r\n        style: {\r\n          layout: 'HorizontalBasic',\r\n          numbersSize: 34,\r\n          numbersTxtSize: 22,\r\n          numbersColor: 'red',\r\n          numbersTxtColor: 'green'\r\n        }\r\n      }\r\n    }];\r\n  </script>\r\n  <script src='dist/bundle.js'>\r\n  </script>\r\n</body>\r\n\r\n</html>\r\n";
+module.exports = "<!DOCTYPE html>\r\n<html>\r\n\r\n<head>\r\n  <meta charset='utf-8'>\r\n  <title>Easy Countdown Timer </title>\r\n</head>\r\n\r\n<body>\r\n  <div id=\"ect_root\"></div>\r\n  <div id=\"ect_root2\"></div>\r\n  <script type=\"text/javascript\">\r\n    var devMode = true;\r\n    var isOnlyPreview = false;\r\n    var ectWPPath = \"http://localhost/wordpress/wp-json\";\r\n    var ectKs = \"b30a02aabb9955ce8de5956198c2bbf9\";\r\n    var ectProperties = [{\r\n      'ect_root': {\r\n        'endDate': {\r\n          year: 2099,\r\n          month: 12,\r\n          day: 1,\r\n          hour: 1,\r\n          minute: 1,\r\n          timezone: '-10800000'\r\n        },\r\n        numbersText: {\r\n          Years: 'Years',\r\n          Months: 'Months',\r\n          Weeks: 'Weeks',\r\n          Days: 'Days',\r\n          Hours: 'Hours',\r\n          Minutes: 'Minutes',\r\n          Seconds: 'Seconds'\r\n        },\r\n        style: {\r\n          layout: 'VerticalBasic',\r\n          numbersSize: 34,\r\n          numbersTxtSize: 22,\r\n          numbersColor: 'red',\r\n          numbersTxtColor: 'green'\r\n        }\r\n      }\r\n    }];\r\n  </script>\r\n  <script src='dist/bundle.js'>\r\n  </script>\r\n</body>\r\n\r\n</html>\r\n";
 
 /***/ }),
 /* 728 */
@@ -87672,7 +87672,7 @@ class EctPreviewCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     }
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
-      { className: 'ectLivePreview' },
+      { className: ` ectLivePreview ${parentLayClass}` },
       this.dinamicComponent()
     );
   }
@@ -87784,8 +87784,6 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(29);
 
-var _redux = __webpack_require__(34);
-
 var _dateMath = __webpack_require__(141);
 
 var _dateMath2 = _interopRequireDefault(_dateMath);
@@ -87795,6 +87793,8 @@ var _moment = __webpack_require__(2);
 var _moment2 = _interopRequireDefault(_moment);
 
 var _actions = __webpack_require__(88);
+
+var _redux = __webpack_require__(34);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -87878,11 +87878,11 @@ var HorizontalBasicCont = function (_Component) {
           }
         }
         if (!tempDate) {
-          finalResult = 'Countdown Ended'; // when timer is done because the countdown ended
+          finalResult = 'Please select a End Date & time to count down to'; // when timer is done because the countdown ended
         }
       } else {
 
-        finalResult = 'Countdown Ended'; // when timer is done because redux store is empty - when the page loads
+        finalResult = 'Please select a End Date & time to count down to'; // when timer is done because redux store is empty - when the page loads
       }
 
       if (this.props.pType == "preview") {
@@ -87983,6 +87983,10 @@ var _moment = __webpack_require__(2);
 
 var _moment2 = _interopRequireDefault(_moment);
 
+var _actions = __webpack_require__(88);
+
+var _redux = __webpack_require__(34);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -88027,6 +88031,9 @@ var HorizontalBasicCont = function (_Component) {
         };
         // Date time left
         var tempDate = _dateMath2.default.returnRemainingDateTime(endDateTimeObj);
+        if (!tempDate) {
+          this.props.selectDate(null);
+        }
 
         // Numbers variables
         var numbersSize = this.props.dateTimeSel.style.numbersSize; // font size
@@ -88062,11 +88069,11 @@ var HorizontalBasicCont = function (_Component) {
           }
         }
         if (!tempDate) {
-          finalResult = 'Countdown Ended'; // when timer is done because the countdown ended
+          finalResult = 'Please select a End Date & time to count down to'; // when timer is done because the countdown ended
         }
       } else {
 
-        finalResult = 'Countdown Ended'; // when timer is done because redux store is empty - when the page loads
+        finalResult = 'Please select a End Date & time to count down to'; // when timer is done because redux store is empty - when the page loads
       }
       return _react2.default.createElement('div', { onClick: this.changeLayout }, finalResult);
     }
@@ -88078,8 +88085,12 @@ var HorizontalBasicCont = function (_Component) {
 function mapStateToProps(state) {
   return { dateTime: state.dateTime, dateTimeSel: state.dateTimeSel, layouts: state.layouts, layoutSel: state.layoutSel };
 }
-
-exports.default = (0, _reactRedux.connect)(mapStateToProps)(HorizontalBasicCont);
+function matchDispatchToProps(dispatch) {
+  return (0, _redux.bindActionCreators)({
+    selectDate: _actions.selectDate
+  }, dispatch);
+}
+exports.default = (0, _reactRedux.connect)(mapStateToProps, matchDispatchToProps)(HorizontalBasicCont);
 
 /***/ }),
 /* 758 */
