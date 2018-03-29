@@ -87526,7 +87526,7 @@ exports.default = function () {
       Seconds: 'Seconds'
     },
     style: {
-      'layout': 'HorizontalBasic',
+      layout: 'HorizontalBasic',
       numbersSize: 34,
       numbersTxtSize: 22,
       numbersColor: 'red',
@@ -88312,10 +88312,10 @@ class LayoutsCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     let newEndDate = this.props.dateTimeSel.style;
     const newStyle = {
       layout: item.layout,
-      numbersSize: item.numbersSize,
-      numbersTxtSize: item.numbersTxtSize,
-      numbersColor: item.numbersColor,
-      numbersTxtColor: item.numbersTxtColor
+      numbersSize: this.props.dateTimeSel.style.numbersSize,
+      numbersTxtSize: this.props.dateTimeSel.style.numbersTxtSize,
+      numbersColor: this.props.dateTimeSel.style.numbersColor,
+      numbersTxtColor: this.props.dateTimeSel.style.numbersTxtColor
     };
     this.props.changeStyle(newStyle);
 
@@ -91003,31 +91003,65 @@ UnmountClosed.propTypes = {
 class EctSlider extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
   constructor(props) {
     super(props);
+    this.modifySize = this.modifySize.bind(this);
+    this.state = {
+      minNr: 12,
+      maxNr: 80
+    };
   }
-  render() {
-    let title;
+  modifySize(evt, val) {
+    const originalDateTime = this.props.dateTimeSel;
+    let newDateTime = originalDateTime;
+    const newValue = parseInt(val * this.state.maxNr);
+    if (newValue <= this.state.minNr) {
+      newValue = this.state.minNr;
+    }
     switch (this.props.type) {
       case 'numbers':
-        title = 'Numbers(ex: 0,1,2,3...) Size';
+        newDateTime.style.numbersSize = newValue;
         break;
       case 'texts':
-        title = 'Numbers Text (ex: Year, Month,...) Size';
+        newDateTime.style.numbersTxtSize = newValue;
         break;
     }
+    this.props.selectDate(newDateTime);
+  }
+  render() {
+    let startTitle, startNr;
+    let originalDateTime = this.props.dateTimeSel;
+    switch (this.props.type) {
+      case 'numbers':
+        startTitle = 'Numbers(ex: 0,1,2,3...) Size';
+        if (this.state.dateTimeSel) {
+          startNr = this.props.dateTimeSel.style.numbersSize / this.state.maxNr;
+        } else {
+          startNr = this.props.dateTime.style.numbersSize / this.state.maxNr;
+        }
+        break;
+      case 'texts':
+        startTitle = 'Numbers Text (ex: Year, Month,...) Size';
+        if (this.state.dateTimeSel) {
+          startNr = this.props.dateTimeSel.style.numbersTxtSize / this.state.maxNr;
+        } else {
+          startNr = this.props.dateTime.style.numbersTxtSize / this.state.maxNr;
+        }
+        break;
+    }
+
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
       { className: 'EctSlider' },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'span',
         { className: 'title' },
-        title
+        startTitle
       ),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_10_material_ui__["Slider"], { defaultValue: 0.2 })
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_10_material_ui__["Slider"], { defaultValue: startNr, onChange: this.modifySize })
     );
   }
 }
 function mapStateToProps(state) {
-  return { dateTimeSel: state.dateTimeSel, newCustomTexts: state.newCustomTexts };
+  return { dateTimeSel: state.dateTimeSel, dateTime: state.dateTime };
 }
 function matchDispatchToProps(dispatch) {
   return Object(__WEBPACK_IMPORTED_MODULE_3_redux__["bindActionCreators"])({

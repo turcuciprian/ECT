@@ -19,10 +19,10 @@ class LayoutsCont extends Component {
     let newEndDate = this.props.dateTimeSel.style;
     const newStyle = {
       layout: item.layout,
-      numbersSize: item.numbersSize,
-      numbersTxtSize: item.numbersTxtSize,
-      numbersColor: item.numbersColor,
-      numbersTxtColor: item.numbersTxtColor
+      numbersSize: this.props.dateTimeSel.style.numbersSize,
+      numbersTxtSize: this.props.dateTimeSel.style.numbersTxtSize,
+      numbersColor: this.props.dateTimeSel.style.numbersColor,
+      numbersTxtColor: this.props.dateTimeSel.style.numbersTxtColor
     }
     this
       .props
