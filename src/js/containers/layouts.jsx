@@ -74,7 +74,7 @@ class LayoutsCont extends Component {
             };
             return (
               <div
-                className={`indLayout ${item.layout}`}
+                className={`indLayout ${item.layout} ${item.layout==this.props.dateTimeSel.style.layout?'selected':''}`}
                 key={item.id}
                 onClick={() => this.changeLayout(item)}>
                 <div className={`cont spanDiv`}>

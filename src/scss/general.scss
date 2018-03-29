@@ -50,7 +50,7 @@ body {
                 border: 1px solid $borderColor;
                 margin: 10px;
                 text-align: center;
-                &:hover {
+                &:hover,&.selected {
                     background: $backgroundDarkColor;
                     color: #Fff;
                 }
