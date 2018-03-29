@@ -25,26 +25,18 @@ class EctButtons extends Component {
     console.log(_data);
     _data['ectKs'] = ectKs;
     axios
-      .put('http://localhost/wordpress/wp-json/ect/v2/addTimer', _data)
+      .put(ectWPPath + '/ect/v2/addTimer', _data)
       .then(function (response) {
-        console.log(response);
+        console.log(response.data);
+        
+        let _data = response.data[1];
+        ectWPInsertSC(_data.returnID);
       });
   }
   deletePopup() {
     if (typeof window.ectWPClosePopupButton != "undefined") {
       window.ectWPClosePopupButton();
     }
-    this
-      .props
-      .changeCustomText({
-        Years: 'a',
-        Months: 'b',
-        Weeks: 'c',
-        Days: 'd',
-        Hours: 'e',
-        Minutes: 'f',
-        Seconds: 'g'
-      })
   }
   render() {
     if (this.props.dateTimeSel) {

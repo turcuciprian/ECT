@@ -25,8 +25,6 @@ class MoreOptions extends Component {
   }
   render() {
     if (this.props.dateTimeSel) {
-      console.log('test');
-      
       return (
         <div className="moreOptions">
           <span className="expand" onClick={() => this.expCol()}>

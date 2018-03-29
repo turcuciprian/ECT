@@ -47,6 +47,8 @@ class MainComponent extends Component {
     }
   }
   render() {
+    console.log(ectProperties);
+    
     const logger = createLogger();
     const store = createStore(allReducers, applyMiddleware(thunk, promise, logger));
     return (
