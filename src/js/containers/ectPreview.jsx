@@ -51,7 +51,7 @@ class EctPreviewCont extends Component {
         endMinute: this.props.dateTimeSel.endDate.minute,
         timezoneOffset: this.props.dateTimeSel.endDate.timezone
       };
-      const tempDate = dateMath.returnRemainingDateTime(endDateTimeObj);
+      // const tempDate = dateMath.returnRemainingDateTime(endDateTimeObj);
     }
     let parentLayClass;
     if(this.props.dateTimeSel){

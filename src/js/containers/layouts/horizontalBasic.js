@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import dateMath from '../../customLib/dateMath';
 import moment from "moment";
+import {selectDate} from '../../actions';
 
 class HorizontalBasicCont extends Component {
   constructor(props) {
@@ -29,6 +31,11 @@ class HorizontalBasicCont extends Component {
       };
       // Date time left
       const tempDate = dateMath.returnRemainingDateTime(endDateTimeObj);
+      if (!tempDate) {
+        this
+          .props
+          .selectDate(null);
+      }
 
       // Numbers variables
       const numbersSize = this.props.dateTimeSel.style.numbersSize; // font size
@@ -86,14 +93,14 @@ class HorizontalBasicCont extends Component {
     if (this.props.pType == "preview") {
       finalResult = (
         <span className="spanDiv">
-              <span>
-                16
-              </span>
-              <span>
-                Hours
-              </span>
-              &nbsp;
-            </span>
+          <span>
+            16
+          </span>
+          <span>
+            Hours
+          </span>
+          &nbsp;
+        </span>
       );
     }
     return (
@@ -106,5 +113,10 @@ class HorizontalBasicCont extends Component {
 function mapStateToProps(state) {
   return {dateTime: state.dateTime, dateTimeSel: state.dateTimeSel, layouts: state.layouts, layoutSel: state.layoutSel};
 }
+function matchDispatchToProps(dispatch) {
+  return bindActionCreators({
+    selectDate: selectDate
+  }, dispatch);
+}
 
-export default connect(mapStateToProps)(HorizontalBasicCont);
+export default connect(mapStateToProps, matchDispatchToProps)(HorizontalBasicCont);

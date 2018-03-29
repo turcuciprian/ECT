@@ -87644,7 +87644,7 @@ class EctPreviewCont extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
         endMinute: this.props.dateTimeSel.endDate.minute,
         timezoneOffset: this.props.dateTimeSel.endDate.timezone
       };
-      const tempDate = __WEBPACK_IMPORTED_MODULE_2__customLib_dateMath___default.a.returnRemainingDateTime(endDateTimeObj);
+      // const tempDate = dateMath.returnRemainingDateTime(endDateTimeObj);
     }
     let parentLayClass;
     if (this.props.dateTimeSel) {
@@ -87784,6 +87784,8 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(29);
 
+var _redux = __webpack_require__(34);
+
 var _dateMath = __webpack_require__(141);
 
 var _dateMath2 = _interopRequireDefault(_dateMath);
@@ -87791,6 +87793,8 @@ var _dateMath2 = _interopRequireDefault(_dateMath);
 var _moment = __webpack_require__(2);
 
 var _moment2 = _interopRequireDefault(_moment);
+
+var _actions = __webpack_require__(88);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -87836,6 +87840,9 @@ var HorizontalBasicCont = function (_Component) {
         };
         // Date time left
         var tempDate = _dateMath2.default.returnRemainingDateTime(endDateTimeObj);
+        if (!tempDate) {
+          this.props.selectDate(null);
+        }
 
         // Numbers variables
         var numbersSize = this.props.dateTimeSel.style.numbersSize; // font size
@@ -87891,8 +87898,13 @@ var HorizontalBasicCont = function (_Component) {
 function mapStateToProps(state) {
   return { dateTime: state.dateTime, dateTimeSel: state.dateTimeSel, layouts: state.layouts, layoutSel: state.layoutSel };
 }
+function matchDispatchToProps(dispatch) {
+  return (0, _redux.bindActionCreators)({
+    selectDate: _actions.selectDate
+  }, dispatch);
+}
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps)(HorizontalBasicCont);
+exports.default = (0, _reactRedux.connect)(mapStateToProps, matchDispatchToProps)(HorizontalBasicCont);
 
 /***/ }),
 /* 756 */
